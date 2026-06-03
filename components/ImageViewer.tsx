@@ -40,7 +40,7 @@ function ImageFallback() {
   )
 }
 
-export default function ImageViewer({ folder, images: staticImages, alt, credit }: Props) {
+export default function ImageViewer({ folder, images: extraImages, alt, credit }: Props) {
   // ── Dynamic discovery (folder mode) ─────────────────────────────────────────
   const [discovered, setDiscovered]   = useState<string[]>([])
   const [probeIndex, setProbeIndex]   = useState(0)           // next snapshot to probe
@@ -67,7 +67,9 @@ export default function ImageViewer({ folder, images: staticImages, alt, credit 
   }
 
   // ── Resolve image list ───────────────────────────────────────────────────────
-  const images = folder ? discovered : (staticImages ?? [])
+  const images = folder
+    ? [...discovered, ...(extraImages ?? [])]
+    : (extraImages ?? [])
   const total  = images.length
 
   // ── Gallery state ────────────────────────────────────────────────────────────

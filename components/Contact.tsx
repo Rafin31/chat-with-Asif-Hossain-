@@ -234,10 +234,14 @@ export default function Contact() {
               initial={{ opacity: 0, x: -40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-5 flex items-center gap-3"
+              className="relative overflow-hidden bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-5 flex items-center gap-3"
             >
-              <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-emerald-400 font-medium text-sm">
+              {/* shimmer sweep */}
+              <div className="pointer-events-none absolute inset-0 -skew-x-12">
+                <div className="animate-shimmer-sweep absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-emerald-400/15 to-transparent" />
+              </div>
+              <span className="text-emerald-400 font-mono text-xs tracking-widest uppercase relative z-10">◆</span>
+              <span className="text-emerald-400 font-medium text-sm relative z-10">
                 Available for freelance &amp; full-time opportunities
               </span>
             </motion.div>

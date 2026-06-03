@@ -50,7 +50,6 @@ function ProjectCard({ project }: { project: Project }) {
         )}
         {project.ongoing && (
           <span className="text-xs px-2 py-0.5 rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 font-medium flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan animate-pulse" />
             Ongoing
           </span>
         )}

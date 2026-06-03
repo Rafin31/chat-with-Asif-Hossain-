@@ -4,18 +4,20 @@
 
 export const personalInfo = {
   name: "Asif Hossain",
-  role: "Full-Stack Developer",
-  tagline: "Building scalable web applications with modern technologies",
+  role: "Full-Stack Developer & AI Automation Engineer",
+  tagline: "Building production web apps and intelligent automation systems with modern AI",
   email: "contact@asifhossain.dev",
   location: "Wollongong, NSW, Australia",
   github: "https://github.com/Rafin31",
   linkedin: "https://www.linkedin.com/in/asif-hossain-6982b81ba/",
   fiverr: "https://www.fiverr.com/rafin_31",
-  bio: `I'm a passionate Full-Stack Developer and Software Engineer with 3+ years of professional experience building scalable, high-performance web applications. Having completed my Master's in Computer Science (Software Engineering) at the University of Wollongong, I bring a strong blend of academic excellence and real-world engineering expertise.
+  bio: `I'm a Full-Stack Developer and AI Automation Engineer with 3+ years of professional experience building scalable web applications and intelligent automation systems. I recently completed my Master's in Computer Science (Software Engineering) at the University of Wollongong, combining academic depth with real-world engineering delivery.
 
-I specialise in React.js, Next.js, Node.js, and cloud-based solutions. I've successfully delivered 50+ projects on Fiverr with 100% client satisfaction, and developed a full-scale Medical Supplier Management System for a US-based client, reducing admin workload by 60% through smart automation.
+On the development side, I specialise in React.js, Next.js, Node.js, and cloud infrastructure. I've delivered 50+ client projects on Fiverr with 100% satisfaction, and built a full-scale Medical Supplier Management System that cut admin workload by 60% through automation.
 
-I thrive in agile environments, enjoy solving complex problems, and am always eager to learn and contribute to meaningful projects.`,
+On the AI side, I build with Claude Code, the Anthropic API, and LangChain to ship AI-powered features, from intelligent chatbots and RAG systems to workflow automation with n8n. I use AI not just as a tool but as a core part of how I architect and deliver solutions faster.
+
+I thrive on hard problems, agile teams, and shipping things that actually work in production.`,
 }
 
 // ============================================================
@@ -177,8 +179,7 @@ export interface Project {
   highlight?: string // Featured text
   featured?: boolean // Show "Featured" badge on the card
   ongoing?: boolean // Show pulsing "Ongoing" badge — project is actively in development
-  imagekitFolder?: string // Subfolder name in ImageKit "Portfolio Projects Images"
-  imagekitSnapshots?: number // How many snapshot images exist (snapshot1 … snapshotN)
+  imagekitFolder?: string // Subfolder name in ImageKit "Portfolio Projects Images" — all images auto-discovered
 }
 
 export const projects: Project[] = [
@@ -196,7 +197,6 @@ export const projects: Project[] = [
     gradient: "from-amber-500 via-orange-600 to-red-700",
     highlight: "60% admin workload reduction",
     imagekitFolder: "Medical Management System",
-    imagekitSnapshots: 1,
   },
   {
     id: 2,
@@ -212,7 +212,6 @@ export const projects: Project[] = [
     gradient: "from-purple-600 via-violet-700 to-indigo-800",
     highlight: "+40% user engagement",
     imagekitFolder: "Assert",
-    imagekitSnapshots: 2,
   },
   {
     id: 3,
@@ -256,7 +255,6 @@ export const projects: Project[] = [
     demo: "https://www.fiverr.com/users/rafin_31/portfolio/NjQ2NjEyZmMxNjhkYTAwMDAxOTAyZjE4",
     gradient: "from-blue-500 via-sky-600 to-indigo-700",
     imagekitFolder: "Figma-react",
-    imagekitSnapshots: 1,
   },
   {
     id: 6,
@@ -272,7 +270,6 @@ export const projects: Project[] = [
     gradient: "from-yellow-500 via-amber-600 to-orange-700",
     highlight: "+100% customer Satisfaction",
     imagekitFolder: "PocketClass",
-    imagekitSnapshots: 1,
   },
   {
     id: 7,
@@ -288,7 +285,6 @@ export const projects: Project[] = [
     gradient: "from-indigo-500 via-violet-600 to-purple-700",
     highlight: "Real-time token tracking",
     imagekitFolder: "Claude-States",
-    imagekitSnapshots: 1,
   },
   {
     id: 8,
@@ -333,7 +329,7 @@ export const projects: Project[] = [
     github: "https://github.com/Rafin31/quickfinance-tools",
     demo: "https://quickfinance.tools",
     gradient: "from-green-400 via-emerald-500 to-teal-600",
-    highlight: "Finance tools for real life",
+    highlight: "5+ free calculators, zero sign-up",
     imagekitFolder: "quickfinance-tools",
   },
 ]
@@ -574,12 +570,13 @@ export const stats = [
 // ============================================================
 // AI SKILLS
 // ============================================================
-export type AISkillCategory = "tools" | "apis" | "techniques"
+export type AISkillCategory = "tools" | "apis" | "techniques" | "automation"
 
 export const aiSkillCategories: { id: AISkillCategory; label: string }[] = [
   { id: "tools", label: "AI Tools" },
   { id: "apis", label: "APIs & SDKs" },
   { id: "techniques", label: "Techniques" },
+  { id: "automation", label: "Automation" },
 ]
 
 export interface AISkill {
@@ -588,30 +585,50 @@ export interface AISkill {
 
 export const aiSkills: Record<AISkillCategory, AISkill[]> = {
   tools: [
+    { name: "Claude Code" },
     { name: "Claude AI" },
     { name: "ChatGPT" },
     { name: "GitHub Copilot" },
     { name: "Cursor IDE" },
+    { name: "Windsurf" },
     { name: "v0 by Vercel" },
     { name: "Bolt.new" },
+    { name: "Loveable" },
     { name: "Perplexity AI" },
   ],
   apis: [
     { name: "Anthropic API" },
     { name: "OpenAI API" },
+    { name: "Gemini API" },
+    { name: "Groq" },
     { name: "Vercel AI SDK" },
     { name: "LangChain" },
+    { name: "LlamaIndex" },
     { name: "Hugging Face" },
+    { name: "Ollama" },
     { name: "Replicate" },
   ],
   techniques: [
     { name: "Prompt Engineering" },
     { name: "RAG Systems" },
+    { name: "AI Agents" },
+    { name: "Multi-Agent Systems" },
+    { name: "MCP Integration" },
     { name: "Vibe Coding" },
-    { name: "AI Code Review" },
     { name: "Chain-of-Thought" },
-    { name: "AI Debugging" },
+    { name: "Fine-tuning" },
     { name: "Context Management" },
+    { name: "AI Code Review" },
+  ],
+  automation: [
+    { name: "n8n" },
+    { name: "Make.com" },
+    { name: "Zapier" },
+    { name: "Claude Code Hooks" },
+    { name: "AI Pipelines" },
+    { name: "Webhook Automation" },
+    { name: "Scheduled Agents" },
+    { name: "LLM Routing" },
   ],
 }
 
@@ -619,13 +636,13 @@ export const aiCapabilities = [
   {
     id: 1,
     title: "AI-Powered Web Apps",
-    description: "Full-stack apps with embedded AI hatbots, smart search, and intelligent content generation.",
+    description: "Full-stack apps with embedded AI chatbots, smart search, and intelligent content generation.",
     color: "violet" as const,
   },
   {
     id: 2,
-    title: "Prompt Engineering",
-    description: "Craft precise, reliable prompts that extract structured outputs from LLMs in production.",
+    title: "Workflow Automation",
+    description: "End-to-end automation pipelines with n8n, Make.com, and AI agents that replace manual processes.",
     color: "cyan" as const,
   },
   {
@@ -636,8 +653,8 @@ export const aiCapabilities = [
   },
   {
     id: 4,
-    title: "API Integration",
-    description: "Connect Claude, GPT-4o, and other AI models to web apps through clean service layers.",
+    title: "LLM API Integration",
+    description: "Connect Claude, GPT-4o, Gemini, and Groq to web apps through clean, scalable service layers.",
     color: "emerald" as const,
   },
 ]

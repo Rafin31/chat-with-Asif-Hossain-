@@ -3,7 +3,7 @@
 import { useRef, useState } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { aiSkills, aiSkillCategories, aiCapabilities, type AISkillCategory } from "@/data/portfolio"
-import { FiZap, FiGlobe, FiTerminal, FiCode } from "react-icons/fi"
+import { FiZap, FiGlobe, FiTerminal, FiCpu } from "react-icons/fi"
 import { HiSparkles } from "react-icons/hi2"
 
 // ─── Orbital Ring Config ──────────────────────────────────────────────────────
@@ -17,7 +17,7 @@ const RINGS = [
     labelClass: "text-violet-300 bg-violet-900/40 border-violet-500/30",
     dotClass: "bg-violet-400",
     dotGlow: "0 0 8px rgba(139,92,246,0.9)",
-    labels: ["Claude API", "OpenAI API", "Vercel AI SDK"],
+    labels: ["Claude Code", "OpenAI API", "Gemini API"],
   },
   {
     size: 196,
@@ -28,7 +28,7 @@ const RINGS = [
     labelClass: "text-cyan-300 bg-cyan-900/40 border-cyan-500/30",
     dotClass: "bg-cyan-400",
     dotGlow: "0 0 8px rgba(34,211,238,0.9)",
-    labels: ["Copilot", "Cursor IDE", "v0.dev"],
+    labels: ["n8n", "Cursor IDE", "LangChain"],
   },
   {
     size: 112,
@@ -39,7 +39,7 @@ const RINGS = [
     labelClass: "text-amber-300 bg-amber-900/40 border-amber-500/30",
     dotClass: "bg-amber-400",
     dotGlow: "0 0 8px rgba(245,158,11,0.9)",
-    labels: ["RAG", "Prompts"],
+    labels: ["RAG", "Agents"],
   },
 ]
 
@@ -109,6 +109,10 @@ const CAT_COLORS: Record<AISkillCategory, { tab: string; hover: string }> = {
     tab: "text-amber-400 bg-amber-400/10 border-amber-400/20",
     hover: "hover:border-amber-400 hover:text-amber-300",
   },
+  automation: {
+    tab: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+    hover: "hover:border-emerald-400 hover:text-emerald-300",
+  },
 }
 
 const CAP_STYLES = {
@@ -138,9 +142,9 @@ const CAP_STYLES = {
   },
 }
 
-const CAP_ICONS = [FiGlobe, FiTerminal, FiZap, FiCode]
+const CAP_ICONS = [FiGlobe, FiZap, FiTerminal, FiCpu]
 
-const WORKFLOW = ["Idea", "Prompt", "Generate", "Review", "Refine", "Ship"]
+const WORKFLOW = ["Idea", "Prompt", "Agent", "Generate", "Review", "Ship"]
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function AISkills() {

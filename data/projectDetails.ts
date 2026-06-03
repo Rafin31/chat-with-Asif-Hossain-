@@ -389,9 +389,9 @@ export const projectDetails: Record<string, ProjectDetail> = {
     coverImage:
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1400&q=80&auto=format&fit=crop",
     imageAlt: "Barcelona skyline with Sagrada Familia — TourHill travel booking platform",
-    imageCredit: "Photo by Mikael Kristenson on Unsplash",
+    imageCredit: "Snapshot by Asif Hossain",
     overview:
-      "TourHill is a live, production-grade travel booking platform at tourhill.com — helping tourists discover and book skip-the-line tickets and expert guided tours across Spain's top destinations, starting with Barcelona. I designed and built the entire system from scratch: a Next.js 15 App Router frontend with strict TypeScript, and a Node.js/Express REST API backed by PostgreSQL and Redis, deployed to a Namecheap VPS with Nginx and PM2. The platform handles real-time availability calendars, multi-currency pricing across 10 currencies, a dual-auth system (JWT + httpOnly cookie), Stripe payment webhooks, an admin panel for schedule management, a favorites system with guest-to-server sync, a blog CMS, and multi-language support (i18n) for international reach. Every booking passes backend price verification, atomic Redis slot decrements via Lua script, and guest-count validation to prevent both overselling and price tampering.",
+      "TourHill is a live, production-grade travel booking platform at tourhill.com, helping tourists discover and book skip-the-line tickets and expert guided tours across Spain's top destinations, starting with Barcelona. I designed and built the entire system from scratch: a Next.js 15 App Router frontend with strict TypeScript, and a Node.js/Express REST API backed by PostgreSQL and Redis, deployed to a Namecheap VPS with Nginx and PM2. The platform handles real-time availability calendars, multi-currency pricing across 10 currencies, a dual-auth system (JWT + httpOnly cookie), Stripe payment webhooks, an admin panel for schedule management, a favorites system with guest-to-server sync, a blog CMS, and multi-language support (i18n) for international reach. Every booking passes backend price verification, atomic Redis slot decrements via Lua script, and guest-count validation to prevent both overselling and price tampering.",
     features: [
       {
         icon: "📅",
@@ -455,7 +455,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     challenge:
-      "The hardest architectural problem was building an availability system that stays consistent under concurrent bookings without database round-trips on every calendar render. A naive SQL COUNT per slot would be too slow and still allow two users to book the same last spot. The solution: Redis stores per-slot spot counts; an atomic Lua script (DECRBY wrapped in a guard) handles the decrement in a single round-trip — if spotsLeft < requestedCount the script returns 0 and the booking is rejected before any DB write. A nightly cron rebuilds all slot keys from PostgreSQL (capacity − booked count) as the authoritative reset. Admin closures invalidate the cache immediately on write.",
+      "The hardest architectural problem was building an availability system that stays consistent under concurrent bookings without database round-trips on every calendar render. A naive SQL COUNT per slot would be too slow and still allow two users to book the same last spot. The solution: Redis stores per-slot spot counts; an atomic Lua script (DECRBY wrapped in a guard) handles the decrement in a single round-trip, if spotsLeft < requestedCount the script returns 0 and the booking is rejected before any DB write. A nightly cron rebuilds all slot keys from PostgreSQL (capacity - booked count) as the authoritative reset. Admin closures invalidate the cache immediately on write.",
     outcome:
       "Live at tourhill.com, processing real bookings across Barcelona attractions. Atomic availability prevents overselling under concurrent load. CI/CD pipeline runs on every push with TypeScript checks, lint, migrations, and tests passing. Price verification and atomic slot logic have blocked multiple checkout manipulation attempts in production logs.",
   },
@@ -509,6 +509,56 @@ export const projectDetails: Record<string, ProjectDetail> = {
       "The main challenge was building a reliable real-time file watcher that could parse Claude's JSONL session files incrementally without re-reading the entire history on every change. I used chokidar for efficient file watching and implemented a streaming parser that only processes new lines appended to each session file, keeping memory usage flat regardless of session history size.",
     outcome:
       "A working developer tool actively used for tracking Claude Code usage. Zero configuration needed — clone, install, and run. Published on GitHub as an open-source project for the broader Claude Code community.",
+  },
+  "quickfinance-tools-personal-finance-calculators": {
+    slug: "quickfinance-tools-personal-finance-calculators",
+    coverImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=80&auto=format&fit=crop",
+    imageAlt: "Personal finance calculator and budgeting tools",
+    imageCredit: "Photo by Towfiqu barbhuiya on Unsplash",
+    overview:
+      "QuickFinance Tools is a free, no-login finance calculator suite built for the people traditional finance apps ignore freelancers, gig workers, 1099 contractors, and independent earners. Every calculator runs 100% client-side with no data collection, no sign-up wall, and no paywalled features. Built with Next.js 14 App Router and TypeScript, it's SEO-optimised for US, UK, and Canadian search traffic and monetised with Google AdSense.",
+    features: [
+      {
+        icon: "🧾",
+        title: "Freelancer Tax Calculator",
+        description:
+          "Estimates quarterly self-employment tax obligations for 1099 contractors. Calculates federal and state tax set-asides so freelancers never face a surprise bill.",
+      },
+      {
+        icon: "❄️",
+        title: "Debt Snowball Calculator",
+        description:
+          "Side-by-side comparison of snowball vs. avalanche repayment strategies with exact month-by-month payoff timelines and total interest saved.",
+      },
+      {
+        icon: "🛡️",
+        title: "Emergency Fund Calculator",
+        description:
+          "Determines the right emergency fund target based on monthly expenses and employment stability gives a concrete savings number, not generic advice.",
+      },
+      {
+        icon: "📈",
+        title: "Compound Interest Calculator",
+        description:
+          "Models long-term wealth growth from regular monthly contributions across custom time horizons and interest rates.",
+      },
+      {
+        icon: "🎯",
+        title: "Savings Goal Calculator",
+        description:
+          "Reverse-engineers a monthly savings plan to hit any financial target, factoring in interest earnings to give the most efficient path.",
+      },
+      {
+        icon: "🔒",
+        title: "100% Private, Client-Side",
+        description:
+          "All calculations run in the browser. No data ever leaves the user's device, no account required, and no feature locked behind a subscription.",
+      },
+    ],
+    challenge:
+      "Most personal finance tools are built for salaried employees with predictable income. Freelancers face a completely different tax reality, self-employment tax, quarterly payments, and no employer withholding. The challenge was designing calculators that handle variable income correctly while remaining simple enough for non-accountants to use with confidence.",
+    outcome:
+      "Live at quickfinance.tools with 5+ free calculators covering the most common financial decisions for independent earners. Indexed and ranking for freelance finance keywords across US and European search markets. Monetised with AdSense to cover running costs while remaining fully free for users.",
   },
 }
 

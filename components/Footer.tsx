@@ -33,8 +33,8 @@ export default function Footer() {
               </span>
             </button>
             <p className="text-text-muted text-sm leading-relaxed max-w-xs">
-              Full-Stack Developer specialising in React.js, Next.js, and Node.js.
-              Building scalable digital products that make an impact.
+              Full-Stack Developer and AI Automation Engineer specialising in React.js, Next.js, Node.js, and n8n.
+              Building scalable web apps and intelligent automation systems that ship.
             </p>
             {/* Social icons */}
             <div className="flex gap-4">
@@ -99,11 +99,12 @@ export default function Footer() {
               <span className="text-text-muted text-sm">{personalInfo.location}</span>
             </div>
             {/* Availability */}
-            <div className="flex items-center gap-2 mt-5">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-emerald-400 text-xs font-medium">
-                Open to opportunities
-              </span>
+            <div className="relative overflow-hidden mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+              <div className="pointer-events-none absolute inset-0 -skew-x-12">
+                <div className="animate-shimmer-sweep absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-emerald-400/15 to-transparent" />
+              </div>
+              <span className="text-emerald-400 font-mono text-[10px] relative z-10">◆</span>
+              <span className="text-emerald-400 text-xs font-medium relative z-10">Open to opportunities</span>
             </div>
           </div>
         </div>

@@ -96,7 +96,7 @@ export default function CustomCursor() {
       {/* Outer lagging ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full border-2"
+        className="fixed top-0 left-0 pointer-events-none z-[99999] rounded-full border-2"
         style={{
           width: 34,
           height: 34,
@@ -112,7 +112,7 @@ export default function CustomCursor() {
       {/* Inner dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-accent-yellow"
+        className="fixed top-0 left-0 pointer-events-none z-[99999] rounded-full bg-accent-yellow"
         style={{
           width: 7,
           height: 7,

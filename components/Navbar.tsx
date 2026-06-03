@@ -5,44 +5,73 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { navLinks, pageLinks } from "@/data/portfolio"
-import { HiMenu, HiX } from "react-icons/hi"
 
-function LogoMark() {
+// ── Logo ──────────────────────────────────────────────────────────────────────
+function LogoMark({ compact = false }: { compact?: boolean }) {
+  if (compact) {
+    return (
+      <span className="flex items-center gap-1.5 select-none">
+        <span className="font-mono text-accent-cyan text-xs font-bold opacity-60">&lt;/&gt;</span>
+        <span className="font-heading font-black text-sm text-text-primary tracking-tight">AH</span>
+      </span>
+    )
+  }
   return (
     <span className="flex items-center gap-1.5 font-heading tracking-tight select-none">
       <span className="font-mono text-accent-cyan text-sm font-bold opacity-70">&lt;/&gt;</span>
-      <span className="font-black text-lg text-text-primary">
-        Asif
-      </span>
+      <span className="font-black text-lg text-text-primary">Asif</span>
       <span className="font-light text-lg text-accent-yellow">Hossain</span>
-      <span className="w-1.5 h-1.5 rounded-full bg-accent-yellow animate-pulse" />
     </span>
   )
 }
 
+// ── Animated hamburger → X ────────────────────────────────────────────────────
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <div className="relative w-6 h-5">
+      <motion.span
+        animate={{ rotate: open ? 45 : 0, y: open ? 9 : 0 }}
+        transition={{ duration: 0.28, ease: "easeInOut" }}
+        className="absolute top-0 left-0 w-full h-[2px] bg-current rounded-full"
+      />
+      <motion.span
+        animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 0.8 }}
+        transition={{ duration: 0.18 }}
+        className="absolute top-[9px] left-0 h-[2px] bg-current rounded-full"
+        style={{ width: "80%" }}
+      />
+      <motion.span
+        animate={{ rotate: open ? -45 : 0, y: open ? -9 : 0 }}
+        transition={{ duration: 0.28, ease: "easeInOut" }}
+        className="absolute bottom-0 left-0 w-full h-[2px] bg-current rounded-full"
+      />
+    </div>
+  )
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled]       = useState(false)
+  const [mobileOpen, setMobileOpen]   = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const pathname = usePathname()
-  const isHome = pathname === "/"
+  const isHome   = pathname === "/"
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  // Only run intersection observer on the home page
   useEffect(() => {
     if (!isHome) return
-    const sectionIds = navLinks.map((l) => l.href.replace("#", ""))
+    const ids = navLinks.map((l) => l.href.replace("#", ""))
     const observers: IntersectionObserver[] = []
-    sectionIds.forEach((id) => {
+    ids.forEach((id) => {
       const el = document.getElementById(id)
       if (!el) return
       const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
+        ([e]) => { if (e.isIntersecting) setActiveSection(id) },
         { threshold: 0, rootMargin: "-40% 0px -55% 0px" }
       )
       obs.observe(el)
@@ -51,189 +80,264 @@ export default function Navbar() {
     return () => observers.forEach((o) => o.disconnect())
   }, [isHome])
 
+  // Lock scroll when mobile overlay open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : ""
+    return () => { document.body.style.overflow = "" }
+  }, [mobileOpen])
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false)
     if (isHome) {
       const id = href.replace("#", "")
-      // Wait for mobile menu close animation (300ms) before scrolling
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
-      }, 300)
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 300)
     } else {
       window.location.href = `/${href}`
     }
   }
 
+  const allLinks = [...navLinks, ...pageLinks]
+
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-surface/95 backdrop-blur-md shadow-lg shadow-black/20 border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <button
-            onClick={() => isHome ? handleNavClick("#home") : undefined}
-            className="flex items-center gap-2 group"
+    <>
+      {/* ── Nav bar ─────────────────────────────────────────────────────────── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none px-4 sm:px-6">
+        <motion.div
+          className="pointer-events-auto mx-auto"
+          animate={
+            scrolled
+              ? {
+                  maxWidth: 860,
+                  marginTop: 12,
+                  borderRadius: 9999,
+                  backgroundColor: "rgba(9,9,18,0.94)",
+                  boxShadow:
+                    "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.07)",
+                  paddingLeft: 16,
+                  paddingRight: 16,
+                }
+              : {
+                  maxWidth: 2000,
+                  marginTop: 0,
+                  borderRadius: 0,
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                  paddingLeft: 0,
+                  paddingRight: 0,
+                }
+          }
+          transition={{ duration: 0.48, ease: [0.25, 0.46, 0.45, 0.94] }}
+          style={{ backdropFilter: scrolled ? "blur(24px)" : "none" }}
+        >
+          <div
+            className={`flex items-center justify-between transition-all duration-300 ${
+              scrolled
+                ? "h-[46px]"
+                : "h-16 px-2 sm:px-4 lg:px-6 max-w-7xl mx-auto"
+            }`}
           >
+            {/* Logo */}
             {isHome ? (
-              <LogoMark />
+              <button onClick={() => handleNavClick("#home")} className="shrink-0">
+                <LogoMark compact={scrolled} />
+              </button>
             ) : (
-              <Link href="/"><LogoMark /></Link>
+              <Link href="/" className="shrink-0">
+                <LogoMark compact={scrolled} />
+              </Link>
             )}
-          </button>
 
-          {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = isHome && activeSection === link.href.replace("#", "")
-              return (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                    isActive
-                      ? "text-accent-yellow"
-                      : "text-text-muted hover:text-text-primary"
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute bottom-0 left-3 right-3 h-0.5 bg-accent-yellow rounded-full"
-                    />
-                  )}
-                </button>
-              )
-            })}
-            {/* Page route links */}
-            {pageLinks.map((link) => {
-              const isActive = pathname === link.href
-              const isHireMe = link.href === "/hire-me"
+            {/* Desktop links */}
+            <div className="hidden md:flex items-center gap-0.5">
+              {navLinks.map((link) => {
+                const isActive =
+                  isHome && activeSection === link.href.replace("#", "")
+                return (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className={`relative px-3 py-1 text-sm font-medium rounded-full transition-all duration-200 ${
+                      isActive
+                        ? "text-accent-yellow bg-accent-yellow/10"
+                        : "text-text-muted hover:text-text-primary hover:bg-white/5"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                )
+              })}
 
-              if (isHireMe) {
+              {pageLinks.map((link) => {
+                const isActive  = pathname === link.href
+                const isHireMe  = link.href === "/hire-me"
+
+                if (isHireMe) {
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`ml-2 whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
+                        isActive
+                          ? "bg-accent-yellow text-background border-accent-yellow"
+                          : "border-accent-yellow/60 text-accent-yellow hover:bg-accent-yellow hover:text-background"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                }
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`ml-1 px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200 ${
+                    className={`px-3 py-1 text-sm font-medium rounded-full transition-all duration-200 ${
                       isActive
-                        ? "bg-accent-yellow text-background border-accent-yellow"
-                        : "border-accent-yellow text-accent-yellow hover:bg-accent-yellow hover:text-background"
+                        ? "text-accent-yellow bg-accent-yellow/10"
+                        : "text-text-muted hover:text-text-primary hover:bg-white/5"
                     }`}
                   >
                     {link.label}
                   </Link>
                 )
-              }
+              })}
+            </div>
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
-                    isActive
-                      ? "text-accent-yellow"
-                      : "text-text-muted hover:text-text-primary"
-                  }`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute bottom-0 left-3 right-3 h-0.5 bg-accent-yellow rounded-full"
-                    />
-                  )}
-                </Link>
-              )
-            })}
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden p-2 text-text-muted hover:text-text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
+              <HamburgerIcon open={mobileOpen} />
+            </button>
           </div>
+        </motion.div>
+      </nav>
 
-          <div className="hidden md:flex items-center" />
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-text-muted hover:text-text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
+      {/* ── Mobile fullscreen overlay ────────────────────────────────────────── */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-surface border-b border-border"
-            style={{ maxHeight: "calc(100vh - 64px)", overflowY: "auto" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            className="fixed inset-0 z-[99] flex flex-col"
+            style={{
+              background:
+                "linear-gradient(150deg, rgba(7,7,16,0.99) 0%, rgba(11,11,22,0.99) 100%)",
+              backdropFilter: "blur(20px)",
+            }}
           >
-            <div className="px-4 py-4 flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={() => handleNavClick(link.href)}
-                  className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                    isHome && activeSection === link.href.replace("#", "")
-                      ? "bg-accent-yellow/10 text-accent-yellow"
-                      : "text-text-muted hover:text-text-primary hover:bg-card"
-                  }`}
-                >
-                  {link.label}
-                </motion.button>
-              ))}
-              {/* Page route links in mobile */}
-              {pageLinks.map((link, i) => {
+            {/* Background dot grid */}
+            <div
+              className="absolute inset-0 opacity-[0.035] pointer-events-none"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)",
+                backgroundSize: "28px 28px",
+              }}
+            />
+            {/* Ambient glow */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-accent-yellow/[0.025] blur-3xl pointer-events-none" />
+
+            {/* Top bar */}
+            <div className="relative z-10 flex items-center justify-between px-6 h-16 border-b border-white/[0.06]">
+              <LogoMark />
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="p-2 text-text-muted hover:text-text-primary transition-colors"
+                aria-label="Close menu"
+              >
+                <HamburgerIcon open />
+              </button>
+            </div>
+
+            {/* Nav links */}
+            <nav className="relative z-10 flex-1 flex flex-col justify-center px-8 gap-0.5 overflow-y-auto py-8">
+              {allLinks.map((link, i) => {
                 const isHireMe = link.href === "/hire-me"
+                const isAnchor = link.href.startsWith("#")
+                const isActive = isAnchor
+                  ? isHome && activeSection === link.href.replace("#", "")
+                  : pathname === link.href
+
+                const label = (
+                  <span
+                    className={`font-heading font-bold text-[2rem] leading-none tracking-tight transition-colors duration-200 ${
+                      isHireMe
+                        ? "text-accent-yellow"
+                        : isActive
+                        ? "text-accent-yellow"
+                        : "text-white/30 group-hover:text-text-primary"
+                    }`}
+                  >
+                    {link.label}
+                  </span>
+                )
+
+                const prefix = (
+                  <span className="text-[10px] font-mono text-white/15 w-6 shrink-0 group-hover:text-accent-yellow/40 transition-colors">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                )
+
+                const badge = isHireMe ? (
+                  <span className="ml-3 text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+                    available
+                  </span>
+                ) : null
+
                 return (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: (navLinks.length + i) * 0.05 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.28, delay: 0.04 + i * 0.05 }}
                   >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                        isHireMe
-                          ? pathname === link.href
-                            ? "bg-accent-yellow text-background font-semibold"
-                            : "bg-accent-yellow/10 text-accent-yellow border border-accent-yellow/30 font-semibold"
-                          : pathname === link.href
-                            ? "bg-accent-yellow/10 text-accent-yellow"
-                            : "text-text-muted hover:text-text-primary hover:bg-card"
-                      }`}
-                    >
-                      {link.label}
-                      {isHireMe && (
-                        <span className="text-[10px] px-1.5 py-0.5 bg-accent-yellow/20 text-accent-yellow rounded font-mono">
-                          available
-                        </span>
-                      )}
-                    </Link>
+                    {isAnchor ? (
+                      <button
+                        onClick={() => handleNavClick(link.href)}
+                        className="group flex items-center gap-4 w-full py-3.5"
+                      >
+                        {prefix}
+                        {label}
+                        {badge}
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="group flex items-center gap-4 w-full py-3.5"
+                      >
+                        {prefix}
+                        {label}
+                        {badge}
+                      </Link>
+                    )}
                   </motion.div>
                 )
               })}
-            </div>
+            </nav>
+
+            {/* Bottom bar */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: 0.3 }}
+              className="relative z-10 px-8 py-6 border-t border-white/[0.06]"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm text-emerald-400 font-mono">
+                  ◆ Available for freelance<span className="animate-blink ml-0.5 font-bold">_</span>
+                </div>
+                <span className="text-[11px] text-white/20 font-mono">asifhossain.dev</span>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   )
 }

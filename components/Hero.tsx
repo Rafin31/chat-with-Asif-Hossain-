@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation"
 import { personalInfo, stats } from "@/data/portfolio"
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
 import { HiArrowDown } from "react-icons/hi"
-import { HiArrowDownTray } from "react-icons/hi2"
+import { HiArrowTopRightOnSquare } from "react-icons/hi2"
 
 // Animated floating particle dot
 function Particle({ x, y, delay, size }: { x: string; y: string; delay: number; size: number }) {
@@ -172,6 +172,8 @@ export default function Hero() {
               sequence={[
                 "Full-Stack Developer",
                 2000,
+                "AI Automation Engineer",
+                2000,
                 "React.js Expert",
                 2000,
                 "Node.js Developer",
@@ -196,8 +198,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="text-text-muted text-base sm:text-lg leading-relaxed max-w-lg"
           >
-            Building scalable, high-performance web applications with modern technologies.
-            50+ projects delivered, 3+ years of experience, 100% client satisfaction.
+            Building production web apps and intelligent automation systems with modern AI
           </motion.p>
 
           {/* CTA Buttons */}
@@ -220,13 +221,14 @@ export default function Hero() {
               Hire Me
             </button>
             <a
-              href="/Asif_Hossain_Resume.pdf"
-              download="Asif_Hossain_Resume.pdf"
+              href="https://docs.google.com/document/d/11HjFf1qQIiGadYJ3c40v9LYlDPyli32jab_lrZgu1d0/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative flex items-center gap-2 px-6 py-3 bg-card border border-border text-text-muted font-medium rounded-xl hover:border-accent-yellow/40 hover:text-text-primary transition-all duration-200 overflow-hidden"
             >
               <span className="absolute inset-0 bg-accent-yellow/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <HiArrowDownTray className="w-4 h-4 relative z-10 group-hover:text-accent-yellow transition-colors" />
-              <span className="relative z-10 text-sm">Download CV</span>
+              <HiArrowTopRightOnSquare className="w-4 h-4 relative z-10 group-hover:text-accent-yellow transition-colors" />
+              <span className="relative z-10 text-sm">View CV</span>
             </a>
           </motion.div>
 

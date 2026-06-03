@@ -292,11 +292,12 @@ export default function HireMePage() {
               Start a Project
             </Link>
             <a
-              href="/Asif_Hossain_Resume.pdf"
-              download
+              href="https://docs.google.com/document/d/11HjFf1qQIiGadYJ3c40v9LYlDPyli32jab_lrZgu1d0/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-surface border border-border text-text-primary font-semibold rounded-xl text-lg hover:border-accent-cyan/50 transition-colors"
             >
-              Download CV
+              View CV
             </a>
           </div>
         </section>

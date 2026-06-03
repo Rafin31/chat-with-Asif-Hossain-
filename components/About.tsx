@@ -166,13 +166,16 @@ export default function About() {
               variants={fadeUp}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="flex items-center gap-3 bg-card border border-border rounded-xl p-4"
+              className="relative overflow-hidden flex items-center gap-3 bg-card border border-border rounded-xl p-4"
             >
-              <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-text-muted text-sm">
-                Currently:{" "}
+              <div className="pointer-events-none absolute inset-0 -skew-x-12">
+                <div className="animate-shimmer-sweep absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-accent-yellow/8 to-transparent" />
+              </div>
+              <span className="text-accent-yellow font-mono text-xs relative z-10">◆</span>
+              <span className="text-text-muted text-sm relative z-10">
+                Deepening expertise in{" "}
                 <span className="text-text-primary font-medium">
-                  Master of Computer Science Graduate @ University of Wollongong + Open to Opportunities
+                  advanced AI automation and AI-powered development with n8n, LangChain, and the Anthropic API
                 </span>
               </span>
             </motion.div>
