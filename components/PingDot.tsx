@@ -1,5 +1,5 @@
 /**
- * Ping ripple dot — replaces animate-pulse for status indicators.
+ * Ping ripple dot  replaces animate-pulse for status indicators.
  * A solid dot with a ripple ring expanding outward (radar / broadcast feel).
  */
 export default function PingDot({

@@ -10,7 +10,7 @@ import { ikProjectUrl } from "@/lib/imagekit"
 const MAX_SNAPSHOTS = 20
 
 interface Props {
-  /** ImageKit subfolder name — viewer auto-discovers all snapshotN files */
+  /** ImageKit subfolder name  viewer auto-discovers all snapshotN files */
   folder?: string
   /** Explicit image URLs (for Unsplash or any static list) */
   images?: string[]
@@ -53,7 +53,7 @@ export default function ImageViewer({ folder, images: extraImages, alt, credit }
       : null
 
   function onProbeLoad() {
-    // This snapshot exists — add it and probe the next one
+    // This snapshot exists  add it and probe the next one
     setDiscovered(prev => [...prev, ikProjectUrl(folder!, `snapshot${probeIndex + 1}`)])
     if (probeIndex + 1 < MAX_SNAPSHOTS) {
       setProbeIndex(i => i + 1)
@@ -62,7 +62,7 @@ export default function ImageViewer({ folder, images: extraImages, alt, credit }
     }
   }
   function onProbeError() {
-    // This snapshot doesn't exist — stop probing
+    // This snapshot doesn't exist  stop probing
     setProbeDone(true)
   }
 
@@ -87,7 +87,7 @@ export default function ImageViewer({ folder, images: extraImages, alt, credit }
 
   return (
     <div className="w-full">
-      {/* Hidden probe element — tests whether the next snapshot URL exists */}
+      {/* Hidden probe element  tests whether the next snapshot URL exists */}
       {probeUrl && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -123,7 +123,7 @@ export default function ImageViewer({ folder, images: extraImages, alt, credit }
                 {!loaded[i] && <Shimmer />}
                 <Image
                   src={src}
-                  alt={`${alt}${total > 1 ? ` — ${i + 1} of ${total}` : ""}`}
+                  alt={`${alt}${total > 1 ? `  ${i + 1} of ${total}` : ""}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1000px"
                   className={`object-contain transition-opacity duration-700 ${loaded[i] ? "opacity-100" : "opacity-0"}`}
@@ -138,7 +138,7 @@ export default function ImageViewer({ folder, images: extraImages, alt, credit }
           </div>
         ))}
 
-        {/* Navigation — only when multiple images exist */}
+        {/* Navigation  only when multiple images exist */}
         {total > 1 && (
           <>
             <button

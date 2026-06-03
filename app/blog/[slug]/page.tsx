@@ -159,7 +159,7 @@ export default function BlogPostPage({ params }: Props) {
               {/* Divider */}
               <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-12" />
 
-              {/* Mobile sidebar — visible only below lg, sits between content and CTA */}
+              {/* Mobile sidebar  visible only below lg, sits between content and CTA */}
               <div className="lg:hidden mb-12">
                 <BlogSidebar
                   currentSlug={post.slug}
@@ -193,7 +193,7 @@ export default function BlogPostPage({ params }: Props) {
               </div>
             </article>
 
-            {/* Sidebar — sticky on desktop only (mobile version is inline above) */}
+            {/* Sidebar  sticky on desktop only (mobile version is inline above) */}
             <div className="hidden lg:block sticky top-24 self-start">
               <BlogSidebar
                 currentSlug={post.slug}

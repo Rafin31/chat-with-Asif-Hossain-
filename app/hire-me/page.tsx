@@ -138,58 +138,6 @@ const faqJsonLd = {
   ],
 }
 
-const SERVICES = [
-  {
-    icon: "🌐",
-    title: "Business Website Development",
-    description:
-      "Professional websites for small and medium businesses in Wollongong and across Australia. Fast, mobile-friendly, SEO-optimised, and ready to attract customers.",
-    tech: ["Next.js", "TailwindCSS", "CMS", "SEO", "Google Analytics"],
-  },
-  {
-    icon: "🖥️",
-    title: "Custom Web Applications",
-    description:
-      "Custom web apps built end-to-end, from database schema to pixel-perfect UI. Ideal for SaaS products, internal tools, and business systems.",
-    tech: ["React.js", "Next.js", "Node.js", "MongoDB", "PostgreSQL"],
-  },
-  {
-    icon: "🛒",
-    title: "E-Commerce Development",
-    description:
-      "Fast, SEO-optimised online stores with payment processing, inventory management, and admin dashboards.",
-    tech: ["Next.js", "Stripe", "TailwindCSS", "MongoDB"],
-  },
-  {
-    icon: "🔌",
-    title: "API Development & Integrations",
-    description:
-      "RESTful APIs, third-party integrations, and backend systems. Connect your tools, automate workflows, and expose clean APIs for your frontend.",
-    tech: ["Node.js", "Express.js", "JWT", "REST APIs", "OAuth 2.0"],
-  },
-  {
-    icon: "🎨",
-    title: "React & Next.js Frontend",
-    description:
-      "Responsive, animated, and accessible frontends. Figma-to-code, landing pages, and interactive dashboards.",
-    tech: ["React.js", "Next.js", "TypeScript", "TailwindCSS", "Framer Motion"],
-  },
-  {
-    icon: "☁️",
-    title: "Cloud & DevOps Setup",
-    description:
-      "Deploy your application on AWS, set up CI/CD pipelines, and configure your infrastructure for scale.",
-    tech: ["AWS EC2", "AWS S3", "Docker", "GitHub Actions", "Railway"],
-  },
-  {
-    icon: "🔧",
-    title: "Existing Project Work",
-    description:
-      "Take over, extend, or refactor your existing codebase. Fix bugs, add features, or modernise a legacy application.",
-    tech: ["Code Review", "Refactoring", "TypeScript Migration", "Testing"],
-  },
-]
-
 const PROCESS = [
   {
     step: "01",
@@ -321,39 +269,46 @@ export default function HireMePage() {
 
         {/* ── SERVICES ─────────────────────────────────────────── */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-text-primary mb-4">
               <span className="section-title-underline">Services I Offer</span>
             </h2>
             <p className="text-text-muted max-w-xl mx-auto">
-              End-to-end web development from architecture to deployment.
+              From custom web development to AI automation and cloud infrastructure  each service has its own dedicated page with full details, deliverables, and pricing.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service) => (
-              <div
-                key={service.title}
-                className="bg-card border border-border rounded-2xl p-6 card-hover flex flex-col gap-4"
+
+          {/* Service quick-links */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {[
+              { icon: "🌐", label: "Web Development", slug: "web-development-australia" },
+              { icon: "⚙️", label: "n8n Automation", slug: "n8n-automation-australia" },
+              { icon: "🤖", label: "AI Integration", slug: "ai-integration-developer" },
+              { icon: "✨", label: "AI Web Apps", slug: "ai-powered-web-applications" },
+              { icon: "⚛️", label: "Next.js / React", slug: "nextjs-react-developer-australia" },
+              { icon: "🛍️", label: "E-Commerce", slug: "ecommerce-development-australia" },
+              { icon: "🔌", label: "API Development", slug: "api-development-integrations" },
+              { icon: "☁️", label: "Cloud & DevOps", slug: "cloud-devops-australia" },
+            ].map((s) => (
+              <Link
+                key={s.slug}
+                href={`/services/${s.slug}`}
+                className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-xl text-sm text-text-muted hover:text-accent-yellow hover:border-accent-yellow/30 transition-all duration-200"
               >
-                <div className="text-3xl">{service.icon}</div>
-                <h3 className="font-heading text-lg font-semibold text-text-primary">
-                  {service.title}
-                </h3>
-                <p className="text-text-muted text-sm leading-relaxed flex-1">
-                  {service.description}
-                </p>
-                <div className="flex flex-wrap gap-2 pt-2 border-t border-border">
-                  {service.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-0.5 rounded-md bg-surface text-text-muted text-xs border border-border"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                <span>{s.icon}</span>
+                {s.label}
+              </Link>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent-yellow text-background font-semibold rounded-xl hover:bg-amber-400 transition-colors text-sm"
+            >
+              View All Services with Full Details
+              <span>→</span>
+            </Link>
           </div>
         </section>
 

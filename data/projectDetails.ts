@@ -1,4 +1,4 @@
-// Extended project content — displayed on individual project pages
+// Extended project content  displayed on individual project pages
 // Sourced images are from Unsplash (free licence, attributed below each)
 
 export interface Feature {
@@ -27,7 +27,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     imageAlt: "Medical Supplier Management System dashboard screenshot",
     imageCredit: "Screenshot by Asif Hossain",
     overview:
-      "Mendoza Brothers Holdings needed to replace a patchwork of spreadsheets and email chains with a centralised, secure web platform for managing their medical supply chain. The system needed to support multiple user roles, handle bulk product data efficiently, and give management real-time visibility over orders and staff activity. I designed and built the entire platform from scratch — database schema, REST API, React UI, and deployment infrastructure.",
+      "Mendoza Brothers Holdings needed to replace a patchwork of spreadsheets and email chains with a centralised, secure web platform for managing their medical supply chain. The system needed to support multiple user roles, handle bulk product data efficiently, and give management real-time visibility over orders and staff activity. I designed and built the entire platform from scratch  database schema, REST API, React UI, and deployment infrastructure.",
     features: [
       {
         icon: "🔐",
@@ -67,7 +67,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     challenge:
-      "The hardest part was designing a RBAC system flexible enough to accommodate evolving business rules without requiring code changes. I built a centralised permission config object — a single source of truth — so access rules could be adjusted by editing one file rather than hunting across dozens of route handlers.",
+      "The hardest part was designing a RBAC system flexible enough to accommodate evolving business rules without requiring code changes. I built a centralised permission config object  a single source of truth  so access rules could be adjusted by editing one file rather than hunting across dozens of route handlers.",
     outcome:
       "60% reduction in admin workload through bulk automation. 35% faster issue resolution via real-time chat. Zero security incidents across the full deployment period. CEO review: 5 stars.",
   },
@@ -109,7 +109,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "🔒",
         title: "Trustless Payouts",
         description:
-          "Winnings are distributed automatically by contract logic — no manual processing, no possibility of manipulation.",
+          "Winnings are distributed automatically by contract logic  no manual processing, no possibility of manipulation.",
       },
       {
         icon: "📱",
@@ -161,7 +161,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "🚀",
         title: "Next.js SSR",
         description:
-          "Product and category pages are server-rendered for fast initial load and excellent Google indexing — critical for parts discovery via search.",
+          "Product and category pages are server-rendered for fast initial load and excellent Google indexing  critical for parts discovery via search.",
       },
       {
         icon: "🛍️",
@@ -219,7 +219,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "📱",
         title: "Responsive Design",
         description:
-          "Mobile-first layout optimised for browsing and purchasing on any device — important for a gaming audience that skews mobile.",
+          "Mobile-first layout optimised for browsing and purchasing on any device  important for a gaming audience that skews mobile.",
       },
     ],
     challenge:
@@ -327,7 +327,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       },
     ],
     challenge:
-      "Synchronising calendar availability in real time across concurrent sessions was complex — two students could attempt to book the same slot simultaneously. I implemented a reservation lock pattern using MongoDB transactions to hold a slot for 5 minutes during checkout, releasing it automatically if payment didn't complete.",
+      "Synchronising calendar availability in real time across concurrent sessions was complex  two students could attempt to book the same slot simultaneously. I implemented a reservation lock pattern using MongoDB transactions to hold a slot for 5 minutes during checkout, releasing it automatically if payment didn't complete.",
     outcome:
       "100% client satisfaction rating. Platform actively serving students and instructors across Canada. Real-time chat and booking features running with no reported downtime post-launch.",
   },
@@ -375,7 +375,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "📊",
         title: "Summary Dashboard",
         description:
-          "A top-level view showing total stock value, sales to date, and overall profit or loss — updated in real time as transactions are recorded.",
+          "A top-level view showing total stock value, sales to date, and overall profit or loss  updated in real time as transactions are recorded.",
       },
     ],
     challenge:
@@ -388,7 +388,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     slug: "tourhill-europe-tour-booking-platform",
     coverImage:
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1400&q=80&auto=format&fit=crop",
-    imageAlt: "Barcelona skyline with Sagrada Familia — TourHill travel booking platform",
+    imageAlt: "Barcelona skyline with Sagrada Familia  TourHill travel booking platform",
     imageCredit: "Snapshot by Asif Hossain",
     overview:
       "TourHill is a live, production-grade travel booking platform at tourhill.com, helping tourists discover and book skip-the-line tickets and expert guided tours across Spain's top destinations, starting with Barcelona. I designed and built the entire system from scratch: a Next.js 15 App Router frontend with strict TypeScript, and a Node.js/Express REST API backed by PostgreSQL and Redis, deployed to a Namecheap VPS with Nginx and PM2. The platform handles real-time availability calendars, multi-currency pricing across 10 currencies, a dual-auth system (JWT + httpOnly cookie), Stripe payment webhooks, an admin panel for schedule management, a favorites system with guest-to-server sync, a blog CMS, and multi-language support (i18n) for international reach. Every booking passes backend price verification, atomic Redis slot decrements via Lua script, and guest-count validation to prevent both overselling and price tampering.",
@@ -397,7 +397,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "📅",
         title: "Real-Time Availability Calendar",
         description:
-          "Monthly availability is fetched in a single bundled API call for all ticket options. Redis stores per-slot spot counts (spotsLeft). An atomic Lua script decrements the count on booking — if the slot hits zero mid-transaction, it rolls back and returns SLOT_UNAVAILABLE (409). A nightly cron rebuilds all slot counts from the PostgreSQL source of truth.",
+          "Monthly availability is fetched in a single bundled API call for all ticket options. Redis stores per-slot spot counts (spotsLeft). An atomic Lua script decrements the count on booking  if the slot hits zero mid-transaction, it rolls back and returns SLOT_UNAVAILABLE (409). A nightly cron rebuilds all slot counts from the PostgreSQL source of truth.",
       },
       {
         icon: "🎟️",
@@ -409,7 +409,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "🔐",
         title: "Dual-Auth (JWT + Cookie)",
         description:
-          "Login and register return both an httpOnly session cookie (survives page refresh, invisible to JS) and a JWT Bearer token stored in Redux memory (never in localStorage — XSS-safe). Every state-changing endpoint requires the X-Requested-With: XMLHttpRequest header as CSRF mitigation. Token lifetime is 30 days on both layers.",
+          "Login and register return both an httpOnly session cookie (survives page refresh, invisible to JS) and a JWT Bearer token stored in Redux memory (never in localStorage  XSS-safe). Every state-changing endpoint requires the X-Requested-With: XMLHttpRequest header as CSRF mitigation. Token lifetime is 30 days on both layers.",
       },
       {
         icon: "💱",
@@ -427,13 +427,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "🛡️",
         title: "Backend Price Verification",
         description:
-          "The booking endpoint re-derives the expected total from DB prices — never trusting the frontend total. It also validates the 4.9% service fee and verifies that the guest array length matches the traveler count. PRICE_MISMATCH (409) is returned if anything doesn't align, preventing checkout price tampering.",
+          "The booking endpoint re-derives the expected total from DB prices  never trusting the frontend total. It also validates the 4.9% service fee and verifies that the guest array length matches the traveler count. PRICE_MISMATCH (409) is returned if anything doesn't align, preventing checkout price tampering.",
       },
       {
         icon: "❤️",
         title: "Favorites with Guest Sync",
         description:
-          "Unauthenticated users can save favorites to Redux/localStorage. On login, a POST /users/me/favorites/sync call merges guest favorites with server state — deduplicating by productId with server addedAt timestamps taking precedence.",
+          "Unauthenticated users can save favorites to Redux/localStorage. On login, a POST /users/me/favorites/sync call merges guest favorites with server state  deduplicating by productId with server addedAt timestamps taking precedence.",
       },
       {
         icon: "🗓️",
@@ -466,7 +466,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     imageAlt: "Claude Stats dashboard showing token usage, costs and session history",
     imageCredit: "Screenshot by Asif Hossain",
     overview:
-      "Claude Stats is a self-hosted developer tool I built to solve a personal pain point: having no visibility into how many tokens I was burning through Claude Code sessions or how much it was costing me. The dashboard auto-detects your local Claude data directory, watches it for changes in real time, and visualises token usage, session history, costs, and productivity patterns — all without any configuration or external API calls.",
+      "Claude Stats is a self-hosted developer tool I built to solve a personal pain point: having no visibility into how many tokens I was burning through Claude Code sessions or how much it was costing me. The dashboard auto-detects your local Claude data directory, watches it for changes in real time, and visualises token usage, session history, costs, and productivity patterns  all without any configuration or external API calls.",
     features: [
       {
         icon: "📊",
@@ -496,7 +496,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
         icon: "💰",
         title: "Subscription Value Card",
         description:
-          "Compares what your usage would cost at pay-per-token API pricing vs your flat Pro subscription — shows exactly how much value you're getting.",
+          "Compares what your usage would cost at pay-per-token API pricing vs your flat Pro subscription  shows exactly how much value you're getting.",
       },
       {
         icon: "📋",
@@ -508,7 +508,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     challenge:
       "The main challenge was building a reliable real-time file watcher that could parse Claude's JSONL session files incrementally without re-reading the entire history on every change. I used chokidar for efficient file watching and implemented a streaming parser that only processes new lines appended to each session file, keeping memory usage flat regardless of session history size.",
     outcome:
-      "A working developer tool actively used for tracking Claude Code usage. Zero configuration needed — clone, install, and run. Published on GitHub as an open-source project for the broader Claude Code community.",
+      "A working developer tool actively used for tracking Claude Code usage. Zero configuration needed  clone, install, and run. Published on GitHub as an open-source project for the broader Claude Code community.",
   },
   "quickfinance-tools-personal-finance-calculators": {
     slug: "quickfinance-tools-personal-finance-calculators",

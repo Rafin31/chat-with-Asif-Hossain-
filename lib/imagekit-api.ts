@@ -14,7 +14,7 @@ interface IKFile {
  */
 export async function listFolderImages(folder: string): Promise<string[]> {
   if (!IK_PRIVATE_KEY) {
-    console.warn("[imagekit-api] IMAGEKIT_PRIVATE_KEY not set — skipping image fetch")
+    console.warn("[imagekit-api] IMAGEKIT_PRIVATE_KEY not set  skipping image fetch")
     return []
   }
 

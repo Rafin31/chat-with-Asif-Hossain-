@@ -93,20 +93,20 @@ export default function ProjectGallery({ images, alt }: Props) {
 
         {/* Left: hero image */}
         <div style={{ position: "absolute", top: 0, left: 0, right: "calc(45% + 4px)", bottom: 0 }}>
-          <Tile src={images[0]} alt={`${alt} — 1`} priority onClick={() => setLightbox(0)} />
+          <Tile src={images[0]} alt={`${alt}  1`} priority onClick={() => setLightbox(0)} />
         </div>
 
         {/* Right top */}
         {images[1] && (
           <div style={{ position: "absolute", top: 0, left: "calc(55% + 4px)", right: 0, bottom: "calc(50% + 4px)" }}>
-            <Tile src={images[1]} alt={`${alt} — 2`} priority onClick={() => setLightbox(1)} />
+            <Tile src={images[1]} alt={`${alt}  2`} priority onClick={() => setLightbox(1)} />
           </div>
         )}
 
         {/* Right bottom + remaining count */}
         {images[2] && (
           <div style={{ position: "absolute", top: "calc(50% + 4px)", left: "calc(55% + 4px)", right: 0, bottom: 0 }}>
-            <Tile src={images[2]} alt={`${alt} — 3`} onClick={() => setLightbox(2)}>
+            <Tile src={images[2]} alt={`${alt}  3`} onClick={() => setLightbox(2)}>
               {remaining > 0 && (
                 <div style={{
                   position: "absolute", inset: 0,
@@ -180,7 +180,7 @@ export default function ProjectGallery({ images, alt }: Props) {
               <img
                 key={lightbox}
                 src={ikLoader({ src: images[lightbox], width: 1400, quality: 85 })}
-                alt={`${alt} — ${lightbox + 1}`}
+                alt={`${alt}  ${lightbox + 1}`}
                 style={{
                   maxWidth: "100%", maxHeight: "100%",
                   objectFit: "contain", display: "block",

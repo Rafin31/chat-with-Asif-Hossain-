@@ -178,8 +178,8 @@ export interface Project {
   gradient: string // Tailwind gradient classes for fallback / detail hero
   highlight?: string // Featured text
   featured?: boolean // Show "Featured" badge on the card
-  ongoing?: boolean // Show pulsing "Ongoing" badge — project is actively in development
-  imagekitFolder?: string // Subfolder name in ImageKit "Portfolio Projects Images" — all images auto-discovered
+  ongoing?: boolean // Show pulsing "Ongoing" badge  project is actively in development
+  imagekitFolder?: string // Subfolder name in ImageKit "Portfolio Projects Images"  all images auto-discovered
 }
 
 export const projects: Project[] = [
@@ -277,7 +277,7 @@ export const projects: Project[] = [
     title: "Claude Stats Dashboard",
     description: "A local dashboard for tracking Claude Code token usage, costs, and session history in real time. Built with Next.js, Recharts, and chokidar.",
     longDescription:
-      "A self-hosted developer tool that gives you a live view of your Claude Code token consumption, session history, and estimated API costs. Built with Next.js App Router, Recharts for data visualisation, and chokidar for file watching — no config needed, it auto-detects your Claude data directory.",
+      "A self-hosted developer tool that gives you a live view of your Claude Code token consumption, session history, and estimated API costs. Built with Next.js App Router, Recharts for data visualisation, and chokidar for file watching  no config needed, it auto-detects your Claude data directory.",
     category: ["fullstack"],
     tech: ["Next.js", "React.js", "TypeScript", "TailwindCSS", "Recharts", "chokidar"],
     github: "https://github.com/Rafin31/claude-stats",
@@ -303,7 +303,7 @@ export const projects: Project[] = [
   {
     id: 9,
     slug: "tourhill-europe-tour-booking-platform",
-    title: "TourHill — Europe Tour & Travel Booking Platform",
+    title: "TourHill  Europe Tour & Travel Booking Platform",
     description: "Production travel booking platform for curated skip-the-line tickets and expert guided tours across Spain. Built with Next.js 15 and live at tourhill.com.",
     longDescription:
       "TourHill is a live, production-grade travel booking web application helping tourists discover and book skip-the-line tickets and expert guided tours across Spain's top destinations, starting with Barcelona. Built with Next.js 15 App Router, strict TypeScript, Zustand for state management, TanStack Query for server-state, Zod for form validation, and Framer Motion for animations. Supports multi-language (i18n) for international reach and is fully optimised for Core Web Vitals, SEO, and conversion.",
@@ -320,7 +320,7 @@ export const projects: Project[] = [
   {
     id: 10,
     slug: "quickfinance-tools-personal-finance-calculators",
-    title: "QuickFinance Tools — Personal Finance Calculators",
+    title: "QuickFinance Tools  Personal Finance Calculators",
     description: "Free personal finance calculator suite for freelancers, gig workers, and retirement planners. Clear numbers, zero jargon.",
     longDescription:
       "QuickFinance Tools is a free web-based finance calculator suite built for real-life financial decisions. Whether you freelance, drive for rideshare, or want to plan your retirement, it gives you clear and honest numbers without the financial jargon. Built with Next.js 14 App Router, TypeScript, and Tailwind CSS. Monetised with Google AdSense and SEO-optimised for US and European search traffic.",
@@ -676,5 +676,6 @@ export const navLinks = [
 // Page route links (Blog, Hire Me - rendered as <Link> not scroll anchors)
 export const pageLinks = [
   { href: "/blog", label: "Blog" },
+  { href: "/services", label: "Services" },
   { href: "/hire-me", label: "Hire Me" },
 ]

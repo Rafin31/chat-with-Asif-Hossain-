@@ -192,7 +192,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
           </div>
         )}
 
-        {/* Browser chrome — same as regular cards */}
+        {/* Browser chrome  same as regular cards */}
         <div className="flex items-center gap-2 px-4 py-3 bg-surface border-b border-border flex-shrink-0">
           <span className="w-3 h-3 rounded-full bg-red-500/80" />
           <span className="w-3 h-3 rounded-full bg-accent-yellow/80" />

@@ -107,14 +107,15 @@ export default function Navbar() {
           animate={
             scrolled
               ? {
-                  maxWidth: 860,
+                  maxWidth: 980,
                   marginTop: 12,
                   borderRadius: 9999,
                   backgroundColor: "rgba(9,9,18,0.94)",
                   boxShadow:
                     "0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.07)",
-                  paddingLeft: 16,
-                  paddingRight: 16,
+                  paddingLeft: 12,
+                  paddingRight: 12,
+                  overflow: "hidden",
                 }
               : {
                   maxWidth: 2000,
@@ -156,7 +157,7 @@ export default function Navbar() {
                   <button
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className={`relative px-3 py-1 text-sm font-medium rounded-full transition-all duration-200 ${
+                    className={`relative px-2.5 py-1 text-sm font-medium rounded-full transition-all duration-200 ${
                       isActive
                         ? "text-accent-yellow bg-accent-yellow/10"
                         : "text-text-muted hover:text-text-primary hover:bg-white/5"

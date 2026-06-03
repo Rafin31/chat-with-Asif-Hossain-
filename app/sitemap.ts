@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next"
 import { getAllPosts } from "@/lib/blog"
 import { projects } from "@/data/portfolio"
+import { services } from "@/data/services"
 
 const BASE_URL = "https://asifhossain.dev"
 
@@ -29,6 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const serviceEntries: MetadataRoute.Sitemap = services.map((s) => ({
+    url: `${BASE_URL}/services/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }))
+
   return [
     {
       url: BASE_URL,
@@ -37,10 +45,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${BASE_URL}/services`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.95,
+    },
+    {
       url: `${BASE_URL}/hire-me`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
-      priority: 0.95,  // hire page is the highest-intent conversion page
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/blog`,
@@ -48,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
+    ...serviceEntries,
     ...blogEntries,
     ...projectEntries,
   ]
