@@ -22,8 +22,8 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      initial={{ y: 28 }}
+      animate={inView ? { y: 0 } : {}}
       transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94], delay }}
       className={className}
     >
@@ -52,7 +52,7 @@ export default function ServiceDetailClient({ service, relatedServices }: Props)
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Timeline strip (no price) */}
-        <Reveal className="-mt-6 mb-14">
+        <Reveal className="mt-10 mb-14">
           <div className="grid grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden border border-border">
             <div className="bg-card p-5 sm:p-6">
               <p className="text-[10px] font-mono text-text-muted uppercase tracking-[0.12em] mb-1.5">Timeline</p>
@@ -102,8 +102,8 @@ export default function ServiceDetailClient({ service, relatedServices }: Props)
                 {service.features.map((feature, i) => (
                   <motion.div
                     key={feature.title}
-                    initial={{ opacity: 0, y: 22 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ y: 22 }}
+                    whileInView={{ y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ duration: 0.42, delay: i * 0.07 }}
                     className="bg-card border border-border rounded-xl p-5 flex gap-4 hover:border-accent-yellow/20 transition-colors duration-300"
@@ -185,8 +185,8 @@ export default function ServiceDetailClient({ service, relatedServices }: Props)
                 {relatedServices.map((s, i) => (
                   <motion.div
                     key={s.slug}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ y: 20 }}
+                    whileInView={{ y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
                   >

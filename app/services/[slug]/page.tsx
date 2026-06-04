@@ -91,7 +91,7 @@ export default function ServicePage({ params }: Props) {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className={`relative bg-gradient-to-br ${service.gradient} pt-28 pb-16 overflow-hidden`}>
+      <section className={`relative bg-gradient-to-br ${service.gradient} pt-28 pb-10 overflow-hidden`}>
         <div
           className="absolute inset-0 opacity-[0.08] pointer-events-none"
           style={{

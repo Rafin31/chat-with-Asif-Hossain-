@@ -1,4 +1,4 @@
-# Asif Hossain — Full-Stack Developer
+# Asif Hossain  Full-Stack Developer
 
 **[asifhossain.dev](https://asifhossain.dev)** · Wollongong, NSW, Australia
 

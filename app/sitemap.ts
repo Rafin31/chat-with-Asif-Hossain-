@@ -25,14 +25,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectEntries: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${BASE_URL}/projects/${project.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date("2025-11-01"),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }))
 
   const serviceEntries: MetadataRoute.Sitemap = services.map((s) => ({
     url: `${BASE_URL}/services/${s.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date("2025-12-01"),
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }))
@@ -46,13 +46,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/services`,
-      lastModified: new Date(),
+      lastModified: new Date("2025-12-01"),
       changeFrequency: "monthly" as const,
       priority: 0.95,
     },
     {
       url: `${BASE_URL}/hire-me`,
-      lastModified: new Date(),
+      lastModified: new Date("2025-11-01"),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
