@@ -296,6 +296,14 @@ body {
   margin-bottom: 0.4rem;
 }
 
+.mdx-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
 .mdx-content blockquote {
   border-left: 3px solid var(--accent-yellow);
   padding-left: 1.25rem;
