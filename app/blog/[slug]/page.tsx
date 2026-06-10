@@ -36,13 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       publishedTime: post.date,
       authors: [post.author],
-      images: [{ url: "/profile.jpg", width: 400, height: 400 }],
+      images: [{ url: post.coverImage ?? "/profile.jpg", width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
-      images: ["/profile.jpg"],
+      images: [post.coverImage ?? "/profile.jpg"],
       creator: "@Rafin31",
     },
   }

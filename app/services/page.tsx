@@ -9,7 +9,7 @@ import { HiSparkles } from "react-icons/hi2"
 const BASE_URL = "https://asifhossain.dev"
 
 export const metadata: Metadata = {
-  title: "Web Development & AI Automation Services Australia | Asif Hossain",
+  title: "Web Development & AI Automation Services Australia",
   description:
     "Full-stack web development, n8n automation, AI integration, and cloud services for Australian businesses. Based in Wollongong NSW. 50+ projects delivered, 5-star rated.",
   keywords: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${BASE_URL}/services`,
-    title: "Web Development & AI Automation Services Australia | Asif Hossain",
+    title: "Web Development & AI Automation Services Australia",
     description:
       "Custom websites, AI-powered applications, n8n workflow automation, and cloud infrastructure for Australian businesses.",
     images: [{ url: `${BASE_URL}/profile.jpg`, width: 400, alt: "Asif Hossain" }],

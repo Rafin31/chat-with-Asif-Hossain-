@@ -35,7 +35,7 @@ export const services: Service[] = [
   {
     slug: "web-development-australia",
     title: "Web Development Services Australia",
-    metaTitle: "Web Developer Australia | Custom Website Development | Asif Hossain",
+    metaTitle: "Web Developer Australia | Custom Website Development",
     metaDescription:
       "Professional web developer based in Wollongong, Australia. Custom websites, web apps, and digital products built with React, Next.js, and Node.js. Fast delivery, 5-star rated.",
     keywords: [
@@ -139,7 +139,7 @@ export const services: Service[] = [
   {
     slug: "nextjs-react-developer-australia",
     title: "Next.js & React Developer Australia",
-    metaTitle: "Next.js Developer Australia | React.js Expert | Asif Hossain",
+    metaTitle: "Next.js Developer Australia | React.js Expert",
     metaDescription:
       "Experienced Next.js and React developer in Australia. Server-side rendering, App Router, TypeScript, and Tailwind CSS. Fast, SEO-optimised frontends delivered on time.",
     keywords: [
@@ -239,7 +239,7 @@ export const services: Service[] = [
   {
     slug: "n8n-automation-australia",
     title: "n8n Workflow Automation Australia",
-    metaTitle: "n8n Automation Consultant Australia | Workflow Automation | Asif Hossain",
+    metaTitle: "n8n Automation Consultant Australia | Workflow Automation",
     metaDescription:
       "n8n workflow automation specialist in Australia. Automate repetitive business processes, connect apps, and build AI-powered pipelines. Save hours every week with custom n8n automation.",
     keywords: [
@@ -343,7 +343,7 @@ export const services: Service[] = [
   {
     slug: "ai-integration-developer",
     title: "AI Integration Developer Australia",
-    metaTitle: "AI Integration Developer Australia | LLM API Integration | Asif Hossain",
+    metaTitle: "AI Integration Developer Australia | LLM API Integration",
     metaDescription:
       "Expert AI integration developer in Australia. Connect Claude, GPT-4, and Gemini to your web apps. Build AI chatbots, RAG systems, and intelligent features that work in production.",
     keywords: [
@@ -443,7 +443,7 @@ export const services: Service[] = [
   {
     slug: "ai-powered-web-applications",
     title: "AI-Powered Web Application Development",
-    metaTitle: "AI Web App Developer Australia | AI-Powered Applications | Asif Hossain",
+    metaTitle: "AI Web App Developer Australia | AI-Powered Applications",
     metaDescription:
       "Build AI-powered web applications in Australia. Full-stack apps with embedded LLMs, intelligent search, and automation built on Next.js, Node.js, and the Anthropic API.",
     keywords: [
@@ -543,7 +543,7 @@ export const services: Service[] = [
   {
     slug: "ecommerce-development-australia",
     title: "E-Commerce Development Australia",
-    metaTitle: "E-Commerce Developer Australia | Online Store Development | Asif Hossain",
+    metaTitle: "E-Commerce Developer Australia | Online Store Development",
     metaDescription:
       "Custom e-commerce development for Australian businesses. Fast, SEO-optimised online stores with Stripe payments, inventory management, and admin dashboards. No Shopify required.",
     keywords: [
@@ -643,7 +643,7 @@ export const services: Service[] = [
   {
     slug: "api-development-integrations",
     title: "API Development & Integration Services",
-    metaTitle: "API Developer Australia | REST API & Third-Party Integration | Asif Hossain",
+    metaTitle: "API Developer Australia | REST API & Third-Party Integration",
     metaDescription:
       "Professional API developer in Australia. Custom REST APIs, third-party integrations, and backend systems built with Node.js, Express.js, and PostgreSQL. Fast, secure, well-documented.",
     keywords: [
@@ -743,7 +743,7 @@ export const services: Service[] = [
   {
     slug: "cloud-devops-australia",
     title: "Cloud & DevOps Services Australia",
-    metaTitle: "Cloud & DevOps Engineer Australia | AWS, Docker, CI/CD | Asif Hossain",
+    metaTitle: "Cloud & DevOps Engineer Australia | AWS, Docker, CI/CD",
     metaDescription:
       "Cloud and DevOps services for Australian businesses. AWS setup, Docker containerisation, CI/CD pipelines, and production infrastructure. Reliable deployments with zero downtime.",
     keywords: [
