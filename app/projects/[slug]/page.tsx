@@ -32,9 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${BASE_URL}/projects/${params.slug}`,
       title: `${project.title} | Asif Hossain`,
       description: project.longDescription,
-      images: detail?.coverImage
-        ? [{ url: detail.coverImage, width: 1400, alt: detail.imageAlt }]
-        : [{ url: "/profile.jpg", width: 400 }],
+      // Fall back to the auto-generated /opengraph-image when a project has no cover
+      ...(detail?.coverImage
+        ? { images: [{ url: detail.coverImage, width: 1400, alt: detail.imageAlt }] }
+        : {}),
     },
   }
 }

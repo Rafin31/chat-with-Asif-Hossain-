@@ -8,6 +8,7 @@ const About       = dynamic(() => import("@/components/About"))
 const Skills      = dynamic(() => import("@/components/Skills"))
 const AISkills    = dynamic(() => import("@/components/AISkills"))
 const Experience  = dynamic(() => import("@/components/Experience"))
+const ServicesTeaser = dynamic(() => import("@/components/ServicesTeaser"))
 const Projects    = dynamic(() => import("@/components/Projects"))
 const Testimonials = dynamic(() => import("@/components/Testimonials"))
 const Contact     = dynamic(() => import("@/components/Contact"))
@@ -53,6 +54,7 @@ export default function Home() {
         <Skills />
         <AISkills />
         <Experience />
+        <ServicesTeaser />
         <Projects />
         <Testimonials />
         <Contact />

@@ -1,20 +1,18 @@
-"use client"
-
-import { motion } from "framer-motion"
+import Link from "next/link"
 import { navLinks, personalInfo } from "@/data/portfolio"
+import { services } from "@/data/services"
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
-import { HiArrowUp } from "react-icons/hi"
+import BackToTopButton from "@/components/BackToTopButton"
+
+// Key blog posts surfaced sitewide for internal linking (matches HIGH_PRIORITY_SLUGS in app/sitemap.ts)
+const featuredPosts = [
+  { slug: "website-cost-australia-2026", label: "Website Cost in Australia" },
+  { slug: "do-i-need-a-website-for-my-small-business", label: "Does My Business Need a Website?" },
+  { slug: "fullstack-developer-wollongong-nsw", label: "Full-Stack Developer in Wollongong" },
+  { slug: "typescript-vs-javascript-2026", label: "TypeScript vs JavaScript" },
+]
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
-  const handleNavClick = (href: string) => {
-    const id = href.replace("#", "")
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
-  }
-
   const year = new Date().getFullYear()
 
   return (
@@ -23,15 +21,15 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-yellow/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid sm:grid-cols-3 gap-10 items-start">
-          {/* Left - Logo & tagline */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 items-start">
+          {/* Brand, tagline & social */}
           <div className="flex flex-col gap-4">
-            <button onClick={() => handleNavClick("#home")} className="text-left">
+            <Link href="/" className="text-left">
               <span className="font-heading font-bold text-2xl">
                 <span className="text-accent-yellow">Asif </span>
                 <span className="text-accent-cyan">Hossain</span>
               </span>
-            </button>
+            </Link>
             <p className="text-text-muted text-sm leading-relaxed max-w-xs">
               Full-Stack Developer and AI Automation Engineer specialising in React.js, Next.js, Node.js, and n8n.
               Building scalable web apps and intelligent automation systems that ship.
@@ -66,30 +64,78 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Center - Quick links */}
+          {/* Quick links */}
           <div>
             <h4 className="font-heading font-semibold text-text-primary text-sm mb-4 tracking-wide">
               Quick Links
             </h4>
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
-                <button
+                <Link
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-text-muted text-sm hover:text-accent-yellow transition-colors duration-200 text-left"
+                  href={`/${link.href}`}
+                  className="text-text-muted text-sm hover:text-accent-yellow transition-colors duration-200"
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
             </nav>
           </div>
 
-          {/* Right - Contact info */}
+          {/* Services */}
           <div>
             <h4 className="font-heading font-semibold text-text-primary text-sm mb-4 tracking-wide">
-              Contact
+              Services
             </h4>
-            <div className="flex flex-col gap-3">
+            <nav className="flex flex-col gap-2">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  className="text-text-muted text-sm hover:text-accent-cyan transition-colors duration-200"
+                >
+                  {service.shortTitle}
+                </Link>
+              ))}
+              <Link
+                href="/services"
+                className="text-accent-cyan text-sm hover:text-accent-yellow transition-colors duration-200"
+              >
+                All Services →
+              </Link>
+            </nav>
+          </div>
+
+          {/* Resources & contact */}
+          <div>
+            <h4 className="font-heading font-semibold text-text-primary text-sm mb-4 tracking-wide">
+              Resources
+            </h4>
+            <nav className="flex flex-col gap-2">
+              {featuredPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="text-text-muted text-sm hover:text-accent-yellow transition-colors duration-200"
+                >
+                  {post.label}
+                </Link>
+              ))}
+              <Link
+                href="/blog"
+                className="text-text-muted text-sm hover:text-accent-yellow transition-colors duration-200"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/hire-me"
+                className="text-text-muted text-sm hover:text-accent-yellow transition-colors duration-200"
+              >
+                Hire Me
+              </Link>
+            </nav>
+            {/* Contact */}
+            <div className="flex flex-col gap-2 mt-5">
               <a
                 href={`mailto:${personalInfo.email}`}
                 className="text-text-muted text-sm hover:text-accent-yellow transition-colors duration-200"
@@ -114,17 +160,7 @@ export default function Footer() {
           <p className="text-text-muted text-sm text-center sm:text-left">
             © {year} Asif Hossain. All rights reserved.
           </p>
-
-          {/* Back to top */}
-          <motion.button
-            onClick={scrollToTop}
-            whileHover={{ scale: 1.1, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-9 h-9 rounded-lg border border-border bg-card flex items-center justify-center text-text-muted hover:text-accent-yellow hover:border-accent-yellow/40 transition-all duration-200"
-            aria-label="Back to top"
-          >
-            <HiArrowUp className="w-4 h-4" />
-          </motion.button>
+          <BackToTopButton />
         </div>
       </div>
     </footer>

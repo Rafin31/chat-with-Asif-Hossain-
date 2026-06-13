@@ -7,7 +7,9 @@ import remarkGfm from "remark-gfm"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import BlogSidebar from "@/components/BlogSidebar"
+import ServiceCTA from "@/components/mdx/ServiceCTA"
 import { getPostBySlug, getAllSlugs } from "@/lib/blog"
+import { getService } from "@/data/services"
 import { shimmerDataURL } from "@/lib/shimmer"
 
 const BASE_URL = "https://asifhossain.dev"
@@ -66,6 +68,7 @@ export default function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
     author: {
       "@type": "Person",
       name: "Asif Hossain",
@@ -80,9 +83,12 @@ export default function BlogPostPage({ params }: Props) {
       "@type": "WebPage",
       "@id": `${BASE_URL}/blog/${post.slug}`,
     },
-    image: `${BASE_URL}/profile.jpg`,
+    image: post.coverImage ?? `${BASE_URL}/profile.jpg`,
     keywords: post.keywords.join(", "),
   }
+
+  // Service promoted at the end of the post (set via "relatedService" frontmatter)
+  const relatedService = post.relatedService ? getService(post.relatedService) : null
 
   return (
     <>
@@ -152,6 +158,7 @@ export default function BlogPostPage({ params }: Props) {
               <div className="mdx-content">
                 <MDXRemote
                   source={post.content}
+                  components={{ ServiceCTA }}
                   options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
                 />
               </div>
@@ -167,30 +174,56 @@ export default function BlogPostPage({ params }: Props) {
                 />
               </div>
 
-              {/* CTA */}
-              <div className="bg-card border border-border rounded-2xl p-8 text-center">
-                <h2 className="font-heading text-xl font-bold text-text-primary mb-2">
-                  Need a Full-Stack Developer?
-                </h2>
-                <p className="text-text-muted mb-6">
-                  Based in Wollongong, NSW. Available for projects across Australia
-                  and globally.
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link
-                    href="/hire-me"
-                    className="px-6 py-3 bg-accent-yellow text-background font-semibold rounded-xl hover:bg-amber-400 transition-colors glow-yellow-sm"
-                  >
-                    View Services
-                  </Link>
-                  <Link
-                    href="/#contact"
-                    className="px-6 py-3 bg-surface border border-border text-text-primary font-semibold rounded-xl hover:border-accent-cyan/50 transition-colors"
-                  >
-                    Get in Touch
-                  </Link>
+              {/* CTA promotes the post's related service when one is set in frontmatter */}
+              {relatedService ? (
+                <div className="bg-card border border-border rounded-2xl p-8 text-center">
+                  <span className="text-3xl block mb-3">{relatedService.icon}</span>
+                  <h2 className="font-heading text-xl font-bold text-text-primary mb-2">
+                    {relatedService.title}
+                  </h2>
+                  <p className="text-text-muted mb-6 max-w-xl mx-auto">
+                    {relatedService.tagline}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <Link
+                      href={`/services/${relatedService.slug}`}
+                      className="px-6 py-3 bg-accent-yellow text-background font-semibold rounded-xl hover:bg-amber-400 transition-colors glow-yellow-sm"
+                    >
+                      Explore This Service
+                    </Link>
+                    <Link
+                      href="/hire-me"
+                      className="px-6 py-3 bg-surface border border-border text-text-primary font-semibold rounded-xl hover:border-accent-cyan/50 transition-colors"
+                    >
+                      Get a Free Quote
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="bg-card border border-border rounded-2xl p-8 text-center">
+                  <h2 className="font-heading text-xl font-bold text-text-primary mb-2">
+                    Need a Full-Stack Developer?
+                  </h2>
+                  <p className="text-text-muted mb-6">
+                    Based in Wollongong, NSW. Available for projects across Australia
+                    and globally.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <Link
+                      href="/hire-me"
+                      className="px-6 py-3 bg-accent-yellow text-background font-semibold rounded-xl hover:bg-amber-400 transition-colors glow-yellow-sm"
+                    >
+                      View Services
+                    </Link>
+                    <Link
+                      href="/#contact"
+                      className="px-6 py-3 bg-surface border border-border text-text-primary font-semibold rounded-xl hover:border-accent-cyan/50 transition-colors"
+                    >
+                      Get in Touch
+                    </Link>
+                  </div>
+                </div>
+              )}
             </article>
 
             {/* Sidebar  sticky on desktop only (mobile version is inline above) */}

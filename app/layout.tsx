@@ -90,14 +90,7 @@ export const metadata: Metadata = {
     description:
       "Professional website developer in Wollongong, NSW. Building websites and web apps for Australian businesses. 50+ projects, 5-star rated.",
     siteName: "Asif Hossain – Website Developer Wollongong",
-    images: [
-      {
-        url: "/profile.jpg",
-        width: 400,
-        height: 400,
-        alt: "Asif Hossain, Website Developer Wollongong NSW",
-      },
-    ],
+    // og:image comes from app/opengraph-image.tsx (1200x630, auto-wired by Next.js)
     locale: "en_AU",
   },
 
@@ -107,7 +100,6 @@ export const metadata: Metadata = {
     title: "Website Developer Wollongong | Asif Hossain",
     description:
       "Professional website developer based in Wollongong, NSW. Websites and web apps for Australian businesses.",
-    images: ["/profile.jpg"],
     creator: "@Rafin31",
   },
 

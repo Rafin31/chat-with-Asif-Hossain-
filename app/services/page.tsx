@@ -31,7 +31,6 @@ export const metadata: Metadata = {
     title: "Web Development & AI Automation Services Australia",
     description:
       "Custom websites, AI-powered applications, n8n workflow automation, and cloud infrastructure for Australian businesses.",
-    images: [{ url: `${BASE_URL}/profile.jpg`, width: 400, alt: "Asif Hossain" }],
     locale: "en_AU",
   },
 }
@@ -86,11 +85,6 @@ export default function ServicesPage() {
           name: s.title,
           url: `${BASE_URL}/services/${s.slug}`,
           description: s.tagline,
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            price: s.priceRange,
-            priceCurrency: "AUD",
-          },
         },
       })),
     },

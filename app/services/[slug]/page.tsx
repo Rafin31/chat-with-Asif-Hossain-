@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import { services, getService } from "@/data/services"
+import { getAllPosts } from "@/lib/blog"
 import ServiceDetailClient from "@/components/ServiceDetailClient"
 import { FiArrowLeft } from "react-icons/fi"
 
@@ -30,7 +31,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${BASE_URL}/services/${service.slug}`,
       title: service.metaTitle,
       description: service.metaDescription,
-      images: [{ url: `${BASE_URL}/profile.jpg`, width: 400, alt: "Asif Hossain" }],
       locale: "en_AU",
     },
   }
@@ -41,6 +41,10 @@ export default function ServicePage({ params }: Props) {
   if (!service) notFound()
 
   const relatedServices = services.filter((s) => service.relatedSlugs.includes(s.slug))
+
+  // Blog posts promoted as "Further Reading" on this service page
+  const relatedPostSlugs = service.relatedPostSlugs ?? []
+  const relatedPosts = getAllPosts().filter((p) => relatedPostSlugs.includes(p.slug))
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -58,17 +62,9 @@ export default function ServicePage({ params }: Props) {
     name: service.title,
     description: service.overview,
     url: `${BASE_URL}/services/${service.slug}`,
-    provider: {
-      "@type": "Person",
-      name: "Asif Hossain",
-      url: BASE_URL,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Wollongong",
-        addressRegion: "NSW",
-        addressCountry: "AU",
-      },
-    },
+    // Reference the ProfessionalService node defined in app/layout.tsx so Google
+    // links every service to one consolidated business entity
+    provider: { "@id": `${BASE_URL}/#business` },
     areaServed: { "@type": "Country", name: "Australia" },
     serviceType: service.title,
   }
@@ -142,7 +138,7 @@ export default function ServicePage({ params }: Props) {
       </section>
 
       {/* ── Animated main content (client component) ── */}
-      <ServiceDetailClient service={service} relatedServices={relatedServices} />
+      <ServiceDetailClient service={service} relatedServices={relatedServices} relatedPosts={relatedPosts} />
 
       <Footer />
     </>

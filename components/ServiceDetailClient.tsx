@@ -6,6 +6,7 @@ import { motion, useInView } from "framer-motion"
 import { FiArrowRight, FiCheck } from "react-icons/fi"
 import ServicePageClient from "@/components/ServicePageClient"
 import type { Service } from "@/data/services"
+import type { BlogPostMeta } from "@/lib/blog"
 
 const ICON_COLORS = [
   "bg-amber-500/10 text-amber-300 border border-amber-500/20",
@@ -44,9 +45,10 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 interface Props {
   service: Service
   relatedServices: Service[]
+  relatedPosts?: BlogPostMeta[]
 }
 
-export default function ServiceDetailClient({ service, relatedServices }: Props) {
+export default function ServiceDetailClient({ service, relatedServices, relatedPosts = [] }: Props) {
   return (
     <main className="bg-background pb-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,6 +77,11 @@ export default function ServiceDetailClient({ service, relatedServices }: Props)
               <section>
                 <SectionHeading>Overview</SectionHeading>
                 <p className="text-text-muted leading-relaxed text-base">{service.overview}</p>
+                {service.overviewExtended?.map((paragraph) => (
+                  <p key={paragraph.slice(0, 40)} className="text-text-muted leading-relaxed text-base mt-4">
+                    {paragraph}
+                  </p>
+                ))}
               </section>
             </Reveal>
 
@@ -119,6 +126,93 @@ export default function ServiceDetailClient({ service, relatedServices }: Props)
                 ))}
               </div>
             </section>
+
+            {/* How I work */}
+            {service.processSteps && service.processSteps.length > 0 && (
+              <Reveal>
+                <section>
+                  <SectionHeading>How I Work</SectionHeading>
+                  <ol className="flex flex-col gap-4">
+                    {service.processSteps.map((step, i) => (
+                      <li key={step.title} className="flex gap-4">
+                        <span className="w-8 h-8 rounded-lg bg-accent-yellow/10 border border-accent-yellow/20 text-accent-yellow font-mono text-sm flex items-center justify-center shrink-0">
+                          {i + 1}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="font-semibold text-text-primary text-sm mb-1">{step.title}</h3>
+                          <p className="text-text-muted text-sm leading-relaxed">{step.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </section>
+              </Reveal>
+            )}
+
+            {/* Ways to work together (no prices) */}
+            {service.engagementModels && service.engagementModels.length > 0 && (
+              <Reveal>
+                <section>
+                  <SectionHeading>Ways to Work Together</SectionHeading>
+                  <div className="grid sm:grid-cols-3 gap-3">
+                    {service.engagementModels.map((model) => (
+                      <div key={model.title} className="bg-card border border-border rounded-xl p-5 flex flex-col">
+                        <h3 className="font-semibold text-text-primary text-sm mb-2">{model.title}</h3>
+                        <p className="text-text-muted text-xs leading-relaxed flex-1">{model.description}</p>
+                        <p className="text-accent-cyan text-xs mt-3 leading-relaxed">
+                          <span className="font-semibold">Best for:</span> {model.bestFor}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              </Reveal>
+            )}
+
+            {/* Case study */}
+            {service.caseStudy && (
+              <Reveal>
+                <section>
+                  <SectionHeading>Real Project Example</SectionHeading>
+                  <div className="bg-card border border-border rounded-2xl p-6">
+                    <h3 className="font-heading font-bold text-text-primary text-base mb-3">
+                      {service.caseStudy.title}
+                    </h3>
+                    <p className="text-text-muted text-sm leading-relaxed mb-4">{service.caseStudy.summary}</p>
+                    <ul className="flex flex-col gap-2 mb-4">
+                      {service.caseStudy.results.map((result) => (
+                        <li key={result} className="flex items-start gap-3 text-text-muted text-sm leading-relaxed">
+                          <FiCheck className="w-4 h-4 text-accent-cyan shrink-0 mt-0.5" />
+                          {result}
+                        </li>
+                      ))}
+                    </ul>
+                    {service.caseStudy.projectSlug && (
+                      <Link
+                        href={`/projects/${service.caseStudy.projectSlug}`}
+                        className="inline-flex items-center gap-1.5 text-accent-yellow text-sm font-medium hover:gap-2.5 transition-all"
+                      >
+                        View the full project <FiArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    )}
+                  </div>
+                </section>
+              </Reveal>
+            )}
+
+            {/* Local areas served */}
+            {service.localAreas && service.localAreas.length > 0 && (
+              <Reveal>
+                <section>
+                  <SectionHeading>Serving Wollongong &amp; All of Australia</SectionHeading>
+                  {service.localAreas.map((paragraph, i) => (
+                    <p key={paragraph.slice(0, 40)} className={`text-text-muted leading-relaxed text-base ${i > 0 ? "mt-4" : ""}`}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </section>
+              </Reveal>
+            )}
 
             {/* FAQ */}
             <Reveal>
@@ -174,6 +268,44 @@ export default function ServiceDetailClient({ service, relatedServices }: Props)
           </Reveal>
         </div>
       </div>
+
+      {/* Further reading related blog posts */}
+      {relatedPosts.length > 0 && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+          <Reveal>
+            <div className="border-t border-border pt-10">
+              <p className="text-[10px] font-mono text-text-muted uppercase tracking-[0.12em] mb-6">Further Reading</p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {relatedPosts.map((post, i) => (
+                  <motion.div
+                    key={post.slug}
+                    initial={{ y: 20 }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                  >
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group bg-card border border-border rounded-2xl p-5 hover:border-accent-cyan/30 transition-all duration-300 flex flex-col h-full"
+                    >
+                      <span className="text-accent-cyan font-mono text-[10px] tracking-widest uppercase mb-2">
+                        {post.category} · {post.readTime}
+                      </span>
+                      <h3 className="font-heading font-bold text-text-primary text-sm leading-snug group-hover:text-accent-cyan transition-colors mb-1.5">
+                        {post.title}
+                      </h3>
+                      <p className="text-text-muted text-xs leading-relaxed line-clamp-2 flex-1">{post.description}</p>
+                      <p className="flex items-center gap-1 text-accent-cyan text-xs mt-3 font-medium">
+                        Read article <FiArrowRight className="w-3 h-3" />
+                      </p>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      )}
 
       {/* Related services */}
       {relatedServices.length > 0 && (

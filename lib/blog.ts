@@ -8,12 +8,16 @@ export interface BlogPostMeta {
   slug: string
   title: string
   date: string
+  // Set in frontmatter when a post gets a meaningful content update (used in sitemap.xml)
+  updated?: string
   description: string
   keywords: string[]
   readTime: string
   category: string
   author: string
   coverImage?: string
+  // Slug of the most relevant service page, shown as a CTA card on the post
+  relatedService?: string
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -31,12 +35,14 @@ function parsePostFile(
       slug,
       title: typeof data.title === "string" ? data.title : slug,
       date: typeof data.date === "string" ? data.date : new Date().toISOString(),
+      updated: typeof data.updated === "string" ? data.updated : undefined,
       description: typeof data.description === "string" ? data.description : "",
       keywords: Array.isArray(data.keywords) ? data.keywords : [],
       readTime: typeof data.readTime === "string" ? data.readTime : "5 min read",
       category: typeof data.category === "string" ? data.category : "Development",
       author: typeof data.author === "string" ? data.author : "Asif Hossain",
       coverImage: typeof data.coverImage === "string" ? data.coverImage : undefined,
+      relatedService: typeof data.relatedService === "string" ? data.relatedService : undefined,
       content,
     }
   } catch (err) {

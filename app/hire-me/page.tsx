@@ -30,13 +30,11 @@ export const metadata: Metadata = {
     title: "Hire a Website Developer in Wollongong, NSW | Asif Hossain",
     description:
       "Professional website developer in Wollongong, NSW. Custom websites and web apps for Australian businesses. 50+ projects delivered.",
-    images: [{ url: "/profile.jpg", width: 400, height: 400, alt: "Asif Hossain, Website Developer Wollongong" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Website Developer Wollongong | Hire Asif Hossain",
     description: "Professional website developer in Wollongong, NSW. 50+ projects, 100% satisfaction.",
-    images: ["/profile.jpg"],
   },
 }
 
