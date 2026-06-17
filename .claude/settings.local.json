@@ -9,7 +9,23 @@
       "Bash(npx tsc:*)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "WebFetch(domain:quickfinance.tools)"
+      "WebFetch(domain:quickfinance.tools)",
+      "Bash(mkdir -p \"c:\\\\Users\\\\GB\\\\Desktop\\\\Dist\\\\Port\\\\app\\\\services\\\\[slug]\")",
+      "Bash(grep -n \"next.config\\\\|images\" next.config.*)",
+      "Bash(cat next.config.ts)",
+      "Bash(cat next.config.js)",
+      "Bash(cat next.config.mjs)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm run start)",
+      "Bash(curl -s http://localhost:3000/blog/website-cost-australia-2026 -o /tmp/post.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(curl -s -o /tmp/og.png -w \"%{http_code} %{content_type} %{size_download} bytes\\\\n\" http://localhost:3000/opengraph-image)",
+      "PowerShell(git add app components content data lib)",
+      "PowerShell(npx tsc --noEmit 2>&1)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\GB\\Desktop\\Dist\\Port\\app\\services"
     ]
   }
 }

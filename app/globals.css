@@ -1,6 +1,27 @@
+/* macOS-style cursor pack (must precede @tailwind — CSS requires @import first) */
+@import 'macos-cursors/style.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Apply macOS pointer/text cursors to native interactive elements */
+a,
+button,
+[role="button"],
+label[for],
+summary,
+select {
+  cursor: url("../node_modules/macos-cursors/cursors/pointer.cur"), pointer;
+}
+input:not([type="checkbox"]):not([type="radio"]),
+textarea {
+  cursor: url("../node_modules/macos-cursors/cursors/text.cur"), text;
+}
+[disabled],
+.cursor-not-allowed {
+  cursor: url("../node_modules/macos-cursors/cursors/not_allowed.cur"), not-allowed;
+}
 
 /* ============================================================
    BASE STYLES
