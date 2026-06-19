@@ -87,6 +87,19 @@ export default function BlogPostPage({ params }: Props) {
     keywords: post.keywords.join(", "),
   }
 
+  // FAQPage schema, emitted only when the post defines "faqs" in frontmatter
+  const faqJsonLd = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
+        })),
+      }
+    : null
+
   // Service promoted at the end of the post (set via "relatedService" frontmatter)
   const relatedService = post.relatedService ? getService(post.relatedService) : null
 
@@ -96,6 +109,12 @@ export default function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Navbar />
       <main className="min-h-screen bg-background pt-24 pb-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

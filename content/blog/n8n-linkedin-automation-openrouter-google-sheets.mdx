@@ -1,13 +1,23 @@
 ---
-title: "How I Built a LinkedIn Post Automation System with n8n, OpenRouter, and Google Sheets"
+title: "How I Built LinkedIn Automation in n8n + OpenRouter"
 date: "2026-06-10"
-description: "A practical walkthrough of a two-workflow LinkedIn automation system in n8n: AI post generation with OpenRouter, structured outputs, AI image generation, and scheduled publishing with the Upload Post community node."
+updated: "2026-06-19"
+description: "A two-workflow n8n build: AI writes LinkedIn drafts via OpenRouter, stores them in Google Sheets for approval, then auto-publishes at 9 AM daily."
 keywords: ["n8n LinkedIn automation", "n8n tutorial for beginners", "OpenRouter n8n", "n8n structured output", "community nodes n8n", "automate LinkedIn posting", "n8n Google Sheets workflow", "n8n AI content automation"]
 readTime: "9 min read"
 category: "Automation"
 author: "Asif Hossain"
 relatedService: "n8n-automation-australia"
 coverImage: "https://ik.imagekit.io/zqm3n6ufa/Blogs/FINAL_OUTPUT.png?tr=w-1200,q-80"
+faqs:
+  - q: "Is n8n free to use?"
+    a: "Yes. n8n is open-source and free if you self-host it on your own server. There is also a paid n8n Cloud tier if you would rather not manage hosting yourself. For this build, self-hosting keeps the whole system free apart from OpenRouter token costs."
+  - q: "Why use OpenRouter instead of calling OpenAI or Anthropic directly?"
+    a: "OpenRouter gives you dozens of models, GPT-4o, Claude, Llama, Mistral, Gemini, through one API key and one node. If a model gets expensive or its quality drops, you switch in a single dropdown with no new credentials and no reconfigured nodes."
+  - q: "What is a community node in n8n?"
+    a: "Community nodes are built by developers in the n8n community and published to npm, not maintained by the n8n team. You install them under Settings, Community Nodes. They unlock integrations like Upload Post, but quality varies, so check npm downloads and last-updated date first."
+  - q: "Do I need to know how to code to build this?"
+    a: "No. The whole system is built by connecting nodes visually in the n8n editor. The only structured part is defining a JSON shape for the AI output, and that is copy-paste. Planning each step with sticky notes first matters more than coding ability."
 ---
 
 Most LinkedIn automation tools either cost a lot or lock you into their ecosystem. I wanted full control over what gets posted, when it goes out, and how the content gets generated. So I built it myself using [n8n](https://n8n.io), the open-source workflow automation tool.
@@ -15,6 +25,12 @@ Most LinkedIn automation tools either cost a lot or lock you into their ecosyste
 This is a practical walkthrough. By the end you'll have two working workflows: one that writes drafts using AI and stores them in Google Sheets, and one that publishes approved posts to LinkedIn on a schedule.
 
 If you'd rather have this built and maintained for you, this is exactly the kind of system I build as part of my [n8n workflow automation services in Australia](/services/n8n-automation-australia). No fluff, let's get into it.
+
+**What You'll Build**
+
+- A generation workflow that turns a one-line topic in Google Sheets into a finished LinkedIn post plus a matching AI image.
+- A publishing workflow that checks the sheet every morning at 9 AM and posts only approved, scheduled rows to LinkedIn.
+- A human review step in the middle, so nothing goes out until you change a row's status to "Approved."
 
 ## What We're Building
 
@@ -206,6 +222,26 @@ Instead of hunting through the expression editor, most of what you need is just 
 
 You can freeze the output of a node while you're building. That means you're not triggering live APIs every time you test a downstream change, which saves both time and OpenRouter credits.
 
+## Frequently Asked Questions
+
+### Is n8n free to use?
+
+Yes. n8n is open-source and free if you self-host it on your own server. There is also a paid n8n Cloud tier if you would rather not manage hosting yourself. For this build, self-hosting keeps the whole system free apart from OpenRouter token costs.
+
+### Why use OpenRouter instead of calling OpenAI or Anthropic directly?
+
+OpenRouter gives you dozens of models, GPT-4o, Claude, Llama, Mistral, Gemini, through one API key and one node. If a model gets expensive or its quality drops, you switch in a single dropdown with no new credentials and no reconfigured nodes.
+
+### What is a community node in n8n?
+
+Community nodes are built by developers in the n8n community and published to npm, not maintained by the n8n team. You install them under Settings, Community Nodes. They unlock integrations like Upload Post, but quality varies, so check npm downloads and last-updated date first.
+
+### Do I need to know how to code to build this?
+
+No. The whole system is built by connecting nodes visually in the n8n editor. The only structured part is defining a JSON shape for the AI output, and that is copy-paste. Planning each step with sticky notes first matters more than coding ability.
+
 ## What Are You Automating With n8n?
 
 If you're building something similar and want a second pair of eyes, or want this kind of system built and maintained for you end to end, take a look at my [n8n workflow automation services](/services/n8n-automation-australia) or [get in touch](/#contact). I'm a [full-stack developer based in Wollongong, NSW](/blog/fullstack-developer-wollongong-nsw), and this is the kind of project I genuinely enjoy building.
+
+_Asif Hossain is a full-stack developer in Wollongong, NSW, building Next.js web apps and n8n automation systems for clients across Australia. This walkthrough is based on a system I built and run for my own LinkedIn posting._

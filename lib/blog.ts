@@ -18,6 +18,8 @@ export interface BlogPostMeta {
   coverImage?: string
   // Slug of the most relevant service page, shown as a CTA card on the post
   relatedService?: string
+  // Optional FAQ entries, emitted as FAQPage JSON-LD for rich results / AI citations
+  faqs?: { q: string; a: string }[]
 }
 
 export interface BlogPost extends BlogPostMeta {
@@ -43,6 +45,15 @@ function parsePostFile(
       author: typeof data.author === "string" ? data.author : "Asif Hossain",
       coverImage: typeof data.coverImage === "string" ? data.coverImage : undefined,
       relatedService: typeof data.relatedService === "string" ? data.relatedService : undefined,
+      faqs: Array.isArray(data.faqs)
+        ? data.faqs.filter(
+            (f: unknown): f is { q: string; a: string } =>
+              typeof f === "object" &&
+              f !== null &&
+              typeof (f as { q: unknown }).q === "string" &&
+              typeof (f as { a: unknown }).a === "string"
+          )
+        : undefined,
       content,
     }
   } catch (err) {
