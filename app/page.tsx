@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
-import { projects } from "@/data/portfolio"
+import { projects, testimonials } from "@/data/portfolio"
 
 // Below-the-fold: defer these to reduce initial JS bundle
 const About       = dynamic(() => import("@/components/About"))
@@ -40,12 +40,46 @@ const projectsJsonLd = {
   })),
 }
 
+// Attaches real Review nodes + AggregateRating to the same #business entity defined in
+// layout.tsx. Lives here because the homepage is where these testimonials visibly render
+// (Google ignores/flags ratings with no on-page, non-self-authored reviews).
+const avgRating =
+  testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length
+
+const businessReviewsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${BASE_URL}/#business`,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: avgRating.toFixed(1),
+    reviewCount: String(testimonials.length),
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: testimonials.map((t) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: t.name },
+    reviewBody: t.quote,
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: String(t.rating),
+      bestRating: "5",
+      worstRating: "1",
+    },
+  })),
+}
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessReviewsJsonLd) }}
       />
       <main className="min-h-screen">
         <Navbar />

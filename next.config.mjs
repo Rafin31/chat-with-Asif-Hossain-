@@ -18,6 +18,20 @@ const nextConfig = {
   },
   // Enable gzip/brotli compression on responses
   compress: true,
+  // Security headers applied to every route (Vercel serves these on the CDN edge).
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+        ],
+      },
+    ]
+  },
   // Strip unused exports from server bundles
   modularizeImports: {
     "react-icons/fi": {

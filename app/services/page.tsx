@@ -9,9 +9,10 @@ import { HiSparkles } from "react-icons/hi2"
 const BASE_URL = "https://asifhossain.dev"
 
 export const metadata: Metadata = {
-  title: "Web Development & AI Automation Services Australia",
+  // `absolute` bypasses the layout title template (which would push this past ~95 chars).
+  title: { absolute: "Web Development & AI Automation Services | Wollongong AU" },
   description:
-    "Full-stack web development, n8n automation, AI integration, and cloud services for Australian businesses. Based in Wollongong NSW. 50+ projects delivered, 5-star rated.",
+    "Full-stack web development, n8n automation, AI integration & cloud services for Australian businesses. Wollongong NSW. 50+ projects, 5-star rated.",
   keywords: [
     "web development services Australia",
     "AI automation services Australia",
@@ -32,6 +33,13 @@ export const metadata: Metadata = {
     description:
       "Custom websites, AI-powered applications, n8n workflow automation, and cloud infrastructure for Australian businesses.",
     locale: "en_AU",
+    // og:image served by app/services/opengraph-image.tsx (auto-wired by Next.js)
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Web Development & AI Automation Services Australia",
+    description:
+      "Custom websites, AI apps, n8n automation & cloud infrastructure for Australian businesses. Wollongong NSW.",
   },
 }
 
@@ -65,7 +73,6 @@ export default function ServicesPage() {
     name: "Asif Hossain  Web Development & AI Automation",
     url: BASE_URL,
     image: `${BASE_URL}/profile.jpg`,
-    telephone: "",
     email: "contact@asifhossain.dev",
     address: {
       "@type": "PostalAddress",

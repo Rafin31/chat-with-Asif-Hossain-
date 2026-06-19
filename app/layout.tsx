@@ -205,13 +205,8 @@ const localBusinessJsonLd = {
     "Cloud and DevOps Services",
   ],
   priceRange: "$$",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: "13",
-    bestRating: "5",
-    worstRating: "1",
-  },
+  // aggregateRating + Review nodes live on the homepage (app/page.tsx), the only page
+  // that visibly renders the testimonials — keeps the rating off pages with no reviews.
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Web Development & AI Automation Services",
