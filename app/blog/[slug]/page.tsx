@@ -62,11 +62,17 @@ export default function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(params.slug)
   if (!post) notFound()
 
+  const wordCount = post.content.trim().split(/\s+/).length
+
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.description,
+    url: `${BASE_URL}/blog/${post.slug}`,
+    inLanguage: "en-AU",
+    articleSection: post.category,
+    wordCount,
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
     author: {
