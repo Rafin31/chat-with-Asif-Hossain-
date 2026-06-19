@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { TypeAnimation } from "react-type-animation"
 import { personalInfo, stats } from "@/data/portfolio"
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi"
@@ -149,10 +150,10 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Name */}
+          {/* Name — rendered at full opacity for fast LCP (animate transform only) */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 30 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
           >
@@ -160,6 +161,16 @@ export default function Hero() {
             <br />
             <span className="text-text-primary">Hossain</span>
           </motion.h1>
+
+          {/* Keyword subheading — primary on-page topical signal */}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="font-heading text-lg sm:text-xl text-text-primary font-semibold"
+          >
+            Website Developer in Wollongong, NSW
+          </motion.h2>
 
           {/* Typewriter role */}
           <motion.div
@@ -198,7 +209,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="text-text-muted text-base sm:text-lg leading-relaxed max-w-lg"
           >
-            Building production web apps and intelligent automation systems with modern AI
+            Building production web apps, custom websites, and AI automation for businesses in Wollongong and across Australia.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -221,7 +232,7 @@ export default function Hero() {
               Hire Me
             </button>
             <a
-              href="https://docs.google.com/document/d/11HjFf1qQIiGadYJ3c40v9LYlDPyli32jab_lrZgu1d0/edit?usp=sharing"
+              href="/Asif_Hossain_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center gap-2 px-6 py-3 bg-card border border-border text-text-muted font-medium rounded-xl hover:border-accent-yellow/40 hover:text-text-primary transition-all duration-200 overflow-hidden"
@@ -250,11 +261,11 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right side - profile image placeholder */}
+        {/* Right side - profile image. Full opacity on first paint for fast LCP (scale only) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex justify-center items-center"
         >
           <div className="relative">
@@ -270,15 +281,15 @@ export default function Hero() {
               className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-accent-yellow/40 glow-yellow"
               style={{ zIndex: 1 }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/profile.jpg"
-                alt="Asif Hossain"
+                alt="Asif Hossain — Website Developer in Wollongong, NSW"
+                width={256}
+                height={256}
+                priority
+                fetchPriority="high"
+                sizes="256px"
                 className="w-full h-full object-cover object-top"
-                onError={(e) => {
-                  // Fallback: hide broken image and show initials behind it
-                  e.currentTarget.style.display = "none"
-                }}
               />
             </motion.div>
 

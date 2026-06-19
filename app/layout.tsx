@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   // ── Core ──────────────────────────────────────────────────
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Website Developer Wollongong | Asif Hossain | Web Developer NSW Australia",
+    default: "Website Developer Wollongong NSW | Asif Hossain",
     template: "%s | Asif Hossain – Website Developer Wollongong",
   },
   description:
@@ -81,6 +81,8 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
 
+  // Icons auto-wired by Next.js from app/favicon.ico, app/icon.png, app/apple-icon.png
+
   // ── Open Graph ────────────────────────────────────────────
   openGraph: {
     type: "website",
@@ -113,12 +115,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-video-preview": -1,
     },
-  },
-
-  // ── Icons ─────────────────────────────────────────────────
-  icons: {
-    icon: "/profile.jpg",
-    apple: "/profile.jpg",
   },
 }
 
@@ -176,7 +172,6 @@ const localBusinessJsonLd = {
   image: `${BASE_URL}/profile.jpg`,
   description:
     "Full-Stack Developer and AI Automation Engineer based in Wollongong, NSW. Building custom websites, AI-powered web applications, n8n workflow automation, and cloud infrastructure for Australian businesses.",
-  telephone: "",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Wollongong",
@@ -213,7 +208,7 @@ const localBusinessJsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5",
-    reviewCount: "50",
+    reviewCount: "13",
     bestRating: "5",
     worstRating: "1",
   },

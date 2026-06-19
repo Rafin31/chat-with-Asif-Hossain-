@@ -1,0 +1,32 @@
+# Asif Hossain — Website Developer & AI Automation Engineer (Wollongong, NSW)
+
+> Full-Stack Developer and AI Automation Engineer based in Wollongong, NSW, Australia. Builds custom websites, Next.js/React web apps, AI-powered applications, and n8n workflow automation for Australian businesses. 13+ five-star client reviews.
+
+## Services
+- [Web Development Services Australia](https://asifhossain.dev/services/web-development-australia): Custom websites and web apps for Australian businesses.
+- [Next.js & React Developer Australia](https://asifhossain.dev/services/nextjs-react-developer-australia): Fast, modern sites built with Next.js and React.
+- [n8n Workflow Automation Australia](https://asifhossain.dev/services/n8n-automation-australia): Automate business workflows with n8n.
+- [AI Integration Developer Australia](https://asifhossain.dev/services/ai-integration-developer): Integrate Claude, OpenAI, and LLMs into products.
+- [AI-Powered Web Application Development](https://asifhossain.dev/services/ai-powered-web-applications): RAG, AI agents, and chat-driven web apps.
+- [E-Commerce Development Australia](https://asifhossain.dev/services/ecommerce-development-australia): Online stores and checkout systems.
+- [API Development & Integration Services](https://asifhossain.dev/services/api-development-integrations): REST APIs and third-party integrations.
+- [Cloud & DevOps Services Australia](https://asifhossain.dev/services/cloud-devops-australia): Deployment, CI/CD, and cloud infrastructure.
+
+## Blog
+- [Website Cost in Australia 2026](https://asifhossain.dev/blog/website-cost-australia-2026): What a website actually costs to build in Australia.
+- [Do I Need a Website for My Small Business?](https://asifhossain.dev/blog/do-i-need-a-website-for-my-small-business): Why small businesses need a website.
+- [Build an AI Web App with Next.js + Claude API (2026)](https://asifhossain.dev/blog/build-ai-web-app-nextjs-claude-api-2026): Step-by-step AI web app guide.
+- [n8n LinkedIn Automation with OpenRouter + Google Sheets](https://asifhossain.dev/blog/n8n-linkedin-automation-openrouter-google-sheets): Real-world n8n automation build.
+- [AI Tools for Full-Stack Developers 2026](https://asifhossain.dev/blog/ai-tools-fullstack-developers-2026): Developer AI tooling roundup.
+- [Next.js Performance Optimization 2026](https://asifhossain.dev/blog/nextjs-performance-optimization-2026): Speeding up Next.js sites.
+- [Next.js & React Web Development in Australia](https://asifhossain.dev/blog/nextjs-react-web-development-australia): Why Next.js for Australian businesses.
+- [TypeScript vs JavaScript 2026](https://asifhossain.dev/blog/typescript-vs-javascript-2026): When to choose each.
+- [Full-Stack Developer in Wollongong, NSW](https://asifhossain.dev/blog/fullstack-developer-wollongong-nsw): Local development services.
+- [IT Jobs Australia 2026 — Developer Interview Tips](https://asifhossain.dev/blog/it-jobs-australia-2026-developer-interview-tips): Landing dev roles in Australia.
+- [Case Study: Medical Management System](https://asifhossain.dev/blog/case-study-medical-management-system): Building a healthcare web app.
+
+## Contact
+- Email: contact@asifhossain.dev
+- Portfolio: https://asifhossain.dev
+- GitHub: https://github.com/Rafin31
+- LinkedIn: https://www.linkedin.com/in/asif-hossain-6982b81ba/
