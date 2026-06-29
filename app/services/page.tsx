@@ -10,15 +10,15 @@ const BASE_URL = "https://asifhossain.dev"
 
 export const metadata: Metadata = {
   // `absolute` bypasses the layout title template (which would push this past ~95 chars).
-  title: { absolute: "Web Development & AI Automation Services | Wollongong AU" },
+  title: { absolute: "Web Development & AI Automation Services | Australia" },
   description:
-    "Full-stack web development, n8n automation, AI integration & cloud services for Australian businesses. Wollongong NSW. 50+ projects, 5-star rated.",
+    "Full-stack web development, n8n automation, AI integration & cloud services for Australian businesses. 50+ projects, 5-star rated. Sydney, Melbourne, Brisbane & beyond.",
   keywords: [
     "web development services Australia",
     "AI automation services Australia",
     "n8n automation Australia",
     "freelance developer Australia",
-    "web developer Wollongong",
+    "web developer Sydney",
     "AI integration Australia",
     "full-stack developer Australia",
     "Next.js developer Australia",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Web Development & AI Automation Services Australia",
     description:
-      "Custom websites, AI apps, n8n automation & cloud infrastructure for Australian businesses. Wollongong NSW.",
+      "Custom websites, AI apps, n8n automation & cloud infrastructure for Australian businesses. Sydney, Melbourne, Brisbane & beyond.",
   },
 }
 
@@ -76,12 +76,11 @@ export default function ServicesPage() {
     email: "contact@asifhossain.dev",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Wollongong",
+      addressLocality: "Sydney",
       addressRegion: "NSW",
-      postalCode: "2500",
       addressCountry: "AU",
     },
-    areaServed: ["Australia", "Wollongong", "Sydney", "Melbourne"],
+    areaServed: ["Australia", "Sydney", "Melbourne", "Brisbane", "Perth"],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Services",
@@ -119,7 +118,7 @@ export default function ServicesPage() {
             Web Development &amp; AI Automation Services Australia
           </h1>
           <p className="text-text-muted text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-            Custom websites, AI-powered applications, n8n workflow automation, and cloud infrastructure delivered by a Wollongong-based developer with 50+ projects and 5-star results.
+            Custom websites, AI-powered applications, n8n workflow automation, and cloud infrastructure delivered by an Australian-based developer with 50+ projects and 5-star results.
           </p>
 
           {/* Trust strip */}
@@ -217,7 +216,7 @@ export default function ServicesPage() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
             {[
-              { icon: "🇦🇺", title: "Australia-Based", desc: "Wollongong, NSW. No timezone headaches, clear communication, ABN-registered." },
+              { icon: "🇦🇺", title: "Australia-Based", desc: "Australian timezone, clear communication, ABN-registered. Serving clients nationwide." },
               { icon: "⭐", title: "5-Star Rated", desc: "50+ projects delivered with 100% client satisfaction across Fiverr and direct clients." },
               { icon: "🚀", title: "Fast Delivery", desc: "Clear scoping, no scope creep, and milestone-based delivery that keeps projects moving." },
               { icon: "🔧", title: "Full-Stack Capable", desc: "Design to deployment  frontend, backend, AI, DevOps. One developer, not a team of freelancers." },

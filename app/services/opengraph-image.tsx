@@ -46,7 +46,7 @@ export default function ServicesOpengraphImage() {
         </div>
 
         <div style={{ color: "#a1a1aa", fontSize: "28px", marginTop: "24px" }}>
-          Websites · n8n Automation · AI Integration · Cloud Wollongong, NSW AU
+          Websites · n8n Automation · AI Integration · Cloud · Australia
         </div>
 
         <div style={{ color: "#fbbf24", fontSize: "26px", marginTop: "48px" }}>

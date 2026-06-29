@@ -74,10 +74,10 @@ export const services: Service[] = [
     shortTitle: "Web Development",
     metaTitle: "Web Developer Australia | Custom Website Development",
     metaDescription:
-      "Professional web developer based in Wollongong, Australia. Custom websites, web apps, and digital products built with React, Next.js, and Node.js. Fast delivery, 5-star rated.",
+      "Professional web developer based in Australia. Custom websites, web apps, and digital products built with React, Next.js, and Node.js. Fast delivery, 5-star rated.",
     keywords: [
       "web developer Australia",
-      "website developer Wollongong",
+      "website developer Australia",
       "web development services Australia",
       "freelance web developer NSW",
       "custom website development Australia",
@@ -89,7 +89,7 @@ export const services: Service[] = [
     ],
     tagline: "Fast, scalable, and SEO-ready websites built for Australian businesses",
     overview:
-      "I build custom websites and web applications for businesses across Australia  from Wollongong and Sydney to Melbourne and beyond. Every project is built from scratch using modern technologies like React.js and Next.js, optimised for performance, mobile responsiveness, and Google search rankings. Whether you need a business website, a customer portal, or a full web application, I deliver production-ready solutions with clean code and measurable results.",
+      "I build custom websites and web applications for businesses across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond. Every project is built from scratch using modern technologies like React.js and Next.js, optimised for performance, mobile responsiveness, and Google search rankings. Whether you need a business website, a customer portal, or a full web application, I deliver production-ready solutions with clean code and measurable results.",
     deliverables: [
       "Fully custom-designed website (no page-builder templates)",
       "Mobile-responsive layout across all devices",
@@ -158,8 +158,8 @@ export const services: Service[] = [
         a: "Most business websites take 2 to 4 weeks from design approval to launch. More complex web applications with custom functionality can take 4 to 8 weeks. I provide a clear project timeline before we start.",
       },
       {
-        q: "Do you work with clients outside Wollongong?",
-        a: "Yes. I work with clients across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond  entirely remotely. All communication is handled via video call, email, and shared project management tools.",
+        q: "Do you work with clients across all of Australia?",
+        a: "Yes. I work with clients in Sydney, Melbourne, Brisbane, Perth, Adelaide, and everywhere in between  entirely remotely. All communication is handled via video call, email, and shared project management tools. Australian timezone, no offshore delays.",
       },
       {
         q: "Will my website be mobile-friendly?",
@@ -234,8 +234,8 @@ export const services: Service[] = [
       projectSlug: "medical-supplier-management-system",
     },
     localAreas: [
-      "I am based in Wollongong, NSW, and work face-to-face with businesses across the Illawarra Wollongong CBD, Shellharbour, Kiama, and the wider region. For local businesses, that means a developer you can actually meet: we can sit down over coffee, map out what your customers need, and keep working together long after launch.",
-      "Distance is never a blocker, though. Most of my clients are in Sydney, Melbourne, Brisbane, and overseas, and the entire process discovery calls, staging previews, launch runs smoothly over video calls and shared project boards. Wherever you are in Australia, you get the same fixed quotes, the same communication, and the same quality of build.",
+      "I work with businesses across Australia  Sydney, Melbourne, Brisbane, Perth, Adelaide, and regional areas. The entire process, from discovery calls and staging previews to launch, runs smoothly over video calls and shared project boards. You get an Australian-based developer in your timezone with clear communication and no offshore delays.",
+      "Wherever you are in Australia, you get the same fixed quotes, the same communication, and the same quality of build. Being Australian-based means overlapping working hours, fast response times, and a developer who understands the local business landscape.",
     ],
     relatedSlugs: [
       "nextjs-react-developer-australia",
@@ -265,7 +265,7 @@ export const services: Service[] = [
       "Next.js developer Australia",
       "React developer Australia",
       "hire Next.js developer",
-      "React.js developer Wollongong",
+      "React.js developer Australia",
       "Next.js App Router developer",
       "TypeScript React developer Australia",
       "frontend developer Australia",
@@ -416,7 +416,7 @@ export const services: Service[] = [
       projectSlug: "tourhill-europe-tour-booking-platform",
     },
     localAreas: [
-      "Based in Wollongong and working with clients across Australia, I am available for both local engagements in the Illawarra and Sydney, and fully remote work with teams in Melbourne, Brisbane, Perth, and overseas. Australian clients get overlapping working hours, clear written communication, and no time-zone relay delays.",
+      "I work with clients across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond  as well as international teams. Australian clients get overlapping working hours, clear written communication, and no timezone relay delays. All work is delivered remotely with the same quality and communication standards regardless of location.",
     ],
     relatedSlugs: [
       "web-development-australia",
@@ -451,7 +451,7 @@ export const services: Service[] = [
       "n8n integration specialist",
       "automate business processes Australia",
       "n8n workflow builder",
-      "automation consultant Wollongong",
+      "automation consultant Australia",
     ],
     tagline: "Automate repetitive business processes and save hours every week with n8n",
     overview:
@@ -599,7 +599,7 @@ export const services: Service[] = [
       ],
     },
     localAreas: [
-      "I work with Australian businesses from my base in Wollongong, NSW local Illawarra and Sydney companies can meet in person for the process audit, and businesses anywhere in Australia get the same service remotely. Self-hosted n8n deployments can run on Australian cloud regions, which matters if your data needs to stay onshore for compliance or privacy reasons.",
+      "I work with Australian businesses nationwide  Sydney, Melbourne, Brisbane, Perth, Adelaide, and regional areas  delivering the same quality of service remotely. Self-hosted n8n deployments can run on Australian cloud regions, which matters if your data needs to stay onshore for compliance or privacy reasons. Australian timezone means fast communication and no offshore delays.",
     ],
     relatedSlugs: [
       "ai-integration-developer",
@@ -777,7 +777,7 @@ export const services: Service[] = [
       ],
     },
     localAreas: [
-      "From Wollongong, I work with businesses across NSW and Australia-wide. For Australian companies with data-residency concerns, I design AI integrations where your documents and customer data stay in Australian cloud regions, with only the minimum necessary context sent to model providers and I will tell you plainly what each provider does with your data.",
+      "I work with businesses across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond. For Australian companies with data-residency concerns, I design AI integrations where your documents and customer data stay in Australian cloud regions, with only the minimum necessary context sent to model providers  and I will tell you plainly what each provider does with your data.",
     ],
     relatedSlugs: [
       "ai-powered-web-applications",
@@ -944,7 +944,7 @@ export const services: Service[] = [
       },
     ],
     localAreas: [
-      "I build AI products for clients across Australia from my base in Wollongong, NSW. Australian founders get a developer in their own time zone for daily communication, and applications are deployed to Australian or regional cloud infrastructure when latency or data residency matters to your users.",
+      "I build AI products for clients across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond. Australian founders get a developer in their own timezone for daily communication, and applications are deployed to Australian or regional cloud infrastructure when latency or data residency matters to your users.",
     ],
     relatedSlugs: [
       "ai-integration-developer",
@@ -976,7 +976,7 @@ export const services: Service[] = [
       "Stripe payment integration Australia",
       "ecommerce developer Sydney",
       "build online store Australia",
-      "ecommerce development Wollongong",
+      "ecommerce development Melbourne",
       "custom online shop developer",
       "ecommerce website design Australia",
     ],
@@ -1123,7 +1123,7 @@ export const services: Service[] = [
       projectSlug: "auto-parts-ecommerce-platform",
     },
     localAreas: [
-      "I build online stores for retailers across Australia from Wollongong, NSW. Illawarra and Sydney businesses can work with me in person from strategy through launch; everyone else gets the same process remotely. Stores are configured for Australian GST, local shipping carriers, and hosting close to your customers.",
+      "I build online stores for retailers across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond. All work is delivered remotely with the same quality and communication standards. Stores are configured for Australian GST, local shipping carriers, and hosting close to your customers.",
     ],
     relatedSlugs: [
       "web-development-australia",
@@ -1302,7 +1302,7 @@ export const services: Service[] = [
       projectSlug: "medical-supplier-management-system",
     },
     localAreas: [
-      "Based in Wollongong and serving teams across Australia, I work with the Australian SaaS tools your business already runs on accounting, CRM, logistics and build integrations in your time zone, with documentation your team can pick up without a handover meeting.",
+      "Serving teams across Australia  Sydney, Melbourne, Brisbane, Perth, and beyond  I work with the Australian SaaS tools your business already runs on: accounting, CRM, logistics. Built in your timezone, with documentation your team can pick up without a handover meeting.",
     ],
     relatedSlugs: [
       "web-development-australia",
@@ -1481,7 +1481,7 @@ export const services: Service[] = [
       projectSlug: "tourhill-europe-tour-booking-platform",
     },
     localAreas: [
-      "I support Australian businesses from Wollongong, NSW, deploying to Australian cloud regions (AWS Sydney and equivalents) when latency for local users or data residency matters. Being in your time zone means infrastructure questions get answered during your working day not the next morning.",
+      "I support Australian businesses nationwide, deploying to Australian cloud regions (AWS Sydney and equivalents) when latency for local users or data residency matters. Being in your timezone means infrastructure questions get answered during your working day  not the next morning.",
     ],
     relatedSlugs: [
       "api-development-integrations",

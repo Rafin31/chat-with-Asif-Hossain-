@@ -8,7 +8,7 @@ import BackToTopButton from "@/components/BackToTopButton"
 const featuredPosts = [
   { slug: "website-cost-australia-2026", label: "Website Cost in Australia" },
   { slug: "do-i-need-a-website-for-my-small-business", label: "Does My Business Need a Website?" },
-  { slug: "fullstack-developer-wollongong-nsw", label: "Full-Stack Developer in Wollongong" },
+  { slug: "fullstack-developer-wollongong-nsw", label: "Full-Stack Developer in Australia" },
   { slug: "typescript-vs-javascript-2026", label: "TypeScript vs JavaScript" },
 ]
 

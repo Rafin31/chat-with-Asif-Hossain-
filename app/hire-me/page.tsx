@@ -6,35 +6,35 @@ import Footer from "@/components/Footer"
 const BASE_URL = "https://asifhossain.dev"
 
 export const metadata: Metadata = {
-  title: "Hire a Website Developer in Wollongong NSW | Web Development Services Australia",
+  title: "Hire a Website Developer in Australia | Web Development Services",
   description:
-    "Hire Asif Hossain, a professional website developer in Wollongong, NSW. Custom websites, e-commerce stores, and web apps for Australian businesses. 50+ projects, 100% satisfaction.",
+    "Hire Asif Hossain, a professional website developer in Australia. Custom websites, e-commerce stores, and web apps for Australian businesses. 50+ projects, 100% satisfaction.",
   keywords: [
-    "hire website developer wollongong",
+    "hire website developer australia",
     "website developer for hire australia",
-    "web developer wollongong nsw",
+    "web developer sydney",
     "hire web developer australia",
-    "website design services wollongong",
-    "small business website developer wollongong",
+    "website design services australia",
+    "small business website developer australia",
     "affordable website developer australia",
-    "freelance website developer wollongong",
-    "website development services nsw",
+    "freelance website developer australia",
+    "website development services sydney",
     "ecommerce website developer australia",
-    "react nextjs developer wollongong",
-    "web development services australia",
+    "react nextjs developer australia",
+    "web development services melbourne",
   ],
   alternates: { canonical: `${BASE_URL}/hire-me` },
   openGraph: {
     type: "website",
     url: `${BASE_URL}/hire-me`,
-    title: "Hire a Website Developer in Wollongong, NSW | Asif Hossain",
+    title: "Hire a Website Developer in Australia | Asif Hossain",
     description:
-      "Professional website developer in Wollongong, NSW. Custom websites and web apps for Australian businesses. 50+ projects delivered.",
+      "Professional website developer in Australia. Custom websites and web apps for Australian businesses. 50+ projects delivered.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Developer Wollongong | Hire Asif Hossain",
-    description: "Professional website developer in Wollongong, NSW. 50+ projects, 100% satisfaction.",
+    title: "Website Developer Australia | Hire Asif Hossain",
+    description: "Professional website developer in Australia. 50+ projects, 100% satisfaction.",
   },
 }
 
@@ -42,11 +42,11 @@ const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${BASE_URL}/hire-me#service`,
-  name: "Website Development Services – Asif Hossain, Wollongong NSW",
+  name: "Website Development Services – Asif Hossain, Australia",
   url: `${BASE_URL}/hire-me`,
   image: `${BASE_URL}/profile.jpg`,
   description:
-    "Professional website developer in Wollongong, NSW. Custom websites, e-commerce stores, and web applications for Australian businesses.",
+    "Professional website developer in Australia. Custom websites, e-commerce stores, and web applications for Australian businesses.",
   provider: {
     "@type": "Person",
     name: "Asif Hossain",
@@ -54,14 +54,14 @@ const serviceJsonLd = {
     jobTitle: "Website Developer",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Wollongong",
       addressRegion: "NSW",
-      postalCode: "2500",
       addressCountry: "AU",
     },
   },
   areaServed: [
-    { "@type": "City", name: "Wollongong" },
+    { "@type": "City", name: "Sydney" },
+    { "@type": "City", name: "Melbourne" },
+    { "@type": "City", name: "Brisbane" },
     { "@type": "State", name: "New South Wales" },
     { "@type": "Country", name: "Australia" },
   ],
@@ -87,10 +87,10 @@ const faqJsonLd = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Where are you based, and do you work with clients outside Wollongong?",
+      name: "Where are you based, and do you work with clients across Australia?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "I'm based in Wollongong, NSW, Australia. I work with clients locally in the Illawarra region, across Australia (Sydney, Melbourne, Brisbane, etc.), and internationally. All project communication is handled online, with in-person meetings available for local clients.",
+        text: "I'm based in Australia and work with clients across the country — Sydney, Melbourne, Brisbane, Perth, Adelaide, and beyond — as well as internationally. All project communication is handled online, so location is never a barrier.",
       },
     },
     {
@@ -111,10 +111,10 @@ const faqJsonLd = {
     },
     {
       "@type": "Question",
-      name: "Do you build websites for small businesses in Wollongong?",
+      name: "Do you build websites for small businesses in Australia?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. I specialise in building professional websites for small and medium businesses in Wollongong, the Illawarra region, and across NSW and Australia. I handle everything from design to launch.",
+        text: "Yes. I specialise in building professional websites for small and medium businesses across Australia — including Sydney, Melbourne, Brisbane, and regional areas. I handle everything from design to launch.",
       },
     },
     {
@@ -165,8 +165,8 @@ const PROCESS = [
 
 const FAQS = [
   {
-    q: "Where are you based, and do you work with clients outside Wollongong?",
-    a: "I'm based in Wollongong, NSW, Australia. I work with clients locally in the Illawarra region, across Australia (Sydney, Melbourne, Brisbane, etc.), and internationally, including the US and UK. All project communication is handled online, with in-person meetings available for local clients.",
+    q: "Where are you based, and do you work with clients across Australia?",
+    a: "I'm based in Australia and work with clients across the country — Sydney, Melbourne, Brisbane, Perth, Adelaide, and beyond — as well as internationally, including the US and UK. All project communication is handled online, so location is never a barrier.",
   },
   {
     q: "How much does a web development project cost?",
@@ -222,13 +222,12 @@ export default function HireMePage() {
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary leading-tight mb-6">
             Website Developer{" "}
-            <span className="gradient-text">in Wollongong, NSW</span>
+            <span className="gradient-text">in Australia</span>
           </h1>
           <p className="text-text-muted text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-            Professional website developer and web designer based in Wollongong,
-            NSW. I build fast, modern websites and web applications for
-            Australian businesses. 50+ projects delivered, 100% client
-            satisfaction.
+            Australian-based website developer and web designer. I build fast,
+            modern websites and web applications for businesses across
+            Australia. 50+ projects delivered, 100% client satisfaction.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -430,8 +429,7 @@ export default function HireMePage() {
               </a>
             </div>
             <p className="text-text-muted text-sm mt-6 relative z-10">
-              Based in Wollongong, NSW · Available for projects across Australia
-              and globally
+              Based in Australia · Available for projects nationwide and globally
             </p>
           </div>
         </section>

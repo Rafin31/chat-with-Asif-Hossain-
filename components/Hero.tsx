@@ -150,27 +150,21 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Name — rendered at full opacity for fast LCP (animate transform only) */}
           <motion.h1
             initial={{ y: 30 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight"
+            className="font-heading font-bold leading-tight"
           >
-            <span className="gradient-text">Asif</span>
-            <br />
-            <span className="text-text-primary">Hossain</span>
+            <span className="text-5xl sm:text-6xl lg:text-7xl">
+              <span className="gradient-text">Asif</span>
+              <br />
+              <span className="text-text-primary">Hossain</span>
+            </span>
+            <span className="block mt-2 text-lg sm:text-xl text-text-primary font-semibold">
+              Australian Website Developer
+            </span>
           </motion.h1>
-
-          {/* Keyword subheading — primary on-page topical signal */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="font-heading text-lg sm:text-xl text-text-primary font-semibold"
-          >
-            Website Developer in Wollongong, NSW
-          </motion.h2>
 
           {/* Typewriter role */}
           <motion.div
@@ -209,7 +203,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="text-text-muted text-base sm:text-lg leading-relaxed max-w-lg"
           >
-            Building production web apps, custom websites, and AI automation for businesses in Wollongong and across Australia.
+            Building production web apps, custom websites, and AI automation for businesses across Australia.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -283,7 +277,7 @@ export default function Hero() {
             >
               <Image
                 src="/profile.jpg"
-                alt="Asif Hossain — Website Developer in Wollongong, NSW"
+                alt="Asif Hossain — Australian Website Developer"
                 width={256}
                 height={256}
                 priority

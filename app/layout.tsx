@@ -29,28 +29,28 @@ export const metadata: Metadata = {
   // ── Core ──────────────────────────────────────────────────
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Website Developer Wollongong NSW | Asif Hossain",
-    template: "%s | Asif Hossain – Website Developer Wollongong",
+    default: "Website Developer Australia | Asif Hossain",
+    template: "%s | Asif Hossain – Australian Website Developer",
   },
   description:
-    "Professional website developer in Wollongong, NSW. Asif Hossain builds websites and web apps for Australian businesses. React, Next.js, Node.js expert. 50+ projects delivered, 100% client satisfaction.",
+    "Professional website developer in Australia. Asif Hossain builds websites and web apps for Australian businesses. React, Next.js, Node.js expert. 50+ projects delivered, 100% client satisfaction.",
   keywords: [
     // Customer-facing (what people actually search)
-    "website developer wollongong",
-    "web developer wollongong",
     "website developer australia",
     "web developer australia",
-    "website design wollongong",
+    "website developer sydney",
+    "web developer sydney",
+    "website developer melbourne",
+    "web developer melbourne",
     "website developer nsw",
-    "hire website developer wollongong",
+    "hire website developer australia",
     "small business website developer australia",
-    "website developer near me wollongong",
-    "affordable website developer wollongong",
-    "professional web developer wollongong nsw",
+    "affordable website developer australia",
+    "professional web developer australia",
     "business website developer australia",
-    "website builder wollongong",
-    "web design wollongong",
-    "website developer illawarra",
+    "website design australia",
+    "web design australia",
+    "freelance web developer australia",
     // AI & automation
     "n8n automation australia",
     "n8n consultant australia",
@@ -64,12 +64,10 @@ export const metadata: Metadata = {
     "Asif Hossain",
     "Full-Stack Developer Australia",
     "AI Automation Engineer Australia",
-    "React developer Wollongong",
+    "React developer australia",
     "Next.js Developer Australia",
     "Node.js Developer",
-    "Freelance Web Developer Australia",
     "TypeScript Developer",
-    "Web Developer Wollongong",
   ],
   authors: [{ name: "Asif Hossain", url: BASE_URL }],
   creator: "Asif Hossain",
@@ -87,10 +85,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: BASE_URL,
-    title: "Website Developer Wollongong | Asif Hossain | Web Developer NSW",
+    title: "Website Developer Australia | Asif Hossain | Web Developer",
     description:
-      "Professional website developer in Wollongong, NSW. Building websites and web apps for Australian businesses. 50+ projects, 5-star rated.",
-    siteName: "Asif Hossain – Website Developer Wollongong",
+      "Professional website developer in Australia. Building websites and web apps for Australian businesses. 50+ projects, 5-star rated.",
+    siteName: "Asif Hossain – Australian Website Developer",
     // og:image comes from app/opengraph-image.tsx (1200x630, auto-wired by Next.js)
     locale: "en_AU",
   },
@@ -98,9 +96,9 @@ export const metadata: Metadata = {
   // ── Twitter / X ───────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "Website Developer Wollongong | Asif Hossain",
+    title: "Website Developer Australia | Asif Hossain",
     description:
-      "Professional website developer based in Wollongong, NSW. Websites and web apps for Australian businesses.",
+      "Professional Australian website developer. Websites and web apps for businesses across Australia.",
     creator: "@Rafin31",
   },
 
@@ -127,13 +125,12 @@ const personJsonLd = {
   image: `${BASE_URL}/profile.jpg`,
   jobTitle: "Full-Stack Developer & AI Automation Engineer",
   description:
-    "Full-Stack Developer and AI Automation Engineer based in Wollongong, NSW, Australia. Building custom websites, AI-powered web applications, and n8n workflow automation for Australian businesses.",
+    "Full-Stack Developer and AI Automation Engineer based in Australia. Building custom websites, AI-powered web applications, and n8n workflow automation for Australian businesses.",
   email: "contact@asifhossain.dev",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Wollongong",
+    addressLocality: "Sydney",
     addressRegion: "NSW",
-    postalCode: "2500",
     addressCountry: "AU",
   },
   sameAs: [
@@ -162,33 +159,21 @@ const personJsonLd = {
   ],
 }
 
-// ── JSON-LD: LocalBusiness (critical for "website developer wollongong") ──
+// ── JSON-LD: LocalBusiness (critical for "website developer australia") ──
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${BASE_URL}/#business`,
-  name: "Asif Hossain – Web Developer & AI Automation Engineer Wollongong",
+  name: "Asif Hossain – Australian Web Developer & AI Automation Engineer",
   url: BASE_URL,
   image: `${BASE_URL}/profile.jpg`,
   description:
-    "Full-Stack Developer and AI Automation Engineer based in Wollongong, NSW. Building custom websites, AI-powered web applications, n8n workflow automation, and cloud infrastructure for Australian businesses.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Wollongong",
-    addressLocality: "Wollongong",
-    addressRegion: "NSW",
-    postalCode: "2500",
-    addressCountry: "AU",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: -34.4278,
-    longitude: 150.8931,
-  },
+    "Full-Stack Developer and AI Automation Engineer based in Australia. Building custom websites, AI-powered web applications, n8n workflow automation, and cloud infrastructure for Australian businesses.",
   areaServed: [
-    { "@type": "City", "name": "Wollongong" },
     { "@type": "City", "name": "Sydney" },
     { "@type": "City", "name": "Melbourne" },
+    { "@type": "City", "name": "Brisbane" },
+    { "@type": "City", "name": "Perth" },
     { "@type": "State", "name": "New South Wales" },
     { "@type": "Country", "name": "Australia" },
   ],
@@ -228,9 +213,9 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${BASE_URL}/#website`,
-  name: "Asif Hossain – Website Developer Wollongong",
+  name: "Asif Hossain – Australian Website Developer",
   url: BASE_URL,
-  description: "Portfolio and blog of Asif Hossain, professional website developer in Wollongong, NSW.",
+  description: "Portfolio and blog of Asif Hossain, professional website developer in Australia.",
   inLanguage: "en-AU",
   potentialAction: {
     "@type": "SearchAction",
@@ -248,7 +233,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en-AU" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"

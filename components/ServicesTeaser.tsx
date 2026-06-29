@@ -26,8 +26,8 @@ export default function ServicesTeaser() {
             Services
           </h2>
           <p className="text-text-muted mt-6 text-base max-w-2xl leading-relaxed">
-            Web development, AI integration, and workflow automation for Australian businesses
-            from Wollongong and Sydney to anywhere in Australia.
+            Web development, AI integration, and workflow automation for businesses
+            across Australia — Sydney, Melbourne, Brisbane, Perth, and beyond.
           </p>
         </motion.div>
 

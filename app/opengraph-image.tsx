@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og"
 // Next.js App Router picks this file up automatically and serves it at /opengraph-image.
 // Edge runtime required: @vercel/og's Node build fails to prerender on Windows.
 export const runtime = "edge"
-export const alt = "Asif Hossain – Website Developer Wollongong, NSW Australia"
+export const alt = "Asif Hossain – Australian Website Developer & AI Automation Engineer"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -46,7 +46,7 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ color: "#a1a1aa", fontSize: "28px", marginTop: "16px" }}>
-          React · Next.js · Node.js · n8n Wollongong, NSW Australia
+          React · Next.js · Node.js · n8n · Australia
         </div>
 
         <div style={{ color: "#fbbf24", fontSize: "26px", marginTop: "48px" }}>

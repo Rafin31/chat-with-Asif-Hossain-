@@ -10,15 +10,15 @@ import { getAllPosts } from "@/lib/blog"
 import { shimmerDataURL } from "@/lib/shimmer"
 
 export const metadata: Metadata = {
-  title: "Website Developer Blog | Web Development Tips & Guides | Wollongong NSW",
+  title: "Website Developer Blog | Web Development Tips & Guides | Australia",
   description:
-    "Practical guides on website costs, web development, AI tools, and tips for Australian businesses. Written by Asif Hossain, a website developer based in Wollongong, NSW.",
+    "Practical guides on website costs, web development, AI tools, and tips for Australian businesses. Written by Asif Hossain, an Australian full-stack web developer.",
   keywords: [
     "website developer blog australia",
     "how much does a website cost australia",
     "do I need a website for my business",
     "web development tips australia",
-    "website developer wollongong blog",
+    "australian web developer blog",
     "small business website australia",
     "ai web development 2026",
     "nextjs developer blog",
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://asifhossain.dev/blog",
-    title: "Website Developer Blog | Asif Hossain, Wollongong NSW",
+    title: "Website Developer Blog | Asif Hossain, Australian Developer",
     description:
-      "Guides on website costs, web development, and tips for Australian businesses. Written by a website developer in Wollongong.",
+      "Guides on website costs, web development, and tips for Australian businesses. Written by an Australian full-stack web developer.",
   },
 }
 
@@ -96,8 +96,8 @@ export default async function BlogPage({ searchParams }: Props) {
             </h1>
             <p className="text-text-muted text-lg max-w-2xl mx-auto">
               Articles on full-stack development, AI integration, web
-              technologies, and freelancing in Australia. Written by a developer
-              based in Wollongong, NSW.
+              technologies, and freelancing in Australia. Written by an
+              Australian full-stack developer.
             </p>
           </div>
         </section>

@@ -1,6 +1,6 @@
 # Asif Hossain  Full-Stack Developer
 
-**[asifhossain.dev](https://asifhossain.dev)** · Wollongong, NSW, Australia
+**[asifhossain.dev](https://asifhossain.dev)** · Australia
 
 I'm a Full-Stack Developer with 3+ years of professional experience building scalable web applications. I completed my Master's in Computer Science (Software Engineering) at the University of Wollongong, and I've delivered 50+ projects on Fiverr with 100% client satisfaction.
 

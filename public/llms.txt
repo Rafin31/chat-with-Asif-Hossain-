@@ -1,6 +1,6 @@
-# Asif Hossain — Website Developer & AI Automation Engineer (Wollongong, NSW)
+# Asif Hossain — Australian Website Developer & AI Automation Engineer
 
-> Full-Stack Developer and AI Automation Engineer based in Wollongong, NSW, Australia. Builds custom websites, Next.js/React web apps, AI-powered applications, and n8n workflow automation for Australian businesses. 13+ five-star client reviews.
+> Full-Stack Developer and AI Automation Engineer based in Australia. Builds custom websites, Next.js/React web apps, AI-powered applications, and n8n workflow automation for Australian businesses. 13+ five-star client reviews.
 
 ## Services
 - [Web Development Services Australia](https://asifhossain.dev/services/web-development-australia): Custom websites and web apps for Australian businesses.
@@ -21,7 +21,7 @@
 - [Next.js Performance Optimization 2026](https://asifhossain.dev/blog/nextjs-performance-optimization-2026): Speeding up Next.js sites.
 - [Next.js & React Web Development in Australia](https://asifhossain.dev/blog/nextjs-react-web-development-australia): Why Next.js for Australian businesses.
 - [TypeScript vs JavaScript 2026](https://asifhossain.dev/blog/typescript-vs-javascript-2026): When to choose each.
-- [Full-Stack Developer in Wollongong, NSW](https://asifhossain.dev/blog/fullstack-developer-wollongong-nsw): Local development services.
+- [Full-Stack Developer in Australia](https://asifhossain.dev/blog/fullstack-developer-wollongong-nsw): Local development services.
 - [IT Jobs Australia 2026 — Developer Interview Tips](https://asifhossain.dev/blog/it-jobs-australia-2026-developer-interview-tips): Landing dev roles in Australia.
 - [Case Study: Medical Management System](https://asifhossain.dev/blog/case-study-medical-management-system): Building a healthcare web app.
 

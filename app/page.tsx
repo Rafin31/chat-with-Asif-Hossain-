@@ -20,7 +20,7 @@ const projectsJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Portfolio Projects by Asif Hossain",
-  description: "Full-stack web development projects by Asif Hossain, a developer based in Wollongong, Australia.",
+  description: "Full-stack web development projects by Asif Hossain, a developer based in Australia.",
   itemListElement: projects.map((project, index) => ({
     "@type": "ListItem",
     position: index + 1,

@@ -7,7 +7,7 @@ export const personalInfo = {
   role: "Full-Stack Developer & AI Automation Engineer",
   tagline: "Building production web apps and intelligent automation systems with modern AI",
   email: "contact@asifhossain.dev",
-  location: "Wollongong, NSW, Australia",
+  location: "Australia",
   github: "https://github.com/Rafin31",
   linkedin: "https://www.linkedin.com/in/asif-hossain-6982b81ba/",
   fiverr: "https://www.fiverr.com/rafin_31",

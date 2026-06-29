@@ -62,7 +62,7 @@ export default function ServiceDetailClient({ service, relatedServices, relatedP
             </div>
             <div className="bg-card p-5 sm:p-6">
               <p className="text-[10px] font-mono text-text-muted uppercase tracking-[0.12em] mb-1.5">Location</p>
-              <p className="text-text-primary font-bold text-xl leading-tight">Wollongong, AU</p>
+              <p className="text-text-primary font-bold text-xl leading-tight">Australia-Wide</p>
             </div>
           </div>
         </Reveal>
@@ -204,7 +204,7 @@ export default function ServiceDetailClient({ service, relatedServices, relatedP
             {service.localAreas && service.localAreas.length > 0 && (
               <Reveal>
                 <section>
-                  <SectionHeading>Serving Wollongong &amp; All of Australia</SectionHeading>
+                  <SectionHeading>Serving Clients Across Australia</SectionHeading>
                   {service.localAreas.map((paragraph, i) => (
                     <p key={paragraph.slice(0, 40)} className={`text-text-muted leading-relaxed text-base ${i > 0 ? "mt-4" : ""}`}>
                       {paragraph}

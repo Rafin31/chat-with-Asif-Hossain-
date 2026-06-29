@@ -230,7 +230,7 @@ export default function BlogPostPage({ params }: Props) {
                     Need a Full-Stack Developer?
                   </h2>
                   <p className="text-text-muted mb-6">
-                    Based in Wollongong, NSW. Available for projects across Australia
+                    Based in Australia. Available for projects across Australia
                     and globally.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
