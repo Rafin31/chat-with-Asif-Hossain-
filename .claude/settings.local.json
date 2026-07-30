@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
+      "Bash(npm *)",
       "Bash(npm run:*)",
       "Bash(node -e \"const hi2 = require\\(''react-icons/hi2''\\); console.log\\(Object.keys\\(hi2\\).filter\\(k => k.startsWith\\(''HiC''\\)\\).join\\('', ''\\)\\)\")",
       "Bash(node -e \"const si = require\\(''react-icons/si''\\); const keys = Object.keys\\(si\\); console.log\\(''SiCss3:'', keys.includes\\(''SiCss3''\\)\\); console.log\\(''SiCss:'', keys.filter\\(k=>k.startsWith\\(''SiCss''\\)\\).join\\('', ''\\)\\); console.log\\(''SiAmazon:'', keys.filter\\(k=>k.startsWith\\(''SiAmazon''\\)\\).join\\('', ''\\)\\)\")",
@@ -46,7 +47,11 @@
       "Bash(curl -s -m 15 https://asifhossain.dev/)",
       "Bash(curl -s -m 10 -o /dev/null -w \"%{http_code}\\\\n\" https://asifhossain.dev/llms.txt)",
       "Bash(curl -s -m 15 -I https://asifhossain.dev/services)",
-      "Bash(curl -s -m 15 -I -H 'Accept-Encoding: gzip,br' https://asifhossain.dev/services)"
+      "Bash(curl -s -m 15 -I -H 'Accept-Encoding: gzip,br' https://asifhossain.dev/services)",
+      "Bash(grep -rn \"imagekitFolder\\\\|imagekit\" --include=\"*.ts\" --include=\"*.tsx\" -i /Users/asifhossain/Documents/Development/chat-with-Asif-Hossain-ils 2>/dev/null; grep -rln \"imagekitFolder\\\\|imagekit\" --include=\"*.ts\" --include=\"*.tsx\" -i /Users/asifhossain/Documents/Development/chat-with-Asif-Hossain- 2>/dev/null | grep -v node_modules)",
+      "Read(//Users/asifhossain/Documents/Development/**)",
+      "Bash(curl -s -o /dev/null -w \"HTTP_STATUS:%{http_code}\\\\n\" \"https://ik.imagekit.io/zqm3n6ufa/Portfolio%20Projects%20Images/europe-tour-attraction/snapshot1\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP_STATUS:%{http_code}\\\\n\" \"https://ik.imagekit.io/zqm3n6ufa/Portfolio%20Projects%20Images/europe-tour-attraction/snapshot1?tr=w-400,q-80,f-auto\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\GB\\Desktop\\Dist\\Port\\app\\services"
