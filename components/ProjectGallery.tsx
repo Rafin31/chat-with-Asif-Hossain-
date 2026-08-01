@@ -6,13 +6,14 @@ import { motion, AnimatePresence } from "framer-motion"
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi"
 import { ikLoader } from "@/lib/imagekit"
 import { shimmerDataURL } from "@/lib/shimmer"
+import { categorizeGalleryImages, titleCaseFromSlug, type NamedImage } from "@/lib/gallery"
 
 const blur = shimmerDataURL(800, 500)
 
 // ── Tile ────────────────────────────────────────────────────────────────────
-function Tile({ src, alt, priority = false, onClick, children }: {
+function Tile({ src, alt, priority = false, onClick }: {
   src: string; alt: string; priority?: boolean
-  onClick: () => void; children?: ReactNode
+  onClick: () => void
 }) {
   const [hovered, setHovered] = useState(false)
   return (
@@ -21,239 +22,233 @@ function Tile({ src, alt, priority = false, onClick, children }: {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       aria-label={alt}
-      style={{
-        position: "absolute", inset: 0,
-        overflow: "hidden", borderRadius: "12px",
-        background: "#07070f", border: "1px solid rgba(255,255,255,0.06)",
-        cursor: "pointer", padding: 0,
-      }}
+      className="absolute inset-0 overflow-hidden rounded-xl border border-white/[0.06] bg-[#07070f] cursor-pointer p-0"
     >
       <Image
         src={src} loader={ikLoader} alt={alt}
-        fill sizes="(max-width: 768px) 50vw, 40vw"
-        className="object-contain"
+        fill sizes="(max-width: 768px) 70vw, 320px"
+        className="object-cover"
         style={{
-          padding: "6px",
           transform: hovered ? "scale(1.04)" : "scale(1)",
           transition: "transform 0.45s ease",
         }}
         placeholder="blur" blurDataURL={blur} priority={priority}
       />
-      <div style={{
-        position: "absolute", inset: 0,
-        background: "rgba(0,0,0,0.2)",
-        opacity: hovered ? 1 : 0,
-        transition: "opacity 0.25s",
-        pointerEvents: "none",
-      }} />
-      {children}
+      <div
+        className="absolute inset-0 bg-black/20 pointer-events-none transition-opacity duration-200"
+        style={{ opacity: hovered ? 1 : 0 }}
+      />
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pt-6 pb-2">
+        <span className="font-mono text-[10px] tracking-wide text-white/80">{alt}</span>
+      </div>
     </button>
   )
 }
 
-// ── Main component ───────────────────────────────────────────────────────────
+interface GalleryImage extends NamedImage {
+  width?: number
+  height?: number
+}
+
 interface Props {
   /** Pre-fetched image URLs from the server (ImageKit API). Any filename, any count. */
-  images: string[]
+  images: GalleryImage[]
   alt: string
 }
 
+// Native aspect ratio per shot: mobile screenshots stay portrait, everything
+// else defaults to a landscape app-screenshot ratio.
+function tileAspect(image: GalleryImage): string {
+  if (image.width && image.height) return `${image.width} / ${image.height}`
+  return image.name.startsWith("mobile") ? "9 / 19.5" : "16 / 10"
+}
+
 export default function ProjectGallery({ images, alt }: Props) {
+  const categories = categorizeGalleryImages(images)
+  const [activeCategory, setActiveCategory] = useState(categories?.[0]?.category ?? null)
   const [lightbox, setLightbox] = useState<number | null>(null)
-  const total    = images.length
-  const remaining = Math.max(0, total - 3)
-  const imagesRef = useRef(images)
-  imagesRef.current = images
 
-  // keyboard nav
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (lightbox === null) return
-      const len = imagesRef.current.length
-      if (e.key === "Escape")     setLightbox(null)
-      if (e.key === "ArrowRight") setLightbox(i => i === null ? null : (i + 1) % len)
-      if (e.key === "ArrowLeft")  setLightbox(i => i === null ? null : (i - 1 + len) % len)
-    }
-    window.addEventListener("keydown", onKey)
-    return () => window.removeEventListener("keydown", onKey)
-  }, [lightbox])
+  if (images.length === 0) return null
 
-  // lock body scroll when lightbox open
-  useEffect(() => {
-    document.body.style.overflow = lightbox !== null ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
-  }, [lightbox])
+  const visibleImages = categories
+    ? categories.find((c) => c.category === activeCategory)?.items ?? categories[0].items
+    : images
 
-  if (total === 0) return null
+  const captionFor = (image: GalleryImage, indexInAll: number) =>
+    categories ? titleCaseFromSlug(image.name).replace(/^\S+\s/, "") : `${alt} — screenshot ${indexInAll + 1}`
 
   return (
     <>
-      {/* ── Preview grid ─────────────────────────────────────────────────────── */}
-      <div style={{ position: "relative", width: "100%", paddingTop: "46%" }}>
-
-        {/* Left: hero image */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: "calc(45% + 4px)", bottom: 0 }}>
-          <Tile src={images[0]} alt={`${alt}  1`} priority onClick={() => setLightbox(0)} />
+      {categories && (
+        <div role="tablist" aria-label="Screenshot category" className="flex flex-wrap gap-2 mb-4">
+          {categories.map((cat) => (
+            <button
+              key={cat.category}
+              role="tab"
+              aria-selected={activeCategory === cat.category}
+              onClick={() => setActiveCategory(cat.category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                activeCategory === cat.category
+                  ? "bg-accent-yellow/15 text-accent-yellow border-accent-yellow/40"
+                  : "bg-card text-text-muted border-border hover:border-accent-yellow/25"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
         </div>
+      )}
 
-        {/* Right top */}
-        {images[1] && (
-          <div style={{ position: "absolute", top: 0, left: "calc(55% + 4px)", right: 0, bottom: "calc(50% + 4px)" }}>
-            <Tile src={images[1]} alt={`${alt}  2`} priority onClick={() => setLightbox(1)} />
-          </div>
-        )}
-
-        {/* Right bottom + remaining count */}
-        {images[2] && (
-          <div style={{ position: "absolute", top: "calc(50% + 4px)", left: "calc(55% + 4px)", right: 0, bottom: 0 }}>
-            <Tile src={images[2]} alt={`${alt}  3`} onClick={() => setLightbox(2)}>
-              {remaining > 0 && (
-                <div style={{
-                  position: "absolute", inset: 0,
-                  background: "rgba(5,5,15,0.82)", backdropFilter: "blur(4px)",
-                  display: "flex", flexDirection: "column",
-                  alignItems: "center", justifyContent: "center",
-                  pointerEvents: "none", borderRadius: "11px",
-                }}>
-                  <span style={{ fontSize: "clamp(22px,3vw,36px)", fontWeight: 700, color: "#fff", lineHeight: 1, letterSpacing: "-1px" }}>
-                    +{remaining}
-                  </span>
-                  <span style={{ fontSize: "10px", color: "rgba(255,255,255,0.4)", marginTop: "6px", fontFamily: "ui-monospace,monospace", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                    more photos
-                  </span>
-                </div>
-              )}
-            </Tile>
-          </div>
-        )}
+      {/* ── Filmstrip ───────────────────────────────────────────────────────── */}
+      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scroll-px-4">
+        {visibleImages.map((image, i) => {
+          const globalIndex = images.indexOf(image)
+          return (
+            <div
+              key={image.name}
+              className="relative shrink-0 snap-start h-64"
+              style={{ aspectRatio: tileAspect(image) }}
+            >
+              <Tile
+                src={image.url}
+                alt={captionFor(image, globalIndex)}
+                priority={i === 0}
+                onClick={() => setLightbox(globalIndex)}
+              />
+            </div>
+          )
+        })}
       </div>
 
       {/* ── Lightbox ─────────────────────────────────────────────────────────── */}
-      <AnimatePresence>
-        {lightbox !== null && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: "fixed", inset: 0, zIndex: 9999,
-              background: "rgba(3,3,10,0.96)", backdropFilter: "blur(20px)",
-              cursor: "default",
-            }}
-          >
-            {/* Backdrop click-to-close */}
-            <div
-              style={{ position: "absolute", inset: 0, zIndex: 1, cursor: "default" }}
-              onClick={() => setLightbox(null)}
-            />
-
-            {/* Top bar */}
-            <div style={{
-              position: "absolute", top: 0, left: 0, right: 0, height: "52px", zIndex: 10002,
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "0 20px", borderBottom: "1px solid rgba(255,255,255,0.05)",
-            }}>
-              <span style={{ fontSize: "11px", fontFamily: "ui-monospace,monospace", color: "rgba(255,255,255,0.35)" }}>
-                {String(lightbox + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-              </span>
-              <button
-                onClick={() => setLightbox(null)}
-                aria-label="Close gallery"
-                style={{
-                  zIndex: 10002, background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.1)", borderRadius: "50%",
-                  padding: "8px", cursor: "pointer", display: "flex",
-                  alignItems: "center", color: "rgba(255,255,255,0.7)",
-                }}
-              >
-                <FiX size={16} />
-              </button>
-            </div>
-
-            {/* Image */}
-            <div style={{
-              position: "absolute", inset: 0, zIndex: 10000,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              padding: "60px 80px",
-              pointerEvents: "none",
-            }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                key={lightbox}
-                src={ikLoader({ src: images[lightbox], width: 1400, quality: 85 })}
-                alt={`${alt}  ${lightbox + 1}`}
-                style={{
-                  maxWidth: "100%", maxHeight: "100%",
-                  objectFit: "contain", display: "block",
-                  borderRadius: "8px",
-                }}
-              />
-            </div>
-
-            {/* Prev arrow */}
-            {total > 1 && (
-              <button
-                aria-label="Previous screenshot"
-                onClick={e => { e.stopPropagation(); setLightbox(i => i === null ? 0 : (i - 1 + total) % total) }}
-                style={{
-                  position: "absolute", left: "16px", top: "50%",
-                  transform: "translateY(-50%)", zIndex: 10001,
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: "50%", padding: "12px",
-                  cursor: "pointer", display: "flex",
-                  color: "rgba(255,255,255,0.7)",
-                }}
-              >
-                <FiChevronLeft size={22} />
-              </button>
-            )}
-
-            {/* Next arrow */}
-            {total > 1 && (
-              <button
-                aria-label="Next screenshot"
-                onClick={e => { e.stopPropagation(); setLightbox(i => i === null ? 0 : (i + 1) % total) }}
-                style={{
-                  position: "absolute", right: "16px", top: "50%",
-                  transform: "translateY(-50%)", zIndex: 10001,
-                  background: "rgba(255,255,255,0.07)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: "50%", padding: "12px",
-                  cursor: "pointer", display: "flex",
-                  color: "rgba(255,255,255,0.7)",
-                }}
-              >
-                <FiChevronRight size={22} />
-              </button>
-            )}
-
-            {/* Dots */}
-            {total > 1 && total <= 30 && (
-              <div style={{
-                position: "absolute", bottom: "16px", left: 0, right: 0,
-                zIndex: 10001,
-                display: "flex", justifyContent: "center",
-                gap: "6px", flexWrap: "wrap", padding: "0 48px",
-              }}>
-                {images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={e => { e.stopPropagation(); setLightbox(i) }}
-                    aria-label={`Go to ${i + 1}`}
-                    style={{
-                      borderRadius: "9999px", border: "none",
-                      cursor: "pointer", padding: 0,
-                      width: i === lightbox ? "16px" : "5px", height: "5px",
-                      background: i === lightbox ? "rgb(251,191,36)" : "rgba(255,255,255,0.2)",
-                      transition: "all 0.2s",
-                    }}
-                  />
-                ))}
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox
+        images={images}
+        alt={alt}
+        categories={categories}
+        captionFor={captionFor}
+        index={lightbox}
+        onClose={() => setLightbox(null)}
+        onNavigate={setLightbox}
+      />
     </>
+  )
+}
+
+function Lightbox({
+  images,
+  categories,
+  captionFor,
+  index,
+  onClose,
+  onNavigate,
+}: {
+  images: GalleryImage[]
+  alt: string
+  categories: ReturnType<typeof categorizeGalleryImages>
+  captionFor: (image: GalleryImage, i: number) => string
+  index: number | null
+  onClose: () => void
+  onNavigate: (i: number) => void
+}) {
+  const total = images.length
+  const touchStartX = useRef<number | null>(null)
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (index === null) return
+      if (e.key === "Escape") onClose()
+      if (e.key === "ArrowRight") onNavigate((index + 1) % total)
+      if (e.key === "ArrowLeft") onNavigate((index - 1 + total) % total)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [index, total, onClose, onNavigate])
+
+  useEffect(() => {
+    document.body.style.overflow = index !== null ? "hidden" : ""
+    return () => { document.body.style.overflow = "" }
+  }, [index])
+
+  if (index === null) return null
+  const image = images[index]
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="fixed inset-0 z-[9999] bg-[rgba(3,3,10,0.96)] backdrop-blur-xl"
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return
+          const delta = e.changedTouches[0].clientX - touchStartX.current
+          if (Math.abs(delta) > 50) {
+            onNavigate(delta < 0 ? (index + 1) % total : (index - 1 + total) % total)
+          }
+          touchStartX.current = null
+        }}
+      >
+        <div className="absolute inset-0 z-[1]" onClick={onClose} />
+
+        <div className="absolute top-0 left-0 right-0 h-[52px] z-[10002] flex items-center justify-between px-5 border-b border-white/5">
+          <span className="font-mono text-[11px] text-white/60">{captionFor(image, index)}</span>
+          <button onClick={onClose} aria-label="Close gallery" className="z-[10002] bg-white/5 border border-white/10 rounded-full p-2 flex items-center text-white/70">
+            <FiX size={16} />
+          </button>
+        </div>
+
+        <div className="absolute inset-0 z-[10000] flex items-center justify-center px-20 py-16 pointer-events-none">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            key={index}
+            src={ikLoader({ src: image.url, width: 1400, quality: 85 })}
+            alt={captionFor(image, index)}
+            className="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+
+        {total > 1 && (
+          <>
+            <button
+              aria-label="Previous screenshot"
+              onClick={(e) => { e.stopPropagation(); onNavigate((index - 1 + total) % total) }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-[10001] bg-white/[0.07] border border-white/10 rounded-full p-3 flex text-white/70"
+            >
+              <FiChevronLeft size={22} />
+            </button>
+            <button
+              aria-label="Next screenshot"
+              onClick={(e) => { e.stopPropagation(); onNavigate((index + 1) % total) }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-[10001] bg-white/[0.07] border border-white/10 rounded-full p-3 flex text-white/70"
+            >
+              <FiChevronRight size={22} />
+            </button>
+          </>
+        )}
+
+        {/* Thumbnail filmstrip replaces the old dot row — scales to any count */}
+        {total > 1 && (
+          <div className="absolute bottom-0 left-0 right-0 z-[10001] flex gap-2 overflow-x-auto px-4 py-3 bg-gradient-to-t from-black/60 to-transparent">
+            {images.map((thumb, i) => (
+              <button
+                key={thumb.name}
+                onClick={(e) => { e.stopPropagation(); onNavigate(i) }}
+                aria-label={`Go to ${captionFor(thumb, i)}`}
+                className={`relative shrink-0 w-14 h-10 rounded-md overflow-hidden border transition-opacity ${
+                  i === index ? "border-accent-yellow opacity-100" : "border-white/10 opacity-50 hover:opacity-80"
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={ikLoader({ src: thumb.url, width: 100, quality: 60 })}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        )}
+      </motion.div>
+    </AnimatePresence>
   )
 }

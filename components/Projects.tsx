@@ -246,7 +246,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
                 </span>
-                Ongoing
+                Live
               </span>
             )}
           </div>
@@ -347,7 +347,7 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
         {project.ongoing && (
           <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1.5 bg-black/50 backdrop-blur-sm border border-green-400/40 rounded-full px-2.5 py-1 text-[10px] font-medium text-green-400">
             <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" /></span>
-            Ongoing
+            Live
           </div>
         )}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">

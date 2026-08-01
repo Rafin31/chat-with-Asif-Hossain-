@@ -5,6 +5,15 @@ interface IKFile {
   url: string
   name: string
   fileType: string
+  width?: number
+  height?: number
+}
+
+export interface GalleryImage {
+  name: string
+  url: string
+  width?: number
+  height?: number
 }
 
 /**
@@ -12,7 +21,7 @@ interface IKFile {
  * Results are cached and revalidated every hour (ISR).
  * Upload any image with any filename → it appears within 60 min.
  */
-export async function listFolderImages(folder: string): Promise<string[]> {
+export async function listFolderImages(folder: string): Promise<GalleryImage[]> {
   if (!IK_PRIVATE_KEY) {
     console.warn("[imagekit-api] IMAGEKIT_PRIVATE_KEY not set  skipping image fetch")
     return []
@@ -40,9 +49,14 @@ export async function listFolderImages(folder: string): Promise<string[]> {
     // Sort numerically by filename so snapshot1 < snapshot2 < ... < snapshot10
     files.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
 
-    return files.map(f => f.url)
+    return files.map(f => ({ name: stripExtension(f.name), url: f.url, width: f.width, height: f.height }))
   } catch (err) {
     console.error("[imagekit-api] fetch failed:", err)
     return []
   }
 }
+
+export function stripExtension(filename: string): string {
+  return filename.replace(/\.[a-zA-Z0-9]+$/, "")
+}
+

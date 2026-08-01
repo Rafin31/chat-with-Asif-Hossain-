@@ -9,6 +9,7 @@ import ProjectGallery from "@/components/ProjectGallery"
 import ImageViewer from "@/components/ImageViewer"
 import type { Project } from "@/data/portfolio"
 import type { ProjectDetail } from "@/data/projectDetails"
+import type { GalleryImage } from "@/lib/imagekit-api"
 
 const CATEGORY_LABEL: Record<string, string> = {
   fullstack: "Full Stack",
@@ -54,7 +55,7 @@ function Reveal({
 interface Props {
   project: Project
   detail: ProjectDetail | null
-  galleryImages: string[]
+  galleryImages: GalleryImage[]
   prevProject: Project | null
   nextProject: Project | null
 }
@@ -67,7 +68,7 @@ export default function ProjectDetailClient({
   nextProject,
 }: Props) {
   const projectStatus = project.ongoing
-    ? "Ongoing"
+    ? "Live"
     : project.category.includes("freelance")
     ? "Freelance"
     : "Personal"
@@ -200,7 +201,7 @@ export default function ProjectDetailClient({
 
           {/* Gallery */}
           {(galleryImages.length > 0 || detail?.coverImage) && (
-            <div className="-mt-6 mb-12">
+            <div className={galleryImages.length > 0 ? "mb-12" : "-mt-6 mb-12"}>
               {galleryImages.length > 0 ? (
                 <ProjectGallery images={galleryImages} alt={detail?.imageAlt ?? project.title} />
               ) : (
