@@ -11,7 +11,7 @@ export const personalInfo = {
   github: "https://github.com/Rafin31",
   linkedin: "https://www.linkedin.com/in/asif-hossain-6982b81ba/",
   fiverr: "https://www.fiverr.com/rafin_31",
-  bio: `I'm a Full-Stack Developer and AI Automation Engineer with 3+ years of professional experience building scalable web applications and intelligent automation systems. I recently completed my Master's in Computer Science (Software Engineering) at the University of Wollongong, combining academic depth with real-world engineering delivery.
+  bio: `I'm a Full-Stack Developer and AI Engineer with 3+ years of professional experience building scalable web applications and intelligent automation systems. I recently completed my Master's in Computer Science (Software Engineering) at the University of Wollongong, combining academic depth with real-world engineering delivery.
 
 On the development side, I specialise in React.js, Next.js, Node.js, and cloud infrastructure. I've delivered 50+ client projects on Fiverr with 100% satisfaction, and built a full-scale Medical Supplier Management System that cut admin workload by 60% through automation.
 
@@ -107,6 +107,10 @@ export interface Experience {
   location: string
   duration: string
   type: string
+  // One-line summary shown in the collapsed row (before expanding)
+  summary: string
+  // Marks the current/present role — gets a pulsing "live" dot instead of a static one
+  current?: boolean
   description: string[]
   tech: string[]
 }
@@ -114,43 +118,109 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 1,
-    role: "Web Application Developer",
-    company: "Mendoza Brothers Holdings, LLC",
-    location: "Florida, USA",
-    duration: "Dec 2022 – Jun 2024",
+    role: "Software Developer",
+    company: "TourHill",
+    location: "Remote, Barcelona, Spain",
+    duration: "Apr 2026 – Present",
     type: "Contract",
+    current: true,
+    summary: "Full-stack tour & travel booking platform, live at tourhill.com",
     description: [
-      "Designed and developed a full-scale Medical Supplier Management System from scratch",
-      "Automated bulk dataset upload/download with Excel integration, reducing admin workload by 60%",
-      "Integrated a real-time chat system, reducing issue resolution time by 35%",
-      "Built a secure Node.js backend with JWT authentication and Role-Based Access Control (RBAC)",
-      "Collaborated with stakeholders using Agile/Scrum methodology across distributed teams",
+      "Used Claude Code and Cursor to speed up boilerplate, API scaffolding, and test case generation, reviewing and rewriting every AI-generated suggestion before committing to keep code quality in check",
+      "Owned DevOps for the project end to end, from provisioning and configuring the Railway infrastructure to setting up GitHub Actions CI/CD pipelines for automated testing and deployment, plus environment and secrets management across services",
+      "Shipped and continue to run the platform in production, currently taking live bookings and processing real payments",
+      "Deployed the platform on Railway across multiple backend services with background jobs, rate limiting, and proxy routing, and enforced fail-fast configuration by validating all environment variables with Zod at startup",
+      "Designed the full PostgreSQL database schema and backend architecture, building backend services and APIs with full CRUD coverage across booking, product, and availability modules",
+      "Integrated Stripe payments and webhooks with dynamic cancellation policy logic, plus live and email notifications for booking status changes",
+      "Built a fully manageable admin panel with a dynamic Next.js and TypeScript frontend, using server- and client-side rendering, reusable UI components, photo compression, and a live calendar with dynamic slot availability",
+      "Built a RAG-based travel concierge chatbot, embedding product, ticket, and FAQ data into pgvector on Postgres and retrieving with LangChain to generate customer-facing answers through Claude",
+      "Built a review intelligence system that generates AI summaries of pros, cons, and sentiment on product pages, alongside a job that flags fake or anomalous reviews",
+      "Designed a secure booking flow with live review display, preventing double booking on the same slot through real-time availability checks",
+      "Built reusable Next.js components across the customer-facing site, admin panel, and calendar system, shared between server- and client-rendered pages",
+      "Prevented duplicate bookings under concurrent requests by implementing atomic slot reservation with Redis Lua scripts, closing a race condition that standard read-then-write logic would miss",
     ],
-    tech: ["Node.js", "React.js", "MongoDB", "Excel Integration", "JWT", "REST APIs", "Agile", "Postman"],
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "Stripe", "LangChain", "pgvector", "Railway", "GitHub Actions", "Zod", "Claude Code", "Cursor"],
   },
   {
     id: 2,
-    role: "Freelance Software Engineer",
-    company: "Fiverr",
-    location: "Remote (Global)",
-    duration: "Feb 2021 – Sept 2023",
-    type: "Freelance",
+    role: "Customer Solution Specialist",
+    company: "Probe CX",
+    location: "Wollongong, Australia",
+    duration: "Dec 2025 – Mar 2026",
+    type: "Full-time",
+    summary: "MyAged Care CRM support — call handling and escalation ownership",
     description: [
-      "Delivered 50+ client projects with 100% satisfaction rate and consistent 5-star reviews",
-      "Built 10+ full-stack web applications across e-commerce, real estate, and SaaS domains",
-      "Worked with international clients from UK, USA, Australia, and Asia",
-      "Integrated payment gateways, authentication systems, and third-party APIs",
-      "Maintained clear communication and delivered projects ahead of deadlines",
+      "Learned the MyAged Care systems and CRM workflows quickly during onboarding, reaching full call handling capacity ahead of the standard ramp-up period",
+      "Took ownership of complex or escalated calls rather than passing them off, working through the issue with the caller until it was resolved or correctly escalated with full context",
+      "Applied judgement on when a call needed to follow the standard script versus when it needed a different approach, based on the caller's situation and urgency",
     ],
-    tech: ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Firebase", "AWS", "TailwindCSS", "GitHub Actions"],
+    tech: ["CRM", "MyAged Care", "Customer Support"],
   },
   {
     id: 3,
+    role: "Software Engineer",
+    company: "Mendoza Brothers Holdings LLC",
+    location: "Florida, USA (Remote)",
+    duration: "Dec 2022 – Jun 2024",
+    type: "Contract",
+    summary: "Enterprise medical supplier management platform — architecture to production",
+    description: [
+      "Designed the full frontend, backend architecture, and database schema from scratch, covering order tracking, staff management, and supplier workflows, while solely owning requirement analysis and client communication throughout the project",
+      "Maintained CI/CD pipelines and Git workflow throughout the project, deploying first to Heroku and later migrating to Azure",
+      "Integrated Stripe and other third-party APIs, enabling subscription billing and order payments across the platform",
+      "Deployed the platform on Azure, leveraging its cloud services for scalability and reliability, ensuring 99.9% uptime during peak booking periods",
+      "Implemented JWT authentication, multi-factor authentication, role-based access control, and automated email notifications, strengthening account security",
+      "Built a library of reusable React and Material UI components, cutting new feature build time across the admin dashboard and client-facing screens",
+      "Automated bulk dataset upload and download with Excel integration, reducing administrative workload by 60 percent",
+      "Built a real-time notification and chat system using Node.js and Socket.io, reducing issue resolution time by 35 percent",
+      "Improved usability and accessibility across the platform through redesigned layouts and consistent interaction patterns",
+    ],
+    tech: ["React.js", "Material UI", "Node.js", "Socket.io", "JWT", "RBAC", "Stripe", "Heroku", "Azure", "Excel Integration"],
+  },
+  {
+    id: 4,
+    role: "Software Engineer",
+    company: "Fiverr",
+    location: "Remote",
+    duration: "Feb 2021 – Sep 2023",
+    type: "Freelance",
+    summary: "50+ client projects, 100% satisfaction across full-stack web apps",
+    description: [
+      "Completed 50+ client projects with 100 percent satisfaction and consistent 5-star reviews",
+      "Used DynamoDB and S3 for data storage and file handling across projects, and wrote AWS Lambda functions for serverless tasks",
+      "Deployed and managed multiple projects on AWS, setting up EC2 instances to run the applications in production",
+      "Built 10+ full-stack web applications covering React.js, Next.js, Node.js, Express, MongoDB, and PostgreSQL",
+      "Integrated RESTful APIs, Firebase authentication, and secure payment gateways including Stripe and PayPal",
+      "Implemented CI/CD pipelines using GitHub Actions, Netlify, Heroku, and Railway for fast and stable deployments",
+    ],
+    tech: ["React.js", "Next.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "AWS", "DynamoDB", "S3", "Lambda", "GitHub Actions"],
+  },
+  {
+    id: 5,
+    role: "IT Support Analyst",
+    company: "Trenza Softwares",
+    location: "Dhaka, Bangladesh",
+    duration: "Jun 2021 – Aug 2021",
+    type: "Part-time",
+    summary: "IT support & endpoint management internship — Intune rollout across 150+ devices",
+    description: [
+      "Reduced average device provisioning time by 40% by deploying and configuring Microsoft Intune for automated enrollment and compliance policy enforcement across 150+ Windows 10 endpoints",
+      "Delivered end-user support across phone, email, and face-to-face channels by resolving Windows 10 and Microsoft 365 issues for a 200+ user base, maintaining 98% SLA compliance",
+      "Equipped new and existing staff with functional hardware by assisting in the deployment, setup, and configuration of laptops, mobile phones, and other technology equipment",
+      "Cut recurring helpdesk tickets by 25% by standardizing Windows 10 imaging and troubleshooting runbooks for common hardware and connectivity issues",
+      "Improved first-contact resolution rate to 85% by managing user access, licensing, and mailbox configuration across Microsoft 365 (Exchange Online, SharePoint, Teams)",
+      "Strengthened endpoint security posture by rolling out conditional access and compliance policies via Intune, reducing non-compliant device incidents by 30%",
+    ],
+    tech: ["Microsoft Intune", "Windows 10", "Microsoft 365", "Exchange Online", "SharePoint", "Teams"],
+  },
+  {
+    id: 6,
     role: "Teaching Assistant – Computer Science",
     company: "AIUB",
     location: "Dhaka, Bangladesh",
     duration: "Sept 2021 – Dec 2021",
-    type: "Part-time",
+    type: "Internship",
+    summary: "Mentored 30+ undergraduate students in coding fundamentals and debugging",
     description: [
       "Mentored 30+ undergraduate students in coding fundamentals and debugging techniques",
       "Assisted in lab sessions for programming courses",
@@ -546,7 +616,7 @@ export const achievements = [
   {
     id: 2,
     title: "SJ Innovation Hackathon",
-    description: "1st Runner-Up, competing against 50+ teams",
+    description: "1st Runner-Up, competing against 10+ teams",
     icon: "medal",
   },
   {

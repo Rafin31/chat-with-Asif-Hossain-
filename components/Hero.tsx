@@ -162,7 +162,7 @@ export default function Hero() {
               <span className="text-text-primary">Hossain</span>
             </span>
             <span className="block mt-2 text-lg sm:text-xl text-text-primary font-semibold">
-              Australian Website Developer
+              Software Developer and AI Engineer
             </span>
           </motion.h1>
 
@@ -277,7 +277,7 @@ export default function Hero() {
             >
               <Image
                 src="/profile.jpg"
-                alt="Asif Hossain — Australian Website Developer"
+                alt="Asif Hossain — Software Developer and AI Engineer"
                 width={256}
                 height={256}
                 priority

@@ -1,40 +1,40 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { AnimatePresence, motion, useInView, useScroll, useTransform } from "framer-motion"
 import { experiences } from "@/data/portfolio"
-import { HiBriefcase, HiMapPin, HiCalendar, HiCheckCircle } from "react-icons/hi2"
+import { HiMapPin, HiCalendar, HiCheckCircle, HiChevronDown } from "react-icons/hi2"
 
 function TypeBadge({ type }: { type: string }) {
   const colours: Record<string, string> = {
-    Contract:   "bg-accent-yellow/15 text-accent-yellow border-accent-yellow/30",
-    Freelance:  "bg-accent-cyan/15 text-accent-cyan border-accent-cyan/30",
-    "Part-time":"bg-purple-400/15 text-purple-400 border-purple-400/30",
+    Contract: "bg-accent-yellow/15 text-accent-yellow border-accent-yellow/30",
+    Freelance: "bg-accent-cyan/15 text-accent-cyan border-accent-cyan/30",
+    "Full-time": "bg-emerald-400/15 text-emerald-400 border-emerald-400/30",
+    Internship: "bg-purple-400/15 text-purple-400 border-purple-400/30",
+    "Part-time": "bg-purple-400/15 text-purple-400 border-purple-400/30",
   }
   return (
-    <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${colours[type] || "bg-border text-text-muted border-border"}`}>
+    <span className={`text-xs font-medium px-2.5 py-1 rounded-full border shrink-0 ${colours[type] || "bg-border text-text-muted border-border"}`}>
       {type}
     </span>
   )
 }
 
-// Animated timeline line that draws itself on scroll
-function AnimatedLine() {
+// Animated timeline rail that draws itself on scroll
+function AnimatedRail() {
   const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start center", "end center"] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start center", "end end"] })
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <div ref={ref} className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 overflow-hidden">
-      {/* Static dim track */}
-      <div className="absolute inset-0 bg-border/40 rounded-full" />
-      {/* Animated glowing fill */}
+    <div ref={ref} className="absolute left-4 top-2 bottom-2 w-0.5 overflow-hidden">
+      <div className="absolute inset-0 bg-border/50 rounded-full" />
       <motion.div
         style={{
           scaleY,
           originY: 0,
           background: "linear-gradient(180deg, #f59e0b, #22d3ee)",
-          boxShadow: "0 0 8px rgba(245,158,11,0.6)",
+          boxShadow: "0 0 8px rgba(245,158,11,0.5)",
         }}
         className="absolute inset-0 rounded-full"
       />
@@ -45,10 +45,11 @@ function AnimatedLine() {
 export default function Experience() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-80px" })
+  // All entries start collapsed
+  const [openId, setOpenId] = useState<number | null>(null)
 
   return (
     <section id="experience" className="py-24 bg-surface relative overflow-hidden">
-
       {/* Animated grid background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -71,13 +72,13 @@ export default function Experience() {
         className="absolute bottom-1/4 right-10 w-80 h-80 bg-accent-cyan/6 rounded-full blur-3xl pointer-events-none"
       />
 
-      <div ref={ref} className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12"
         >
           <p className="text-accent-yellow font-mono text-sm tracking-widest uppercase mb-3">
             Career journey
@@ -88,42 +89,19 @@ export default function Experience() {
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
-          <AnimatedLine />
+        <div className="relative pl-12">
+          <AnimatedRail />
 
-          <div className="flex flex-col gap-12">
-            {experiences.map((exp, i) => {
-              const isLeft = i % 2 === 0
-              return (
-                <motion.div
-                  key={exp.id}
-                  initial={{ opacity: 0, x: isLeft ? -60 : 60 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.7, delay: i * 0.18, ease: "easeOut" }}
-                  className={`relative flex items-start gap-0 md:gap-8 ${
-                    isLeft ? "md:flex-row" : "md:flex-row-reverse"
-                  } flex-col`}
-                >
-                  <div className="w-full md:w-[calc(50%-2rem)]">
-                    <ExperienceCard exp={exp} isLeft={isLeft} index={i} />
-                  </div>
-
-                  {/* Pulsing center dot */}
-                  <div className="hidden md:flex absolute left-1/2 top-6 -translate-x-1/2 z-10">
-                    <span className="absolute inline-flex w-5 h-5 rounded-full bg-accent-yellow/40 animate-ping" />
-                    <span className="relative w-5 h-5 rounded-full bg-accent-yellow border-4 border-surface shadow-[0_0_16px_rgba(245,158,11,0.8)]" />
-                  </div>
-
-                  <div className="hidden md:block w-[calc(50%-2rem)]" />
-                </motion.div>
-              )
-            })}
-          </div>
-
-          {/* End dot */}
-          <div className="hidden md:flex absolute left-1/2 -bottom-2 -translate-x-1/2 z-10">
-            <span className="absolute inline-flex w-4 h-4 rounded-full bg-accent-cyan/40 animate-ping" />
-            <span className="relative w-4 h-4 rounded-full bg-accent-cyan border-4 border-surface shadow-[0_0_16px_rgba(34,211,238,0.8)]" />
+          <div className="flex flex-col gap-3">
+            {experiences.map((exp, i) => (
+              <ExperienceRow
+                key={exp.id}
+                exp={exp}
+                index={i}
+                isOpen={openId === exp.id}
+                onToggle={() => setOpenId((cur) => (cur === exp.id ? null : exp.id))}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -131,94 +109,140 @@ export default function Experience() {
   )
 }
 
-function ExperienceCard({
+function ExperienceRow({
   exp,
-  isLeft,
   index,
+  isOpen,
+  onToggle,
 }: {
   exp: (typeof experiences)[0]
-  isLeft: boolean
   index: number
+  isOpen: boolean
+  onToggle: () => void
 }) {
-  const cardRef = useRef(null)
-  const isCardInView = useInView(cardRef, { once: true, margin: "-40px" })
+  const rowRef = useRef<HTMLDivElement>(null)
+  const isRowInView = useInView(rowRef, { once: true, margin: "-40px" })
+  const panelId = `experience-panel-${exp.id}`
+
+  // Only scroll if opening (or another row shrinking) pushed this row
+  // partly out of view — never scroll when it's already fully visible.
+  useEffect(() => {
+    if (!isOpen) return
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const timer = setTimeout(() => {
+      const el = rowRef.current
+      if (!el) return
+      const NAV_OFFSET = 96 // matches scroll-mt-24, clears the fixed navbar
+      const rect = el.getBoundingClientRect()
+      const fullyVisible = rect.top >= NAV_OFFSET && rect.bottom <= window.innerHeight
+      if (!fullyVisible) {
+        el.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" })
+      }
+    }, 320)
+    return () => clearTimeout(timer)
+  }, [isOpen])
 
   return (
     <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isCardInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={`relative bg-card border border-border rounded-2xl p-6 group overflow-hidden
-        hover:border-accent-yellow/40 hover:shadow-2xl hover:shadow-accent-yellow/10
-        transition-colors duration-300 ${isLeft ? "md:text-right" : "md:text-left"}`}
+      ref={rowRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isRowInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.06 }}
+      style={{ scrollMarginTop: 96 }}
+      className="relative"
     >
-      {/* Glowing corner accent on hover */}
-      <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent-yellow/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-accent-cyan/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      {/* Timeline dot */}
+      <div className="absolute -left-12 top-5 flex items-center justify-center w-8 h-8">
+        {exp.current ? (
+          <>
+            <span className="absolute inline-flex w-3 h-3 rounded-full bg-accent-yellow/50 animate-ping" />
+            <span className="relative w-3 h-3 rounded-full bg-accent-yellow shadow-[0_0_12px_rgba(245,158,11,0.8)]" />
+          </>
+        ) : (
+          <span className="w-2.5 h-2.5 rounded-full bg-border border-2 border-accent-cyan/50" />
+        )}
+      </div>
 
-      {/* Animated top border line */}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        animate={isCardInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
-        className={`absolute top-0 h-0.5 w-full left-0 origin-left`}
-        style={{ background: "linear-gradient(90deg, #f59e0b, #22d3ee, transparent)" }}
-      />
-
-      {/* Header */}
-      <div className={`flex flex-wrap items-start gap-3 mb-4 ${isLeft ? "md:flex-row-reverse" : "flex-row"}`}>
-        <motion.div
-          whileHover={{ rotate: 15, scale: 1.1 }}
-          className="w-10 h-10 bg-accent-yellow/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-accent-yellow/20 transition-colors"
+      <div
+        className={`bg-card border rounded-2xl overflow-hidden transition-colors duration-300 ${
+          isOpen ? "border-accent-yellow/40" : "border-border hover:border-accent-yellow/25"
+        }`}
+      >
+        {/* Collapsed header — always visible, click to expand */}
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          className="w-full text-left px-5 py-4 flex items-start gap-3 group"
         >
-          <HiBriefcase className="text-accent-yellow w-5 h-5" />
-        </motion.div>
-        <div className="flex-1">
-          <h3 className="font-heading font-bold text-text-primary text-lg leading-tight">
-            {exp.role}
-          </h3>
-          <div className="text-accent-yellow font-medium text-sm mt-0.5">{exp.company}</div>
-        </div>
-      </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <h3 className="font-heading font-bold text-text-primary text-base sm:text-lg leading-tight">
+                {exp.role}
+              </h3>
+              <span className="text-accent-yellow font-medium text-sm">{exp.company}</span>
+              {exp.current && (
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-accent-yellow/90 bg-accent-yellow/10 px-2 py-0.5 rounded-full">
+                  Present
+                </span>
+              )}
+            </div>
 
-      {/* Meta */}
-      <div className={`flex flex-wrap gap-3 mb-4 text-xs text-text-muted ${isLeft ? "md:justify-end" : "justify-start"}`}>
-        <span className="flex items-center gap-1"><HiMapPin className="w-3.5 h-3.5" />{exp.location}</span>
-        <span className="flex items-center gap-1"><HiCalendar className="w-3.5 h-3.5" />{exp.duration}</span>
-        <TypeBadge type={exp.type} />
-      </div>
+            <div className="flex flex-wrap gap-3 mt-1.5 mb-2 text-xs text-text-muted">
+              <span className="flex items-center gap-1"><HiMapPin className="w-3.5 h-3.5" />{exp.location}</span>
+              <span className="flex items-center gap-1 font-mono"><HiCalendar className="w-3.5 h-3.5" />{exp.duration}</span>
+              <TypeBadge type={exp.type} />
+            </div>
 
-      {/* Bullet points */}
-      <ul className={`flex flex-col gap-2 mb-4 ${isLeft ? "md:items-end" : "items-start"}`}>
-        {exp.description.map((point, i) => (
-          <motion.li
-            key={i}
-            initial={{ opacity: 0, x: isLeft ? 20 : -20 }}
-            animate={isCardInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.4, delay: index * 0.1 + i * 0.07 + 0.3 }}
-            className={`flex items-start gap-2 text-text-muted text-sm leading-relaxed ${isLeft ? "md:flex-row-reverse" : "flex-row"}`}
-          >
-            <HiCheckCircle className="w-4 h-4 text-accent-yellow flex-shrink-0 mt-0.5" />
-            <span className={isLeft ? "md:text-right" : "text-left"}>{point}</span>
-          </motion.li>
-        ))}
-      </ul>
+            <p className="text-text-muted text-sm leading-relaxed">{exp.summary}</p>
+          </div>
 
-      {/* Tech tags */}
-      <div className={`flex flex-wrap gap-2 ${isLeft ? "md:justify-end" : "justify-start"}`}>
-        {exp.tech.map((t, i) => (
           <motion.span
-            key={t}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isCardInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.3, delay: index * 0.1 + i * 0.04 + 0.5 }}
-            className="text-xs px-2.5 py-1 bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 rounded-lg hover:bg-accent-cyan/20 transition-colors duration-200"
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.25 }}
+            className="mt-1.5 text-text-muted group-hover:text-accent-yellow shrink-0"
           >
-            {t}
+            <HiChevronDown className="w-5 h-5" />
           </motion.span>
-        ))}
+        </button>
+
+        {/* Expanded detail */}
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              id={panelId}
+              key="content"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="px-5 pb-5 pt-1 border-t border-border/60">
+                <ul className="flex flex-col gap-2 mt-4 mb-4">
+                  {exp.description.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2 text-text-muted text-sm leading-relaxed">
+                      <HiCheckCircle className="w-4 h-4 text-accent-yellow flex-shrink-0 mt-0.5" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-2">
+                  {exp.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs px-2.5 py-1 bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 rounded-lg"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   )
