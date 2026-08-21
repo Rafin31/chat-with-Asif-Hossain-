@@ -225,7 +225,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="text-text-muted text-xs mb-1">LinkedIn</div>
-                <div className="text-text-primary font-medium text-sm">Asif Hossain</div>
+                <div className="text-text-primary font-medium text-sm">Rafin</div>
               </div>
             </motion.a>
 
@@ -274,7 +274,7 @@ export default function Contact() {
                     type="text"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Asif Hossain"
+                    placeholder="Rafin"
                     className={`form-input ${errors.name ? "border-red-500 focus:border-red-500" : ""}`}
                   />
                   {errors.name && (

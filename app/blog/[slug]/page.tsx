@@ -12,7 +12,7 @@ import { getPostBySlug, getAllSlugs } from "@/lib/blog"
 import { getService } from "@/data/services"
 import { shimmerDataURL } from "@/lib/shimmer"
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 interface Props {
   params: { slug: string }
@@ -77,12 +77,12 @@ export default function BlogPostPage({ params }: Props) {
     dateModified: post.updated ?? post.date,
     author: {
       "@type": "Person",
-      name: "Asif Hossain",
+      name: "Rafin",
       url: BASE_URL,
     },
     publisher: {
       "@type": "Person",
-      name: "Asif Hossain",
+      name: "Rafin",
       url: BASE_URL,
     },
     mainEntityOfPage: {

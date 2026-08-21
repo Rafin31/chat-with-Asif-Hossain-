@@ -3,12 +3,12 @@ import Link from "next/link"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 export const metadata: Metadata = {
   title: "Hire a Website Developer in Australia | Web Development Services",
   description:
-    "Hire Asif Hossain, a professional website developer in Australia. Custom websites, e-commerce stores, and web apps for Australian businesses. 50+ projects, 100% satisfaction.",
+    "Hire Rafin, a professional website developer in Australia. Custom websites, e-commerce stores, and web apps for Australian businesses. 50+ projects, 100% satisfaction.",
   keywords: [
     "hire website developer australia",
     "website developer for hire australia",
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${BASE_URL}/hire-me`,
-    title: "Hire a Website Developer in Australia | Asif Hossain",
+    title: "Hire a Website Developer in Australia | Rafin",
     description:
       "Professional website developer in Australia. Custom websites and web apps for Australian businesses. 50+ projects delivered.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Website Developer Australia | Hire Asif Hossain",
+    title: "Website Developer Australia | Hire Rafin",
     description: "Professional website developer in Australia. 50+ projects, 100% satisfaction.",
   },
 }
@@ -42,14 +42,14 @@ const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${BASE_URL}/hire-me#service`,
-  name: "Website Development Services – Asif Hossain, Australia",
+  name: "Website Development Services – Rafin, Australia",
   url: `${BASE_URL}/hire-me`,
   image: `${BASE_URL}/profile.jpg`,
   description:
     "Professional website developer in Australia. Custom websites, e-commerce stores, and web applications for Australian businesses.",
   provider: {
     "@type": "Person",
-    name: "Asif Hossain",
+    name: "Rafin",
     url: BASE_URL,
     jobTitle: "Website Developer",
     address: {
@@ -237,7 +237,7 @@ export default function HireMePage() {
               Start a Project
             </Link>
             <a
-              href="/Asif_Hossain_Resume.pdf"
+              href="/Rafin_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-surface border border-border text-text-primary font-semibold rounded-xl text-lg hover:border-accent-cyan/50 transition-colors"
@@ -348,7 +348,7 @@ export default function HireMePage() {
               &ldquo;
             </div>
             <p className="text-text-primary text-lg leading-relaxed mb-6 relative z-10">
-              Asif delivered exactly what we needed, on time and with great
+              Rafin delivered exactly what we needed, on time and with great
               attention to detail. Our medical management system runs
               flawlessly. He understood complex business requirements and
               translated them into elegant code.

@@ -56,7 +56,7 @@ export default function NotFound() {
 
           {/* Hint */}
           <p className="text-text-muted text-sm mt-10 opacity-50">
-            asifhossain.dev
+            rafinh.dev
           </p>
         </div>
       </main>

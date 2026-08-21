@@ -3,13 +3,13 @@
 // ============================================================
 
 export const personalInfo = {
-  name: "Asif Hossain",
+  name: "Rafin",
   role: "Full-Stack Developer & AI Automation Engineer",
   tagline: "Building production web apps and intelligent automation systems with modern AI",
-  email: "contact@asifhossain.dev",
+  email: "asifhrafin31@gmail.com",
   location: "Australia",
   github: "https://github.com/Rafin31",
-  linkedin: "https://www.linkedin.com/in/asif-hossain-6982b81ba/",
+  linkedin: "https://www.linkedin.com/in/rafin-h-6982b81ba/",
   fiverr: "https://www.fiverr.com/rafin_31",
   bio: `I'm a Full-Stack Developer and AI Engineer with 3+ years of professional experience building scalable web applications and intelligent automation systems. I recently completed my Master's in Computer Science (Software Engineering) at the University of Wollongong, combining academic depth with real-world engineering delivery.
 
@@ -431,7 +431,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 1,
     quote:
-      "Asif delivered exactly what we needed, on time and with great attention to detail. Our medical management system runs flawlessly. He understood complex business requirements and translated them into elegant code. Great work and prompt service. What more can you ask for. I hope to work with RAFIN again in the future to continue development.",
+      "Rafin delivered exactly what we needed, on time and with great attention to detail. Our medical management system runs flawlessly. He understood complex business requirements and translated them into elegant code. Great work and prompt service. What more can you ask for. I hope to work with Rafin again in the future to continue development.",
     name: "James Mendoza",
     role: "CEO",
     company: "Mendoza Brothers Holdings",
@@ -453,7 +453,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 3,
     quote:
-      "Asif is very helpful and accommodating. It's clear that he knows the game inside out. If you have a problem he'll solve it right away without any uncertainties. He was a pleasure doing business with.",
+      "Rafin is very helpful and accommodating. It's clear that he knows the game inside out. If you have a problem he'll solve it right away without any uncertainties. He was a pleasure doing business with.",
     name: "senor_kyle",
     role: "Property Manager",
     company: "Chen Properties",
@@ -464,7 +464,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 4,
     quote:
-      "Great experience with Asif.",
+      "Great experience with Rafin.",
     name: "thegandrew",
     role: "Owner",
     company: "Sharma's Restaurant",
@@ -563,7 +563,7 @@ export const testimonials: Testimonial[] = [
   {
     id: 14,
     quote:
-      "Asif is just so brilliant and a great teacher, his explanations are so good and easily understandable!",
+      "Rafin is just so brilliant and a great teacher, his explanations are so good and easily understandable!",
     name: "aniqtanwir589",
     role: "Product Manager",
     company: "Wilson Digital",

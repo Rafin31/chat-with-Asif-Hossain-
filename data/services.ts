@@ -1,4 +1,4 @@
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 export interface ServiceFAQ {
   q: string

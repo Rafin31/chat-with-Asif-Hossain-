@@ -8,7 +8,7 @@ import { getAllPosts } from "@/lib/blog"
 import ServiceDetailClient from "@/components/ServiceDetailClient"
 import { FiArrowLeft } from "react-icons/fi"
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 interface Props {
   params: { slug: string }

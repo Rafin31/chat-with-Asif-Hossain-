@@ -6,7 +6,7 @@ import { services } from "@/data/services"
 import { FiArrowRight } from "react-icons/fi"
 import { HiSparkles } from "react-icons/hi2"
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 export const metadata: Metadata = {
   // `absolute` bypasses the layout title template (which would push this past ~95 chars).
@@ -70,10 +70,10 @@ export default function ServicesPage() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Asif Hossain  Web Development & AI Automation",
+    name: "Rafin  Web Development & AI Automation",
     url: BASE_URL,
     image: `${BASE_URL}/profile.jpg`,
-    email: "contact@asifhossain.dev",
+    email: "asifhrafin31@gmail.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Sydney",
@@ -208,7 +208,7 @@ export default function ServicesPage() {
         </div>
       </main>
 
-      {/* ── Why Asif ── */}
+      {/* ── Why Rafin ── */}
       <section className="bg-background py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-2xl font-bold text-text-primary mb-10 section-title-underline inline-block">

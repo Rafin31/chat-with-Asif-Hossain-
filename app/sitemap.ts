@@ -3,7 +3,7 @@ import { getAllPosts } from "@/lib/blog"
 import { projects } from "@/data/portfolio"
 import { services } from "@/data/services"
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 // Bump this date whenever the homepage content meaningfully changes.
 // Using a fixed date (not new Date()) so the sitemap doesn't claim a fresh

@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 })
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -29,11 +29,11 @@ export const metadata: Metadata = {
   // ── Core ──────────────────────────────────────────────────
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Website Developer Australia | Asif Hossain",
-    template: "%s | Asif Hossain – Australian Website Developer",
+    default: "Website Developer Australia | Rafin",
+    template: "%s | Rafin – Australian Website Developer",
   },
   description:
-    "Professional website developer in Australia. Asif Hossain builds websites and web apps for Australian businesses. React, Next.js, Node.js expert. 50+ projects delivered, 100% client satisfaction.",
+    "Professional website developer in Australia. Rafin builds websites and web apps for Australian businesses. React, Next.js, Node.js expert. 50+ projects delivered, 100% client satisfaction.",
   keywords: [
     // Customer-facing (what people actually search)
     "website developer australia",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     "LangChain developer australia",
     "Claude API developer",
     // Technical / professional
-    "Asif Hossain",
+    "Rafin",
     "Full-Stack Developer Australia",
     "AI Automation Engineer Australia",
     "React developer australia",
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
     "Node.js Developer",
     "TypeScript Developer",
   ],
-  authors: [{ name: "Asif Hossain", url: BASE_URL }],
-  creator: "Asif Hossain",
-  publisher: "Asif Hossain",
+  authors: [{ name: "Rafin", url: BASE_URL }],
+  creator: "Rafin",
+  publisher: "Rafin",
   category: "technology",
 
   // ── Canonical URL ─────────────────────────────────────────
@@ -85,10 +85,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: BASE_URL,
-    title: "Website Developer Australia | Asif Hossain | Web Developer",
+    title: "Website Developer Australia | Rafin | Web Developer",
     description:
       "Professional website developer in Australia. Building websites and web apps for Australian businesses. 50+ projects, 5-star rated.",
-    siteName: "Asif Hossain – Australian Website Developer",
+    siteName: "Rafin – Australian Website Developer",
     // og:image comes from app/opengraph-image.tsx (1200x630, auto-wired by Next.js)
     locale: "en_AU",
   },
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
   // ── Twitter / X ───────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
-    title: "Website Developer Australia | Asif Hossain",
+    title: "Website Developer Australia | Rafin",
     description:
       "Professional Australian website developer. Websites and web apps for businesses across Australia.",
     creator: "@Rafin31",
@@ -120,13 +120,13 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Asif Hossain",
+  name: "Rafin",
   url: BASE_URL,
   image: `${BASE_URL}/profile.jpg`,
   jobTitle: "Full-Stack Developer & AI Automation Engineer",
   description:
     "Full-Stack Developer and AI Automation Engineer based in Australia. Building custom websites, AI-powered web applications, and n8n workflow automation for Australian businesses.",
-  email: "contact@asifhossain.dev",
+  email: "asifhrafin31@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Sydney",
@@ -135,7 +135,7 @@ const personJsonLd = {
   },
   sameAs: [
     "https://github.com/Rafin31",
-    "https://www.linkedin.com/in/asif-hossain-6982b81ba/",
+    "https://www.linkedin.com/in/rafin-h-6982b81ba/",
     "https://www.fiverr.com/rafin_31",
   ],
   knowsAbout: [
@@ -164,7 +164,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${BASE_URL}/#business`,
-  name: "Asif Hossain – Australian Web Developer & AI Automation Engineer",
+  name: "Rafin – Australian Web Developer & AI Automation Engineer",
   url: BASE_URL,
   image: `${BASE_URL}/profile.jpg`,
   description:
@@ -213,9 +213,9 @@ const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${BASE_URL}/#website`,
-  name: "Asif Hossain – Australian Website Developer",
+  name: "Rafin – Australian Website Developer",
   url: BASE_URL,
-  description: "Portfolio and blog of Asif Hossain, professional website developer in Australia.",
+  description: "Portfolio and blog of Rafin, professional website developer in Australia.",
   inLanguage: "en-AU",
   potentialAction: {
     "@type": "SearchAction",

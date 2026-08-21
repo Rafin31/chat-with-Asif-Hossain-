@@ -9,7 +9,7 @@ import ProjectDetailClient from "@/components/ProjectDetailClient"
 
 export const revalidate = 300 // ISR: refresh image list every 5 minutes
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 interface Props {
   params: { slug: string }
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       url: `${BASE_URL}/projects/${params.slug}`,
-      title: `${project.title} | Asif Hossain`,
+      title: `${project.title} | Rafin`,
       description: project.longDescription,
       // Fall back to the auto-generated /opengraph-image when a project has no cover
       ...(detail?.coverImage
@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: Props) {
     description: detail?.overview ?? project.longDescription,
     applicationCategory: "WebApplication",
     programmingLanguage: project.tech,
-    author: { "@type": "Person", name: "Asif Hossain", url: BASE_URL },
+    author: { "@type": "Person", name: "Rafin", url: BASE_URL },
     url: project.demo !== "#" ? project.demo : undefined,
   }
 

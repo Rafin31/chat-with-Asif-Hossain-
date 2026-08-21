@@ -42,7 +42,7 @@ function parsePostFile(
       keywords: Array.isArray(data.keywords) ? data.keywords : [],
       readTime: typeof data.readTime === "string" ? data.readTime : "5 min read",
       category: typeof data.category === "string" ? data.category : "Development",
-      author: typeof data.author === "string" ? data.author : "Asif Hossain",
+      author: typeof data.author === "string" ? data.author : "Rafin",
       coverImage: typeof data.coverImage === "string" ? data.coverImage : undefined,
       relatedService: typeof data.relatedService === "string" ? data.relatedService : undefined,
       faqs: Array.isArray(data.faqs)

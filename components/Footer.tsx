@@ -26,8 +26,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="text-left">
               <span className="font-heading font-bold text-2xl">
-                <span className="text-accent-yellow">Asif </span>
-                <span className="text-accent-cyan">Hossain</span>
+                <span className="text-accent-yellow">Rafin</span>
               </span>
             </Link>
             <p className="text-text-muted text-sm leading-relaxed max-w-xs">
@@ -158,7 +157,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-sm text-center sm:text-left">
-            © {year} Asif Hossain. All rights reserved.
+            © {year} Rafin. All rights reserved.
           </p>
           <BackToTopButton />
         </div>

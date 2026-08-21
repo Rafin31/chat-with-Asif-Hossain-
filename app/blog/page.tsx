@@ -12,7 +12,7 @@ import { shimmerDataURL } from "@/lib/shimmer"
 export const metadata: Metadata = {
   title: "Website Developer Blog | Web Development Tips & Guides | Australia",
   description:
-    "Practical guides on website costs, web development, AI tools, and tips for Australian businesses. Written by Asif Hossain, an Australian full-stack web developer.",
+    "Practical guides on website costs, web development, AI tools, and tips for Australian businesses. Written by Rafin, an Australian full-stack web developer.",
   keywords: [
     "website developer blog australia",
     "how much does a website cost australia",
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     "website cost australia 2026",
   ],
   alternates: {
-    canonical: "https://asifhossain.dev/blog",
+    canonical: "https://rafinh.dev/blog",
   },
   openGraph: {
     type: "website",
-    url: "https://asifhossain.dev/blog",
-    title: "Website Developer Blog | Asif Hossain, Australian Developer",
+    url: "https://rafinh.dev/blog",
+    title: "Website Developer Blog | Rafin, Australian Developer",
     description:
       "Guides on website costs, web development, and tips for Australian businesses. Written by an Australian full-stack web developer.",
   },

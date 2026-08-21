@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og"
 // and uses it as the Twitter card fallback too. Edge runtime: @vercel/og's Node build
 // fails to prerender on Windows.
 export const runtime = "edge"
-export const alt = "Web Development & AI Automation Services Australia – Asif Hossain"
+export const alt = "Web Development & AI Automation Services Australia – Rafin"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -50,7 +50,7 @@ export default function ServicesOpengraphImage() {
         </div>
 
         <div style={{ color: "#fbbf24", fontSize: "26px", marginTop: "48px" }}>
-          asifhossain.dev/services
+          rafinh.dev/services
         </div>
       </div>
     ),

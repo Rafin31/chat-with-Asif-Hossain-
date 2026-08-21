@@ -14,13 +14,13 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"))
 const Contact     = dynamic(() => import("@/components/Contact"))
 const Footer      = dynamic(() => import("@/components/Footer"))
 
-const BASE_URL = "https://asifhossain.dev"
+const BASE_URL = "https://rafinh.dev"
 
 const projectsJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Portfolio Projects by Asif Hossain",
-  description: "Full-stack web development projects by Asif Hossain, a developer based in Australia.",
+  name: "Portfolio Projects by Rafin",
+  description: "Full-stack web development projects by Rafin, a developer based in Australia.",
   itemListElement: projects.map((project, index) => ({
     "@type": "ListItem",
     position: index + 1,
@@ -32,7 +32,7 @@ const projectsJsonLd = {
       programmingLanguage: project.tech,
       author: {
         "@type": "Person",
-        name: "Asif Hossain",
+        name: "Rafin",
         url: BASE_URL,
       },
       ...(project.demo && project.demo !== "#" ? { url: project.demo } : {}),

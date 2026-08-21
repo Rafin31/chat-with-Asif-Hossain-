@@ -8,19 +8,27 @@ import { navLinks, pageLinks } from "@/data/portfolio"
 
 // ── Logo ──────────────────────────────────────────────────────────────────────
 function LogoMark({ compact = false }: { compact?: boolean }) {
-  if (compact) {
-    return (
-      <span className="flex items-center gap-1.5 select-none">
-        <span className="font-mono text-accent-cyan text-xs font-bold opacity-60">&lt;/&gt;</span>
-        <span className="font-heading font-black text-sm text-text-primary tracking-tight">AH</span>
-      </span>
-    )
-  }
   return (
-    <span className="flex items-center gap-1.5 font-heading tracking-tight select-none">
-      <span className="font-mono text-accent-cyan text-sm font-bold opacity-70">&lt;/&gt;</span>
-      <span className="font-black text-lg text-text-primary">Asif</span>
-      <span className="font-light text-lg text-accent-yellow">Hossain</span>
+    <span className="group flex items-baseline font-mono tracking-tight select-none">
+      <span
+        className={`text-accent-cyan/70 font-bold group-hover:text-accent-cyan transition-colors ${
+          compact ? "text-sm" : "text-base"
+        }`}
+      >
+        &lt;
+      </span>
+      <span
+        className={`font-heading font-black text-text-primary ${compact ? "text-base" : "text-lg"}`}
+      >
+        Rafin
+      </span>
+      <span
+        className={`text-accent-yellow font-bold group-hover:text-accent-cyan transition-colors ${
+          compact ? "text-sm" : "text-base"
+        }`}
+      >
+        /&gt;
+      </span>
     </span>
   )
 }
@@ -333,7 +341,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-2 text-sm text-emerald-400 font-mono">
                   ◆ Available for freelance<span className="animate-blink ml-0.5 font-bold">_</span>
                 </div>
-                <span className="text-[11px] text-white/20 font-mono">asifhossain.dev</span>
+                <span className="text-[11px] text-white/20 font-mono">rafinh.dev</span>
               </div>
             </motion.div>
           </motion.div>

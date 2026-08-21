@@ -25,7 +25,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     coverImage:
       "https://ik.imagekit.io/zqm3n6ufa/Portfolio%20Projects%20Images/Medical%20Management%20System/snapshot1",
     imageAlt: "Medical Supplier Management System dashboard screenshot",
-    imageCredit: "Screenshot by Asif Hossain",
+    imageCredit: "Screenshot by Rafin",
     overview:
       "Mendoza Brothers Holdings needed to replace a patchwork of spreadsheets and email chains with a centralised, secure web platform for managing their medical supply chain. The system needed to support multiple user roles, handle bulk product data efficiently, and give management real-time visibility over orders and staff activity. I designed and built the entire platform from scratch  database schema, REST API, React UI, and deployment infrastructure.",
     features: [
@@ -389,7 +389,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     coverImage:
       "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1400&q=80&auto=format&fit=crop",
     imageAlt: "Barcelona skyline with Sagrada Familia  TourHill travel booking platform",
-    imageCredit: "Snapshot by Asif Hossain",
+    imageCredit: "Snapshot by Rafin",
     overview:
       "TourHill is a live, production-grade travel booking platform at tourhill.com, helping tourists discover and book skip-the-line tickets and expert guided tours across Spain's top destinations, starting with Barcelona. I designed and built the entire system from scratch: a Next.js 15 App Router frontend with strict TypeScript, and a Node.js/Express REST API backed by PostgreSQL and Redis, deployed to a Namecheap VPS with Nginx and PM2. The platform handles real-time availability calendars, multi-currency pricing across 10 currencies, a dual-auth system (JWT + httpOnly cookie), Stripe payment webhooks, an admin panel for schedule management, a favorites system with guest-to-server sync, a blog CMS, and multi-language support (i18n) for international reach. Every booking passes backend price verification, atomic Redis slot decrements via Lua script, and guest-count validation to prevent both overselling and price tampering.",
     features: [
@@ -464,7 +464,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     slug: "claude-stats",
     coverImage: "/claude-states/claude-states.png",
     imageAlt: "Claude Stats dashboard showing token usage, costs and session history",
-    imageCredit: "Screenshot by Asif Hossain",
+    imageCredit: "Screenshot by Rafin",
     overview:
       "Claude Stats is a self-hosted developer tool I built to solve a personal pain point: having no visibility into how many tokens I was burning through Claude Code sessions or how much it was costing me. The dashboard auto-detects your local Claude data directory, watches it for changes in real time, and visualises token usage, session history, costs, and productivity patterns  all without any configuration or external API calls.",
     features: [

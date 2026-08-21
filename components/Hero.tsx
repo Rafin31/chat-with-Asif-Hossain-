@@ -157,9 +157,7 @@ export default function Hero() {
             className="font-heading font-bold leading-tight"
           >
             <span className="text-5xl sm:text-6xl lg:text-7xl">
-              <span className="gradient-text">Asif</span>
-              <br />
-              <span className="text-text-primary">Hossain</span>
+              <span className="gradient-text">Rafin</span>
             </span>
             <span className="block mt-2 text-lg sm:text-xl text-text-primary font-semibold">
               Software Developer and AI Engineer
@@ -226,7 +224,7 @@ export default function Hero() {
               Hire Me
             </button>
             <a
-              href="/Asif_Hossain_Resume.pdf"
+              href="/Rafin_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center gap-2 px-6 py-3 bg-card border border-border text-text-muted font-medium rounded-xl hover:border-accent-yellow/40 hover:text-text-primary transition-all duration-200 overflow-hidden"
@@ -277,7 +275,7 @@ export default function Hero() {
             >
               <Image
                 src="/profile.jpg"
-                alt="Asif Hossain — Software Developer and AI Engineer"
+                alt="Rafin — Software Developer and AI Engineer"
                 width={256}
                 height={256}
                 priority

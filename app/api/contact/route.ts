@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
               <h4 style="color: #94a3b8; margin: 0 0 12px;">Message:</h4>
               <div style="background: #141428; border-radius: 8px; padding: 16px; color: #f8fafc; line-height: 1.7; white-space: pre-wrap;">${message}</div>
               <p style="color: #94a3b8; font-size: 12px; margin-top: 24px; margin-bottom: 0;">
-                Sent from Asif Hossain's portfolio
+                Sent from Rafin's portfolio
               </p>
             </div>
           </body>
@@ -97,7 +97,7 @@ export async function POST(req: NextRequest) {
 
     // Auto-reply to sender
     const autoReply = {
-      from: `"Asif Hossain" <${process.env.EMAIL_USER}>`,
+      from: `"Rafin" <${process.env.EMAIL_USER}>`,
       to: email,
       subject: `Re: ${subject} - Thanks for reaching out!`,
       html: `
@@ -114,9 +114,9 @@ export async function POST(req: NextRequest) {
                 <a href="https://github.com/Rafin31" style="color: #22d3ee;">GitHub</a>.
               </p>
               <hr style="border-color: #1e1e3a; margin: 20px 0;" />
-              <p style="color: #f8fafc; margin: 0; font-weight: 600;">Asif Hossain</p>
+              <p style="color: #f8fafc; margin: 0; font-weight: 600;">Rafin</p>
               <p style="color: #94a3b8; font-size: 12px; margin-top: 4px; margin-bottom: 0;">
-                Full-Stack Developer | asifhossain976@gmail.com
+                Full-Stack Developer | asifhrafin31@gmail.com
               </p>
             </div>
           </body>
